@@ -1,0 +1,31 @@
+.main {
+    position: relative;
+    height: 740px;
+    background-color: #D2E0DF;
+    z-index: -10;
+}
+.main-image {
+    right: 0;
+    position: absolute;
+    margin-left: auto;
+    width: 400px;
+    height: 100%;
+    background-image: url("../../assets/img/home_bg.png");
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: cover;
+
+}
+
+.main-title {
+    margin-top: 110px;
+    font-size: 55px;
+    max-width: 610px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.second-title {
+    margin-top: 20px;
+    font-size: 30px;
+}
