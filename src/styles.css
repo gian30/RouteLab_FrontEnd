@@ -31,6 +31,11 @@ input,input:hover,input:focus,input:active,button,button:hover,button:focus,butt
     outline: none;
 }
 
+a, button {
+	transition: all 1s ease;
+	cursor: pointer;
+}
+
 input, button {
     margin: 0;
     padding: 0;
