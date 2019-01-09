@@ -1,0 +1,20 @@
+.user{
+    
+    margin-left: auto;
+    width: 100%;
+    height:130px;
+    background-image: url("/../assets/img/cloud-web-banner.jpg");
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: cover;
+
+}
+.profilePicture{
+    
+    width: 90px;
+    height: 90px;
+    background-image: url("../../assets/img/0.jpg");
+    background-size: cover;
+    border-radius: 50%;
+    margin-top: 20px;
+}
