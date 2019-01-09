@@ -1,0 +1,37 @@
+
+.footer {
+    background-color: #22626E;
+    padding: 20px 0;
+    font-size: 12px;
+    color: #fff;
+}
+
+.logo a{
+    font-weight: 300;
+    font-size: 20px;
+    color: #fff;
+
+}
+
+.logo span {
+    font-weight: bold;
+
+}
+
+.social {
+    margin-top: 14px;
+    width: 100px;
+}
+
+.social li a{
+    font-size: 20px;
+    color: #6096A0;
+}
+
+.social li a:hover {
+    color: #fff;
+}
+
+.copyright {
+
+}

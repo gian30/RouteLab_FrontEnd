@@ -14,7 +14,6 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
-
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,
 section {
     display: block;
@@ -53,6 +52,11 @@ a:hover {
     color: grey;
 }
 
+h2 {
+    font-size: 25px;
+    text-transform: uppercase;
+}
+
 .button {
     background-color: #13383E;
 }
@@ -66,5 +70,4 @@ app-sticky-menu {
     top: 0;
     z-index: 1000;
     width: 100%;
- 
-  }
+}
