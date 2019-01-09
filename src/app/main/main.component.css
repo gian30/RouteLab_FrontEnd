@@ -1,7 +1,8 @@
 .main {
-    position: relative;
     height: 740px;
     background-color: #D2E0DF;
+    margin-top: 70px;
+    position: relative;
 
 }
 .main-image {
