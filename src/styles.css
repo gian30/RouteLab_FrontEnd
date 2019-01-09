@@ -31,7 +31,7 @@ input,input:hover,input:focus,input:active,button,button:hover,button:focus,butt
     outline: none;
 }
 
-input,button {
+input, button {
     margin: 0;
     padding: 0;
     border: none;
@@ -54,3 +54,4 @@ a:hover {
 .button:hover {
     background-color: #000;
 }
+
