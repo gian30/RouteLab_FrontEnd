@@ -4,13 +4,18 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { StickyMenuComponent } from './sticky-menu/sticky-menu.component';
 import { MainComponent } from './main/main.component';
+import { BannerComponent } from './banner/banner.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     StickyMenuComponent,
-    MainComponent
+    MainComponent,
+    BannerComponent
   ],
+
   imports: [
     BrowserModule
   ],
