@@ -23,9 +23,17 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/vendor/slick/slick.css",
+              "src/vendor/slick/slick-theme.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [ 
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/vendor/slick/slick.js",
+              "src/vendor/js/main.js"
+            ]
           },
           "configurations": {
             "production": {

@@ -7,6 +7,7 @@ import { MainComponent } from './main/main.component';
 import { BannerComponent } from './banner/banner.component';
 import { RoutesComponent } from './routes/routes.component';
 import { FooterComponent } from './footer/footer.component';
+import { RouteComponent } from './route/route.component';
 
 
 
@@ -17,7 +18,8 @@ import { FooterComponent } from './footer/footer.component';
     MainComponent,
     BannerComponent,
     RoutesComponent,
-    FooterComponent
+    FooterComponent,
+    RouteComponent
   ],
 
   imports: [

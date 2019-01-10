@@ -1,0 +1,34 @@
+.route {
+    padding: 80px 0;
+    background-color: #E9F0EF;
+}
+
+.route__title {
+    margin-bottom: 15px;
+}
+
+.route-button {
+    padding: 4px 10px;
+    background-color: #22626E;
+    color: #fff; 
+}
+
+.stars {
+    width: 120px;
+    margin-bottom: 15px;
+}
+
+.photo__img {
+    width: 100%;
+}
+
+.photo__imgs {
+    width: 100%;
+    cursor: pointer;
+}
+
+
+
+.slick-center img{
+    transform: scale(3.1) !important;
+  }

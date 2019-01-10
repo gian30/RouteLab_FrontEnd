@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+
+
 @Component({
   selector: 'app-routes',
   templateUrl: './routes.component.html',
@@ -10,9 +12,13 @@ export class RoutesComponent implements OnInit {
   private LOCATION = ("../../assets/icons/location.png");
   private STAR = ("../../assets/icons/star.png");
   private TIMER = ("../../assets/icons/timer.png");
-  
+  loadRoutes = true;
   constructor() { }
+  loadRoute() {
+    this.loadRoutes = !this.loadRoutes;
+    
 
+  }
   ngOnInit() {
   }
 

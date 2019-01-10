@@ -1,0 +1,42 @@
+<div class="route">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9">
+        <h2 class="route__title">
+          Nombre de la ruta
+        </h2>
+      </div>
+      <div class="col-lg-3">
+        <button class="button route-button">Promociona tu ruta</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="stars d-flex justify-content-between">
+          <img [src]=STAR alt="location image">
+          <img [src]=STAR alt="location image">
+          <img [src]=STAR alt="location image">
+          <img [src]=STAR alt="location image">
+          <img [src]=STAR alt="location image">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-7">
+        <div class="photos">
+          <div class="photo__current">
+            <img class="photo__img" [src]=CURRENTIMG>
+            <div class="photo__preview">
+              <div *ngFor="let photo of ROUTEIMGS; let i=index">
+                  <img (click)="loadPhoto(ROUTEIMGS[i])" class="photo__imgs" [src]=ROUTEIMGS[i]>
+              </div> 
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+
+      </div>
+    </div>
+  </div>
+</div>

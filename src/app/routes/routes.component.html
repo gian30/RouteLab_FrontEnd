@@ -1,9 +1,9 @@
-<div class="routes">
+<div *ngIf="loadRoutes;else showroute" class="routes">
   <div class="container">
     <h2 class="routes__title">Best routes</h2>
     <div class="row">
       <div class="col-lg-4">
-        <div class="route">
+        <div (click)="loadRoute()" class="route">
           <div class="route__img">
             <img [src]=ROUTE_SAMPLE alt="route image">
           </div>
@@ -285,3 +285,5 @@
   </div>
 
 </div>
+
+<ng-template #showroute><app-route></app-route></ng-template>
