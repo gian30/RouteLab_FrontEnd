@@ -23,14 +23,25 @@
     </div>
     <div class="row">
       <div class="col-lg-7">
-        <div class="photos">
-          <div class="photo__current">
-            <img class="photo__img" [src]=CURRENTIMG>
-            <div class="photo__preview">
-              <div *ngFor="let photo of ROUTEIMGS; let i=index">
-                  <img (click)="loadPhoto(ROUTEIMGS[i])" class="photo__imgs" [src]=ROUTEIMGS[i]>
-              </div> 
+        <div class="photo__current">
+          <img class="photo__img" [src]=CURRENTIMG>
+          <div class="photo__preview">
+            <div *ngFor="let photo of ROUTEIMGS; let i=index">
+              <img (click)="loadPhoto(ROUTEIMGS[i])" class="photo__imgs" [src]=ROUTEIMGS[i]>
             </div>
+          </div>
+        </div>
+        <div class="description">
+          <div class="description__text">
+            Lorem ipsum dolor sit amet, in eos vivendo singulis. Eum illum gloriatur neglegentur ea. Te falli putent
+            cum, probo ferri luptatum vix et. Vero dolorem iracundia at eum, movet mentitum atomorum ea qui, nostrum
+            expetenda ne quo. Per vocent petentium gloriatur ne, ex oporteat philosophia eam.
+          </div>
+          <div class="description__map">
+            <iframe width="600" height="350" frameborder="0" style="border:0" 
+            src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyBQwgG1zHjVXd6omQVAccKdv9skMCPg3-E&origin=Toronto&destination=Montreal"
+              allowfullscreen>
+            </iframe>
           </div>
         </div>
       </div>
