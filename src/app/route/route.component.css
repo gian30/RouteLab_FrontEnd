@@ -11,6 +11,7 @@
     padding: 4px 10px;
     background-color: #22626E;
     color: #fff; 
+    display: block;
 }
 
 .stars {
@@ -44,12 +45,60 @@
     background-color: #fff;
     font-size: 18px;
     line-height: 1.8em;
-    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.192);
-    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.192);
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.192);
-}
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
+ }
 
 .description__text{
     margin-bottom: 25px;
     font-weight: 300;
+}
+
+.recomendations, .similar-routes {
+    margin-left: auto;
+    width: 90%;
+}
+
+.recomendation {
+    background-color: #fff;
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
+    padding: 13px 15px;
+    margin-bottom: 7px;
+}
+
+.recomendation__name {
+    margin-left: 12px;
+    font-size: 16px;
+}
+
+.similar-routes {
+    margin-top: 80px;
+}
+
+.similar-route {
+    width: 48%;
+    background-color: #fff;
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
+    margin-bottom: 15px;
+}
+
+.similar-route__img {
+    width: 100%;
+}
+
+.similar-route__info {
+    text-transform: uppercase;
+    color: #000;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.similar-route__info .stars {
+    margin-top: 15px;
 }

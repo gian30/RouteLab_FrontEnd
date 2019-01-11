@@ -67,34 +67,33 @@
 }
 
 .menu {
-  background-color: rgba(208, 222, 224, 1);
-  position: relative;
-  margin-left: auto;
   width: 100%;
-  height: 38px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: right;
-
+  background-color: #D0DEE0;
+  padding: 0;
 }
 
 .menu-item {
-  margin-right: 50px;
-  margin-left: 50px;
-
   font-weight: 600;
   text-decoration: none;
-
-
+  display: block;
+  width: 100%;
 }
 
 .menu-item a {
+  text-align: center;
   display: block;
-  padding: 10px 0 ;
-
+  height: 45px;
+  line-height: 45px;
 }
 
 .menu-item :hover {
   background: rgba(173, 200, 204, 1);
+}
 
+.container-fluid {
+  padding: 0;
+  margin: 0;
 }
