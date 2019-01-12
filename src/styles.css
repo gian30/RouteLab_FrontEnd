@@ -1,77 +1,78 @@
 /* You can add global styles to this file, and also import other style files */
-html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-    background: transparent;
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
 }
 
 body {
-    line-height: 1;
-    font-family: 'Open Sans', sans-serif;
+  line-height: 1;
+  font-family: 'Open Sans', sans-serif;
 }
 
-article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav,
 section {
-    display: block;
+  display: block;
 }
 
-ul,li {
-    list-style: none;
+ul, li {
+  list-style: none;
 }
 
-div,p,form,input,a,span,button {
-    box-sizing: border-box;
+div, p, form, input, a, span, button {
+  box-sizing: border-box;
 }
 
-input,input:hover,input:focus,input:active,button,button:hover,button:focus,button:active {
-    outline: none;
+input, input:hover, input:focus, input:active, button, button:hover, button:focus, button:active {
+  outline: none;
 }
 
 a, button {
-	transition: all 1s ease;
-	cursor: pointer;
+  transition: all 1s ease;
+  cursor: pointer;
 }
 
 input, button {
-    margin: 0;
-    padding: 0;
-    border: none;
-    cursor: pointer;
+  margin: 0;
+  padding: 0;
+  border: none;
+  cursor: pointer;
 }
 
 input {
-    padding: 10px;
+  padding: 10px;
 }
 
 a:hover {
-    text-decoration: none;
-    color: grey;
+  text-decoration: none;
+  color: grey;
 }
 
 .container {
-    max-width: 1200px;
+  max-width: 1200px;
 }
 
 h2 {
-    font-size: 25px;
-    text-transform: uppercase;
+  font-size: 25px;
+  text-transform: uppercase;
 }
 
 .button {
-    background-color: #13383E;
+  font-weight: 600;
+  background-color: #13383E;
 }
 
 .button:hover {
-    background-color: #000;
+  background-color: #000;
 }
 
 app-sticky-menu {
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-    width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
 }

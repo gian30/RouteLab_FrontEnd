@@ -12,11 +12,11 @@ export class RoutesComponent implements OnInit {
   private LOCATION = ("../../assets/icons/location.png");
   private STAR = ("../../assets/icons/star.png");
   private TIMER = ("../../assets/icons/timer.png");
-  loadRoutes = false;
+  loadRoutes = true;
   constructor() { }
   loadRoute() {
     this.loadRoutes = !this.loadRoutes;
-    
+
 
   }
   ngOnInit() {

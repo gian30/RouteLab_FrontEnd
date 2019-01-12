@@ -13,11 +13,11 @@
     <div class="row">
       <div class="col">
         <div class="stars d-flex justify-content-between">
-          <img [src]=STAR alt="location image">
-          <img [src]=STAR alt="location image">
-          <img [src]=STAR alt="location image">
-          <img [src]=STAR alt="location image">
-          <img [src]=STAR alt="location image">
+          <img [src]=STAR alt="star image">
+          <img [src]=STAR alt="star image">
+          <img [src]=STAR alt="star image">
+          <img [src]=STAR alt="star image">
+          <img [src]=STAR alt="star image">
         </div>
       </div>
     </div>
@@ -26,9 +26,10 @@
         <div class="photo__current">
           <img class="photo__img" [src]=CURRENTIMG>
           <div class="photo__preview">
-            <div *ngFor="let photo of ROUTEIMGS; let i=index">
-              <img (click)="loadPhoto(ROUTEIMGS[i])" class="photo__imgs" [src]=ROUTEIMGS[i]>
-            </div>
+
+            <img *ngFor="let photo of ROUTEIMGS; let i=index" (click)="loadPhoto(ROUTEIMGS[i])" class="photo__imgs"
+                 [src]=ROUTEIMGS[i]>
+
           </div>
         </div>
         <div class="description">
@@ -38,71 +39,174 @@
             expetenda ne quo. Per vocent petentium gloriatur ne, ex oporteat philosophia eam.
           </div>
           <div class="description__map">
-            <iframe width="600" height="350" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyBQwgG1zHjVXd6omQVAccKdv9skMCPg3-E&origin=Toronto&destination=Montreal"
-              allowfullscreen>
+            <iframe width="600" height="350" frameborder="0" style="border:0"
+                    src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyBQwgG1zHjVXd6omQVAccKdv9skMCPg3-E&origin=Toronto&destination=Montreal"
+                    allowfullscreen>
             </iframe>
+          </div>
+        </div>
+        <div class="comments">
+          <p class="comments-title">
+            4 comentarios
+          </p>
+          <div class="comments-content">
+            <div class="comment d-flex align-items-center">
+              <img src="../../assets/img/users/6.jpg" alt="user profile" class="comment__user">
+              <div class="comment__info">
+                <p class="comment__username">itsisma97 <i class="fas fa-crown"></i></p>
+                <div class="comment__text">
+                  Lorem ipsum dolor sit amet, in eos vivendo singulis. Eum illum gloriatur neglegentur ea
+                </div>
+              </div>
+            </div>
+            <div class="comment d-flex align-items-center">
+              <img src="../../assets/img/users/2.jpg" alt="user profile" class="comment__user">
+              <div class="comment__info">
+                <p class="comment__username">itsisma97</p>
+                <div class="comment__text">
+                  Lorem ipsum dolor sit amet, in eos vivendo singulis. Eum illum gloriatur neglegentur ea
+                </div>
+              </div>
+            </div>
+            <div class="comment d-flex align-items-center">
+              <img src="../../assets/img/users/3.jpg" alt="user profile" class="comment__user">
+              <div class="comment__info">
+                <p class="comment__username">itsisma97</p>
+                <div class="comment__text">
+                  Lorem ipsum dolor sit amet, in eos vivendo singulis. Eum illum gloriatur neglegentur ea
+                </div>
+              </div>
+            </div>
+            <div class="comment d-flex align-items-center">
+              <img src="../../assets/img/users/4.jpg" alt="user profile" class="comment__user">
+              <div class="comment__info">
+                <p class="comment__username">itsisma97</p>
+                <div class="comment__text">
+                  Lorem ipsum dolor sit amet, in eos vivendo singulis. Eum illum gloriatur neglegentur ea
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       <div class="col-lg-5 ml-auto">
-        <div class="recomendations">
-          <div class="recomendation d-flex align-items-center">
-            <img src="../../assets/icons/location.png" class="recomendation__icon">
-            <span class="recomendation__name">Barcelona - Motnjuïc (10 km)</span>
+        <div class="recommendations">
+          <p class="recommendations-title">
+            Recomendaciones
+          </p>
+          <div class="recommendation d-flex align-items-center">
+            <img src="../../assets/icons/location.png" class="recommendation__icon">
+            <span class="recommendation__name">Barcelona - Motnjuïc (10 km)</span>
           </div>
-          <div class="recomendation d-flex align-items-center">
-            <img src="../../assets/icons/location.png" class="recomendation__icon">
-            <span class="recomendation__name">Barcelona - Motnjuïc (10 km)</span>
+          <div class="recommendation d-flex align-items-center">
+            <img src="../../assets/icons/timer.png" class="recommendation__icon">
+            <span class="recommendation__name">4 horas de tiempo libre</span>
           </div>
-          <div class="recomendation d-flex align-items-center">
-            <img src="../../assets/icons/location.png" class="recomendation__icon">
-            <span class="recomendation__name">Barcelona - Motnjuïc (10 km)</span>
+          <div class="recommendation d-flex align-items-center">
+            <img src="../../assets/icons/footwear.png" class="recommendation__icon">
+            <span class="recommendation__name">Calzado especial</span>
           </div>
-          <div class="recomendation d-flex align-items-center">
-            <img src="../../assets/icons/location.png" class="recomendation__icon">
-            <span class="recomendation__name">Barcelona - Motnjuïc (10 km)</span>
+          <div class="recommendation d-flex align-items-center">
+            <img src="../../assets/icons/snow.png" class="recommendation__icon">
+            <span class="recommendation__name">Temperaturas bajas</span>
+          </div>
+          <div class="recommendation d-flex align-items-center">
+            <img src="../../assets/icons/food.png" class="recommendation__icon">
+            <span class="recommendation__name">Llevar comida y agua</span>
           </div>
         </div>
-        <div class="similar-routes d-flex justify-content-between flex-wrap">
-          <div class="similar-route">
-            <img src="../../assets/img/sample_images/1.jpg" alt="route__img" class="similar-route__img">
-            <div class="similar-route__info">
-             <p> Nombre de la ruta</p>
-              <div class="stars d-flex justify-content-between">
-                <img [src]=STAR alt="location image">
-                <img [src]=STAR alt="location image">
-                <img [src]=STAR alt="location image">
-                <img [src]=STAR alt="location image">
-                <img [src]=STAR alt="location image">
+        <div class="similar-routes">
+          <div class="similar-routes-head d-flex justify-content-between">
+            <p class="similar-routes-title">
+              Rutas parecidas
+            </p>
+            <button class="button route-button">Ver todo</button>
+          </div>
+          <div class="similar-routes-list  d-flex justify-content-between flex-wrap">
+            <div class="similar-route">
+              <img src="../../assets/img/sample_images/1.jpg" alt="route__img" class="similar-route__img">
+              <div class="similar-route__info">
+                <p> Nombre de la ruta</p>
+                <div class="stars d-flex justify-content-between">
+                  <img [src]=STAR alt="location image">
+                  <img [src]=STAR alt="location image">
+                  <img [src]=STAR alt="location image">
+                  <img [src]=STAR alt="location image">
+                  <img [src]=STAR alt="location image">
+                </div>
+              </div>
+            </div>
+            <div class="similar-route">
+              <img src="../../assets/img/sample_images/1.jpg" alt="route__img" class="similar-route__img">
+              <div class="similar-route__info">
+                <p> Nombre de la ruta</p>
+                <div class="stars d-flex justify-content-between">
+                  <img [src]=STAR alt="location image">
+                  <img [src]=STAR alt="location image">
+                  <img [src]=STAR alt="location image">
+                  <img [src]=STAR alt="location image">
+                  <img [src]=STAR alt="location image">
+                </div>
+              </div>
+            </div>
+            <div class="similar-route">
+              <img src="../../assets/img/sample_images/1.jpg" alt="route__img" class="similar-route__img">
+              <div class="similar-route__info">
+                <p> Nombre de la ruta</p>
+                <div class="stars d-flex justify-content-between">
+                  <img [src]=STAR alt="location image">
+                  <img [src]=STAR alt="location image">
+                  <img [src]=STAR alt="location image">
+                  <img [src]=STAR alt="location image">
+                  <img [src]=STAR alt="location image">
+                </div>
+              </div>
+            </div>
+            <div class="similar-route">
+              <img src="../../assets/img/sample_images/1.jpg" alt="route__img" class="similar-route__img">
+              <div class="similar-route__info">
+                <p> Nombre de la ruta</p>
+                <div class="stars d-flex justify-content-between">
+                  <img [src]=STAR alt="location image">
+                  <img [src]=STAR alt="location image">
+                  <img [src]=STAR alt="location image">
+                  <img [src]=STAR alt="location image">
+                  <img [src]=STAR alt="location image">
+                </div>
+              </div>
+            </div>
+            <div class="similar-route">
+              <img src="../../assets/img/sample_images/1.jpg" alt="route__img" class="similar-route__img">
+              <div class="similar-route__info">
+                <p> Nombre de la ruta</p>
+                <div class="stars d-flex justify-content-between">
+                  <img [src]=STAR alt="location image">
+                  <img [src]=STAR alt="location image">
+                  <img [src]=STAR alt="location image">
+                  <img [src]=STAR alt="location image">
+                  <img [src]=STAR alt="location image">
+                </div>
+              </div>
+            </div>
+            <div class="similar-route">
+              <img src="../../assets/img/sample_images/1.jpg" alt="route__img" class="similar-route__img">
+              <div class="similar-route__info">
+                <p> Nombre de la ruta</p>
+                <div class="stars d-flex justify-content-between">
+                  <img [src]=STAR alt="location image">
+                  <img [src]=STAR alt="location image">
+                  <img [src]=STAR alt="location image">
+                  <img [src]=STAR alt="location image">
+                  <img [src]=STAR alt="location image">
+                </div>
               </div>
             </div>
           </div>
-          <div class="similar-route">
-            <img src="../../assets/img/sample_images/1.jpg" alt="route__img" class="similar-route__img">
-            <div class="similar-route__info">
-             <p> Nombre de la ruta</p>
-              <div class="stars d-flex justify-content-between">
-                <img [src]=STAR alt="location image">
-                <img [src]=STAR alt="location image">
-                <img [src]=STAR alt="location image">
-                <img [src]=STAR alt="location image">
-                <img [src]=STAR alt="location image">
-              </div>
-            </div>
-          </div>
-          <div class="similar-route">
-            <img src="../../assets/img/sample_images/1.jpg" alt="route__img" class="similar-route__img">
-            <div class="similar-route__info">
-             <p> Nombre de la ruta</p>
-              <div class="stars d-flex justify-content-between">
-                <img [src]=STAR alt="location image">
-                <img [src]=STAR alt="location image">
-                <img [src]=STAR alt="location image">
-                <img [src]=STAR alt="location image">
-                <img [src]=STAR alt="location image">
-              </div>
-            </div>
-          </div>
+        </div>
+        <div class="ad-banner">
+          <iframe src="//cdn.bannersnack.com/banners/bdcfbmmko/embed/index.html?userId=38649525&t=1547224785"
+                  width="420" height="350" scrolling="no" frameborder="0" allowtransparency="true" allow="autoplay"
+                  allowfullscreen="true"></iframe>
         </div>
       </div>
     </div>
