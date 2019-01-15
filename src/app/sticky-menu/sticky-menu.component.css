@@ -39,6 +39,26 @@
     min-width: 35px;
 }
 
+.categories-button:after {
+  content: none;
+}
+
+.dropdown-item {
+  color: #000;
+  padding: 7px;
+}
+
+.dropdown-item:hover {
+  background-color: #D8D8D8;
+}
+
+.dropdown__content {
+  border: none;
+  min-width: 50px!important;
+  border-radius: 0;
+  padding: 0;
+}
+
 .categories-button:hover  {
     background-color: #D8D8D8;
 }

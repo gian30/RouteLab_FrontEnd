@@ -1,48 +1,48 @@
 <div class="main">
-    <div class="main-image"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <h1 class="main-title">
-                    You deserve <br> a route today!
-                </h1>
-                <h2 class="second-title">
-                    Find your perfect route with RouteLab
-                </h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="search d-flex">
-                    <div class="search__section search__section_category">
-                        <p class="search__title">
-                            What do you want to do?
-                        </p>
-                        <div class="search__select">
-                            <select>
-                                <option value="volvo">Hiking</option>
-                                <option value="saab">Saab</option>
-                                <option value="vw">VW</option>
-                                <option value="audi">Audi</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="search__section search__section_location">
-                        <p class="search__title">
-                            Where are you?
-                        </p>
-                        <input type="text" class="search__input" placeholder="Barcelona">
-                    </div>
-                    <div class="search__section search__section_destination">
-                        <p class="search__title">
-                            Where do you want to go?
-                        </p>
-                        <input type="text" class="search__input" placeholder="Paris">
-                    </div>
-                    <button class="search__button">FIND YOUR ROUTE</button>
-                </div>
-            </div>
-        </div>
+  <div class="main-image"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 class="main-title">
+          You deserve <br> a route today!
+        </h1>
+        <h2 class="second-title">
+          Find your perfect route with RouteLab
+        </h2>
+      </div>
     </div>
+    <div class="row">
+      <div class="col">
+        <div class="search d-flex">
+          <div class="search__section search__section_category">
+            <p class="search__title">
+              What do you want to do?
+            </p>
+            <div class="search__select">
+              <div ngbDropdown class="d-inline-block">
+                <button class="search__dropdown" id="addBlack" ngbDropdownToggle>{{category}}</button>
+                <div class="dropdown__content" ngbDropdownMenu>
+                  <button *ngFor="let cat of categories" (click)="category = cat; assignBlack()" class="dropdown-item">{{cat}}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="search__section search__section_location">
+            <p class="search__title">
+              Where are you?
+            </p>
+            <input type="text" class="search__input" placeholder="Barcelona">
+          </div>
+          <div class="search__section search__section_destination">
+            <p class="search__title">
+              Where do you want to go?
+            </p>
+            <input type="text" class="search__input" placeholder="Paris">
+          </div>
+          <button class="search__button">FIND YOUR ROUTE</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <app-routes></app-routes>

@@ -1,0 +1,64 @@
+.chat {
+  z-index: 100;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+}
+
+.chat__button {
+  padding: 10px;
+  font-size: 20px;
+  color: #fff;
+  width: 80px;
+}
+
+.chat__contacts {
+  width: 80px;
+  background-color: #D0DEE0;
+}
+
+.chat__search {
+  background-color: #fff;
+  width: 100%;
+  text-align: center;
+  padding: 15px 0;
+}
+
+.chat__search:hover {
+  background-color: #D0D0D0;
+}
+
+.chat__contact-list {
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+.chat__contact-img {
+  margin: auto;
+
+  display: block;
+  width: 70%;
+  border-radius: 50%;
+  border: 3px solid transparent;
+}
+
+
+.chat__contact {
+  padding: 7px 0;
+  cursor: pointer;
+
+}
+
+.chat__contact:hover {
+  background-color: #b5c1c3;
+}
+
+
+
+
+.chat__username {
+  margin-top: 5px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 12px;
+}

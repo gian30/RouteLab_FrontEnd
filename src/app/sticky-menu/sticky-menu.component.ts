@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StickyMenuComponent implements OnInit {
 
-  private BARS = ('../../assets/icons/bars-solid.png');
+  private BARS = 'bars-solid.png';
   private SEARCH = ('../../assets/icons/search.png');
 
 

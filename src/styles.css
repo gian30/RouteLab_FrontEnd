@@ -12,7 +12,9 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p {
 body {
   line-height: 1;
   font-family: 'Open Sans', sans-serif;
+  background-color: #D2E0DF;
 }
+body { padding-top: 70px; }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav,
 section {
@@ -75,4 +77,18 @@ app-sticky-menu {
   top: 0;
   z-index: 1000;
   width: 100%;
+}
+
+
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 0px;  /* remove scrollbar space */
+  background: transparent;  /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: #FF0000;
 }
