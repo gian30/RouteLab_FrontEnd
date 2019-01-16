@@ -95,3 +95,16 @@ html {
 .btn {
   transition: all 0.5s ease;
 }
+
+
+@media screen and (max-width: 1999px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .container {
+    max-width: 90%;
+  }
+}
