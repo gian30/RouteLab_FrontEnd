@@ -10,8 +10,8 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   constructor() {
   }
 
-  opened = true;
-  openedUser = true;
+  opened = false;
+  openedUser = false;
 
   userselected = {
     username : '',
