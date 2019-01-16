@@ -142,3 +142,9 @@ select::-ms-expand {
   background-color: #fff;
   color: #000;
 }
+
+.rutas__component {
+  background-color: #E9F0EF;
+  padding: 100px 0;
+}
+
