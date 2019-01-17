@@ -10,6 +10,7 @@ import { RoutesComponent } from './routes/routes.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouteComponent } from './route/route.component';
 import { ChatComponent } from './chat/chat.component';
+import { NewRouteComponent } from './new-route/new-route.component';
 
 
 
@@ -22,7 +23,8 @@ import { ChatComponent } from './chat/chat.component';
     RoutesComponent,
     FooterComponent,
     RouteComponent,
-    ChatComponent
+    ChatComponent,
+    NewRouteComponent
   ],
 
   imports: [
