@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-sticky-menu',
+  selector: 'header',
   templateUrl: './sticky-menu.component.html',
-  styleUrls: ['./sticky-menu.component.css']
+  styleUrls: ['./header.css']
 })
 export class StickyMenuComponent implements OnInit {
 
