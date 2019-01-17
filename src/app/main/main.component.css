@@ -142,8 +142,8 @@ select::-ms-expand {
   color: #000;
 }
 
-.rutas__component {
+.routes__component {
   background-color: #E9F0EF;
-  padding: 100px 0;
+  padding-top: 100px;
 }
 

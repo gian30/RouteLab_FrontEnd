@@ -2,6 +2,10 @@
   background-color: #E9F0EF;
 }
 
+.container {
+  padding-bottom: 100px;
+}
+
 .route {
     background-color: #fff;
     position: relative;
