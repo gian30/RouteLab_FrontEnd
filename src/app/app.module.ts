@@ -1,6 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule, Routes } from '@angular/router';
 
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
@@ -10,7 +11,7 @@ import {RoutesComponent} from './routes/routes.component';
 import {FooterComponent} from './footer/footer.component';
 import {RouteComponent} from './route/route.component';
 import {ChatComponent} from './chat/chat.component';
-import {RouterModule, Routes} from '@angular/router';
+import {NewRouteComponent} from './new-route/new-route.component';
 
 const routes: Routes = [
   {path: 'routes', component: RoutesComponent},
@@ -33,7 +34,8 @@ RouterModule.forRoot(routes,
     RoutesComponent,
     FooterComponent,
     RouteComponent,
-    ChatComponent
+    ChatComponent,
+    NewRouteComponent
   ],
   imports: [
     BrowserModule,
