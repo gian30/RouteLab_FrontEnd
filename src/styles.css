@@ -59,19 +59,19 @@ a:hover {
 
 h2 {
   font-size: 25px;
-  text-transform: uppercase;
 }
 
 .button {
   font-weight: 600;
   background-color: #13383E;
+  color: #fff;
 }
 
 .button:hover {
   background-color: #000;
 }
 
-app-sticky-menu {
+header {
   position: fixed;
   top: 0;
   z-index: 1000;
@@ -96,15 +96,3 @@ html {
   transition: all 0.5s ease;
 }
 
-
-@media screen and (max-width: 1999px) {
-  .container {
-    max-width: 1200px;
-  }
-}
-
-@media screen and (max-width: 991px) {
-  .container {
-    max-width: 90%;
-  }
-}

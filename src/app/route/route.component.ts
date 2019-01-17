@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import * as jQuery from 'jquery';
+
 declare var $: any;
 declare var jquery: any;
 
@@ -9,21 +10,23 @@ declare var jquery: any;
   styleUrls: ['./route.component.css']
 })
 export class RouteComponent implements OnInit {
-  private STAR = ("../../assets/icons/star.png");
-  private CURRENTIMG = ("../../assets/img/route_image.png");
+  private STAR = ('../../assets/icons/star.png');
+  private CURRENTIMG = ('../../assets/img/route_image.png');
   private ROUTEIMGS = [
-    "../../assets/img/sample_images/1.jpg",
-    "../../assets/img/sample_images/2.jpg",
-    "../../assets/img/sample_images/3.jpg",
-    "../../assets/img/sample_images/4.jpg",
-    "../../assets/img/sample_images/5.jpg",
-    "../../assets/img/sample_images/6.jpg",
-    "../../assets/img/sample_images/7.jpg",
-    "../../assets/img/sample_images/8.jpg",
-    "../../assets/img/sample_images/9.jpg",
-    "../../assets/img/sample_images/10.jpg"
+    '../../assets/img/sample_images/1.jpg',
+    '../../assets/img/sample_images/2.jpg',
+    '../../assets/img/sample_images/3.jpg',
+    '../../assets/img/sample_images/4.jpg',
+    '../../assets/img/sample_images/5.jpg',
+    '../../assets/img/sample_images/6.jpg',
+    '../../assets/img/sample_images/7.jpg',
+    '../../assets/img/sample_images/8.jpg',
+    '../../assets/img/sample_images/9.jpg',
+    '../../assets/img/sample_images/10.jpg'
   ];
-  constructor() { }
+
+  constructor() {
+  }
 
   ngAfterViewInit(): void {
     $('.photo__preview').slick({
@@ -34,11 +37,11 @@ export class RouteComponent implements OnInit {
       focusOnSelect: true,
       dots: false,
       infinite: true,
-      
+
     });
   }
 
-  loadPhoto(photo){
+  loadPhoto(photo) {
     this.CURRENTIMG = photo;
   }
 

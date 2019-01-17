@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'header',
-  templateUrl: './sticky-menu.component.html',
-  styleUrls: ['./header.css']
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
 })
-export class StickyMenuComponent implements OnInit {
+export class HeaderComponent implements OnInit {
 
   private BARS = 'bars-solid.png';
   private SEARCH = ('../../assets/icons/search.png');

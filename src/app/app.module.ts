@@ -1,22 +1,33 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
-import { AppComponent } from './app.component';
-import { StickyMenuComponent } from './sticky-menu/sticky-menu.component';
-import { MainComponent } from './main/main.component';
-import { BannerComponent } from './banner/banner.component';
-import { RoutesComponent } from './routes/routes.component';
-import { FooterComponent } from './footer/footer.component';
-import { RouteComponent } from './route/route.component';
-import { ChatComponent } from './chat/chat.component';
+import {AppComponent} from './app.component';
+import {HeaderComponent} from './header/header.component';
+import {MainComponent} from './main/main.component';
+import {BannerComponent} from './banner/banner.component';
+import {RoutesComponent} from './routes/routes.component';
+import {FooterComponent} from './footer/footer.component';
+import {RouteComponent} from './route/route.component';
+import {ChatComponent} from './chat/chat.component';
+import {RouterModule, Routes} from '@angular/router';
 
+const routes: Routes = [
+  {path: 'routes', component: RoutesComponent},
+  {path: 'route', component: RouteComponent},
+  {path: '', component: MainComponent}
+];
 
+RouterModule.forRoot(routes,
+  {
+    scrollPositionRestoration: 'disabled',
+    anchorScrolling: 'enabled'
+  });
 
 @NgModule({
   declarations: [
     AppComponent,
-    StickyMenuComponent,
+    HeaderComponent,
     MainComponent,
     BannerComponent,
     RoutesComponent,
@@ -24,12 +35,13 @@ import { ChatComponent } from './chat/chat.component';
     RouteComponent,
     ChatComponent
   ],
-
   imports: [
     BrowserModule,
-    NgbModule
+    NgbModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

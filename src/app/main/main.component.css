@@ -1,6 +1,7 @@
 .main {
   position: relative;
   padding-bottom: 150px;
+  height: 700px;
 }
 
 .main-image {
@@ -147,3 +148,35 @@ select::-ms-expand {
   padding-top: 100px;
 }
 
+/*  FORMS  */
+.signin {
+  margin-top: 60px;
+}
+
+.signin__input {
+  padding: 11px 10px;
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.09);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.09);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.09);
+  margin-top: 7px;
+  display: block;
+  width: 100%;
+}
+
+.signin__details {
+  margin-top: 15px;
+}
+
+.signin__button {
+
+  padding: 10px 40px;
+}
+
+.signin__text {
+  font-size: 13px;
+}
+
+.signin__link {
+  font-size: 15px;
+  font-weight: 700;
+}
