@@ -1,0 +1,67 @@
+.main {
+  position: relative;
+  padding-bottom: 150px;
+  height: 700px;
+}
+
+.main-image {
+  right: 0;
+  position: absolute;
+  margin-left: auto;
+  width: 360px;
+  height: 100%;
+  background-image: url("../../assets/img/home_bg.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: cover;
+
+}
+
+
+.main-title {
+  margin-top: 110px;
+  font-size: 55px;
+  max-width: 610px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.second-title {
+  margin-top: 20px;
+  font-size: 30px;
+}
+
+
+.signin {
+  margin-top: 60px !important;
+}
+
+.signin__input {
+  padding: 10px 10px;
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.09);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.09);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.09);
+  margin-top: 7px;
+  display: block;
+  width: 100%;
+  line-height: 25px;
+  font-size: 18px;
+}
+
+.signin__details {
+  margin-top: 15px;
+}
+
+.signin__button {
+
+  padding: 10px 40px;
+}
+
+.signin__text {
+  font-size: 13px;
+}
+
+.signin__link {
+  font-size: 15px;
+  font-weight: 700;
+}

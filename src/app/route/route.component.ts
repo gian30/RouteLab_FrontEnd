@@ -40,6 +40,9 @@ export class RouteComponent implements OnInit {
 
     });
   }
+  ngAfterViewChecked() {
+    window.scrollTo(0, 0);
+  }
 
   loadPhoto(photo) {
     this.CURRENTIMG = photo;

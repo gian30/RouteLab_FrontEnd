@@ -12,10 +12,12 @@ import {FooterComponent} from './footer/footer.component';
 import {RouteComponent} from './route/route.component';
 import {ChatComponent} from './chat/chat.component';
 import {NewRouteComponent} from './new-route/new-route.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path: 'routes', component: RoutesComponent},
   {path: 'route', component: RouteComponent},
+  {path: 'login', component: LoginComponent},
   {path: '', component: MainComponent}
 ];
 
@@ -35,7 +37,8 @@ RouterModule.forRoot(routes,
     FooterComponent,
     RouteComponent,
     ChatComponent,
-    NewRouteComponent
+    NewRouteComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
