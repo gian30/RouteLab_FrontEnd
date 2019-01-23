@@ -1,5 +1,18 @@
-.newR{
+.newR {
   background-color: #E9F0EF;
 }
+ .button{
+   padding: 10px;
+   size: 30px;
+ }
 
 
+a:not([href]):not([tabindex]) {
+  color: white;
+  text-decoration: none;
+  font-size: 37px;
+}
+
+a {
+  margin-top: 20px;
+}
