@@ -50,7 +50,7 @@
     font-weight: 300;
     font-size: 14px;
     text-align: center;
-    color: #797979;
+    color: #555555;
     margin-bottom: 10px;
     line-height: 1.4em;
 }
@@ -69,3 +69,6 @@
     width: 17px;
 }
 
+h2 {
+  text-transform: uppercase;
+}

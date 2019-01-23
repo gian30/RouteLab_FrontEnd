@@ -10,9 +10,9 @@
   margin-left: auto;
   width: 360px;
   height: 100%;
-  background-image: url("../../assets/img/home_bg.png");
+  background-image: url("../../assets/img/home-bg.png");
   background-repeat: no-repeat;
-  background-position: right;
+  background-position: 35%;
   background-size: cover;
 
 }
@@ -80,6 +80,7 @@
   background-color: #22626E;
   color: #fff;
   font-weight: 600;
+  text-transform: uppercase;
 }
 
 .search__button:hover {

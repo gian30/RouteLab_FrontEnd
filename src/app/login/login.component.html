@@ -14,19 +14,20 @@
     <div class="row">
       <div class="col-lg-5">
         <div class="signin">
-          <input type="text" class="signin__input" placeholder="Email">
-          <input type="password" class="signin__input" placeholder="Contraseña">
+          <input type="text" class="signin__input" [(ngModel)]="login.email" placeholder="Email">
+          <input type="password" class="signin__input" [(ngModel)]="login.pass" placeholder="Contraseña">
+          <input *ngIf="register" type="password" class="signin__input" [(ngModel)]="login.confpass" placeholder="Confirmar contraseña">
           <div class="signin__details d-flex justify-content-between align-items-center">
             <div class="signin__reg">
               <p class="signin__text">
-                Not registered yet?
+               {{registerText}}
               </p>
-              <a class="signin__link">
-                Register now
+              <a (click)="goRegister()" class="signin__link">
+                {{registerLink}}
               </a>
             </div>
-            <button class="signin__button button">
-              SIGN IN
+            <button (click)="loginAction()" class="signin__button button">
+              {{actionLink}}
             </button>
           </div>
         </div>

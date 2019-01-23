@@ -10,7 +10,7 @@ declare var jquery: any;
 })
 export class MainComponent implements OnInit {
   private BG = ('../../assets/img/home_bg.png');
-  category = 'Select category';
+  category = 'Categoría';
   categories =['Sol y playa', 'Deportivo', 'Naturaleza', 'De montaña', 'Histórico', 'Aventura', 'Rural', 'Científico'];
   titleVisible = true;
   searchVisible = true;
