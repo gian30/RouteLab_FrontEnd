@@ -1,18 +1,50 @@
 .newR {
   background-color: #E9F0EF;
+  padding-bottom: 35px;
 }
- .button{
-   padding: 10px;
-   size: 30px;
- }
 
+.addRoute{
+  background-color: #22626E;
+  padding: 15px 24px;
+  align-items: center;
+  display: block;
+
+
+}
+.mapRoute{
+  padding-bottom:30px;
+  align-items: center;
+  display: block;
+  margin-right: auto;
+
+}
+.addRoute:hover{
+  background-color: #13383E;
+
+}
+
+.description{
+  padding-bottom: 30px;
+  vertical-align: baseline;
+}
+
+.nr1-input{
+  padding:60px;
+  width:960px;
+  margin-left:250px;
+}
+select {
+  width:150px;
+}
 
 a:not([href]):not([tabindex]) {
   color: white;
   text-decoration: none;
   font-size: 37px;
+
 }
 
 a {
   margin-top: 20px;
 }
+
