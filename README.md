@@ -13,3 +13,8 @@ Documentación fase 2:
 https://github.com/sairouni/RouteLab_Documentacion/files/2644333/DocumetacionFase02.zip
 Diagrama de Gantt:
 https://github.com/sairouni/RouteLab_Documentacion/files/2644294/diagramGantt.xlsx
+
+## Instalación
+1. Clonar proyecto
+2. npm install --save-dev @angular-devkit/build-angular
+3. npm rebuild
