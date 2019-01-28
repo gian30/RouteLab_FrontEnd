@@ -5,10 +5,10 @@
     <div class="row">
       <div class="col-lg-2 ">
 
-        <div class="locationA">LocationA
+        <div class="locationA">Sitio A
           <input class="text">
         </div>
-        <div class="locationB">LocationB
+        <div class="locationB">Sitio B
           <input class="text">
         </div>
 
@@ -17,12 +17,12 @@
 
     <div class="row">
       <div class="col-lg-10">
-        <div class="mapaYnombre">
-          <div class="nameRoute"> nameRoute
+        <div class="mapaYnombre ">
+          <div class="nameRoute"> Nombre de tu ruta
             <input class="text">
           </div>
 
-          <div class="mapRoute"> MapRoute
+          <div class="mapRoute"> Previsualización de tu ruta:
 
             <iframe width="600" height="350" frameborder="0" style="border:0"
                     src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyBQwgG1zHjVXd6omQVAccKdv9skMCPg3-E&origin=Toronto&destination=Montreal"
@@ -36,8 +36,13 @@
 
   <div class="row">
     <div class="col-lg-12">
-      <div class="description" >
-        <input type="text" class="nr1-input ">
+      <div class="description">
+
+        <form>
+          Describe tu ruta:
+          <textarea rows="4" cols="50" class="nr1-input " required></textarea>
+
+        </form>
 
 
       </div>
@@ -49,18 +54,7 @@
         <div class="recomendations">
 
           <select>
-            <option>
-              <!--<div class="search__select">
-                <div ngbDropdown class="d-inline-block">
-                  <button class="search__dropdown" id="addBlack" ngbDropdownToggle>{{category}}</button>
-                  <div class="dropdown__content" ngbDropdownMenu>
-                    <button *ngFor="let cat of categories" (click)="category = cat; assignBlack()" class="dropdown-item">
-                      {{cat}}
-                    </button>
-                  </div>
-                </div>
-              </div>-->
-            </option>
+            <option>options</option>
           </select>
         </div>
       </div>
