@@ -1,0 +1,30 @@
+
+.addRoute{
+  background-color: #22626E;
+  padding: 15px 24px;
+  align-items: center;
+  display: block;
+
+
+}
+
+.addRoute:hover{
+  background-color: #13383E;
+
+}
+
+
+a:not([href]):not([tabindex]) {
+  color: white;
+  text-decoration: none;
+  font-size: 37px;
+
+
+}
+
+a{
+  margin-top: 20px;
+}
+.personalG{
+background-color: #E9F0EF;
+}

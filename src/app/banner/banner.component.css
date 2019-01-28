@@ -103,37 +103,14 @@ a:link, a:visited {
   display: inline-block;
 }
 
-.addRoute{
-  background-color: #22626E;
-  padding: 15px 24px;
-  align-items: center;
-  display: block;
-
-}
-
-.addButton {
-  margin-top: 30px;
-  background-color: #E9F0EF;
-}
-.addRoute:hover{
-  background-color: #13383E;
-
-}
-
-a:not([href]):not([tabindex]) {
-  color: white;
-  text-decoration: none;
-  font-size: 37px;
 
 
-}
+
+
+
 .coverpage{
-  background-color: #E9F0EF;;
+  background-color: #E9F0EF;
+  padding-bottom: 35px;
 }
-.addText{
-  text-align: center;
-margin-top: 20px;
-  color: black;
 
-}
 

@@ -1,3 +1,83 @@
-<p>
-  new-route works!
-</p>
+<app-banner></app-banner>
+
+<div class="newR">
+  <div class="container d-flex">
+    <div class="row">
+      <div class="col-lg-2 ">
+
+        <div class="locationA">LocationA
+          <input class="text">
+        </div>
+        <div class="locationB">LocationB
+          <input class="text">
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-10">
+        <div class="mapaYnombre">
+          <div class="nameRoute"> nameRoute
+            <input class="text">
+          </div>
+
+          <div class="mapRoute"> MapRoute
+
+            <iframe width="600" height="350" frameborder="0" style="border:0"
+                    src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyBQwgG1zHjVXd6omQVAccKdv9skMCPg3-E&origin=Toronto&destination=Montreal"
+                    allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="description" >
+        <input type="text" class="nr1-input ">
+
+
+      </div>
+    </div>
+  </div>
+  <div class="container ">
+    <div class="row d-flex">
+      <div class="col-lg-1">
+        <div class="recomendations">
+
+          <select>
+            <option>
+              <!--<div class="search__select">
+                <div ngbDropdown class="d-inline-block">
+                  <button class="search__dropdown" id="addBlack" ngbDropdownToggle>{{category}}</button>
+                  <div class="dropdown__content" ngbDropdownMenu>
+                    <button *ngFor="let cat of categories" (click)="category = cat; assignBlack()" class="dropdown-item">
+                      {{cat}}
+                    </button>
+                  </div>
+                </div>
+              </div>-->
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-12 ">
+
+        <div class="addButton ">
+          <button class="addRoute m-auto ">
+            <a class="iconAdd"> + </a>
+          </button>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
+
+<app-footer></app-footer>
