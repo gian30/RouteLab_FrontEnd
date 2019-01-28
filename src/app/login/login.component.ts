@@ -9,9 +9,9 @@ import {LoginService} from './login.service';
 })
 export class LoginComponent implements OnInit {
   login = {
-    email: '',
-    pass: '',
-    confpass: ''
+    'email': '',
+    'pass': '',
+    'confpass': ''
   };
 
   constructor(private _loginService: LoginService) {
