@@ -18,9 +18,12 @@
   margin-right: auto;
 
 }
-.addRoute:hover{
+.addRoute:hover {
   background-color: #13383E;
 
+}
+.addLocation{
+  color: #ffffff;
 }
 
 .description{
@@ -47,4 +50,28 @@ a:not([href]):not([tabindex]) {
 a {
   margin-top: 20px;
 }
+.iconCameraB{
+  background-color: transparent;
+}
 
+.iconCamera{
+  width:40px;
+  margin-left: 15px;
+}
+.locationA{
+  margin-bottom: 15px;
+}
+input{
+  margin-bottom: 10px;
+}
+
+.uploadPhoto{
+
+  display: block;
+  width: 40%;
+  height: 35%;
+  margin-left: 4px;
+}
+.text{
+  margin-top: 5px;
+}
