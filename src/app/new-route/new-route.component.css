@@ -3,41 +3,47 @@
   padding-bottom: 35px;
 }
 
-.addRoute{
+.addRoute {
   background-color: #22626E;
   padding: 15px 24px;
   align-items: center;
   display: block;
 
-
 }
-.mapRoute{
-  padding-bottom:30px;
+
+.mapRoute {
+  padding-bottom: 30px;
   align-items: center;
   display: block;
   margin-right: auto;
 
 }
+
 .addRoute:hover {
   background-color: #13383E;
 
 }
-.addLocation{
+
+.addLocation {
   color: #ffffff;
 }
 
-.description{
+.description {
   padding-bottom: 30px;
   vertical-align: baseline;
+  margin-top:20px;
 }
 
-.nr1-input{
-  padding:10px;
-  width:950px;
-  margin-left:250px;
+.nr1-input {
+  padding:0px;
+  width: 100%;
+  height: 90px;
+  resize: none;
+  display: block;
 }
+
 select {
-  width:150px;
+  width: 150px;
 }
 
 a:not([href]):not([tabindex]) {
@@ -50,28 +56,36 @@ a:not([href]):not([tabindex]) {
 a {
   margin-top: 20px;
 }
-.iconCameraB{
+
+.iconCameraB {
   background-color: transparent;
 }
 
-.iconCamera{
-  width:40px;
-  margin-left: 15px;
-}
-.locationA{
-  margin-bottom: 15px;
-}
-input{
-  margin-bottom: 10px;
+.iconCamera:hover {
+  color: #22626E;
 }
 
-.uploadPhoto{
+.iconCamera {
+  font-size: 30px;
+  margin-left: 15px;
+  margin-bottom: 15px;
+
+}
+
+.locationA {
+  margin-bottom: 15px;
+}
+
+
+.uploadPhoto {
 
   display: block;
   width: 40%;
   height: 35%;
   margin-left: 4px;
 }
-.text{
+
+.text {
   margin-top: 5px;
+  margin-bottom: 20px;
 }
