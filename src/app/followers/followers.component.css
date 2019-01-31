@@ -1,0 +1,114 @@
+.container {
+  max-width: 1000px;
+}
+
+.followers {
+  padding: 100px 0;
+  background-color: #E9F0EF;
+}
+
+.follower {
+  background-color: #fff;
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.192);
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.192);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.192);
+  transition: all 0.5s ease;
+  margin-top: 25px;
+  position: relative;
+}
+
+.follower__banner {
+  background-image: url("../../assets/img/bannerPika.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 100%;
+  height: 70px;
+}
+
+.follower__profile {
+  top: 30px;
+  left: 30px;
+  position: absolute;
+  width: 70px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+}
+
+.follower__info {
+  padding: 50px 30px 30px;
+}
+
+.follower__name {
+  font-weight: 400;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.follower__username {
+  color: #5A5A5A;
+}
+
+.follower__routes {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.stars {
+  margin-top: 15px;
+  width: 100px;
+}
+.stars img {
+  width: 22px;
+  height: 22px;
+}
+
+.follower__routes span {
+  font-weight: 600;
+}
+
+.follower__send {
+  cursor: pointer;
+}
+
+.follower__overlay:hover {
+
+  box-shadow: inset 0 0 0 3000px rgba(255,255,255,0.3);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(3px);
+}
+
+
+
+.follower__overlay {
+  background-color: transparent;
+  z-index: 100;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s ease;
+  padding-top: 60px;
+
+}
+
+
+.follower__button {
+  padding: 7px 13px;
+  font-size: 12px;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: transparent;
+  transition: all 0.5s ease;
+  width: 150px;
+  margin: 10px 0;
+}
+
+.follower__overlay:hover .follower__button {
+  background-color: #22626E;
+  color: #fff;
+
+}
+
+.follower__overlay:hover .follower__button:hover {
+  background-color: #13383E;
+}

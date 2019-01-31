@@ -16,6 +16,7 @@ import {ChatComponent} from './chat/chat.component';
 import {NewRouteComponent} from './new-route/new-route.component';
 import { LoginComponent } from './login/login.component';
 import { PersonalAreaComponent } from './personal-area/personal-area.component';
+import { FollowersComponent } from './followers/followers.component';
 
 const routes: Routes = [
   {path: 'routes', component: RoutesComponent},
@@ -42,7 +43,8 @@ RouterModule.forRoot(routes,
     ChatComponent,
     NewRouteComponent,
     LoginComponent,
-    PersonalAreaComponent
+    PersonalAreaComponent,
+    FollowersComponent
   ],
   imports: [
     BrowserModule,

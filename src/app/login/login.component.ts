@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   }
 
   register = false;
+  advanceRegister = false;
   registerText = '¿Aún no estás registrado?';
   registerLink = 'Regístrate ahora';
   actionLink = 'Iniciar sesión';
@@ -40,13 +41,15 @@ export class LoginComponent implements OnInit {
   loginAction() {
     const reg = JSON.parse(JSON.stringify(this.login));
     if (this.register === true) {
-      this._loginService.sendRegister(reg).subscribe(
+      this.advanceRegister = true;
+      /*this._loginService.sendRegister(reg).subscribe(
         resul => {
           console.log(resul.body);
         }, error => {
           console.log(error);
         }
       );
+      */
 
     }
   }

@@ -33,7 +33,7 @@
 
 
 .signin {
-  margin-top: 60px !important;
+  margin-top: 60px;
 }
 
 .signin__input {
@@ -66,4 +66,30 @@
   margin-top: 5px;
   font-size: 14px;
   font-weight: 700;
+}
+
+.signin-second {
+  margin-top: 150px;
+}
+
+.signin-second h2 {
+  text-transform: uppercase;
+  font-size: 30px;
+  margin-bottom: 40px;
+}
+
+.signin__input_age {
+  width: 100px;
+  margin-right: 7px;
+}
+
+.signin__terms {
+  line-height: 1.4em;
+  width: 230px;
+  font-size: 12px;
+}
+
+.signin__terms a {
+  color: #000;
+  font-weight: 600;
 }
