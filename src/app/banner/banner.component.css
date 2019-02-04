@@ -28,6 +28,7 @@
   background-size: cover;
   border-radius: 50%;
   margin-top: 20px;
+  position: relative;
 }
 
 .profileDescription {
@@ -102,9 +103,34 @@ a:link, a:visited {
   display: inline-block;
 }
 
-.coverpage{
+.coverpage {
   background-color: #E9F0EF;
   padding-bottom: 35px;
 }
+
+.profilePicture:hover {
+
+}
+
+.blurPicture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.profile {
+  border-radius: 50%;
+}
+
+/*.blurPicture:hover {
+  box-shadow: inset 0 0 0 3000px rgba(255,255,255,0.3);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(3px);
+  border-radius: 50%;
+}*/
 
 
