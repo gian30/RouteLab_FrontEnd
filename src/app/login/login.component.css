@@ -93,3 +93,8 @@
   color: #000;
   font-weight: 600;
 }
+
+.signin__username {
+  background-color: #fff;
+  height: 100%;
+}
