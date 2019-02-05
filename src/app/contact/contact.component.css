@@ -1,0 +1,61 @@
+.contact {
+  padding: 60px 0;
+}
+
+.input {
+  border: none;
+  padding: 10px 10px;
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.09);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.09);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.09);
+  margin-top: 7px;
+  display: block;
+  width: 100%;
+  line-height: 25px;
+  font-size: 18px;
+}
+
+.contact-form__label {
+  margin: 20px 0 5px;
+}
+
+.button {
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  padding: 13px 20px;
+}
+
+textarea {
+  height: 150px;
+  resize: none;
+}
+
+.contact-info__head {
+
+  padding: 10px;
+  font-size: 21px;
+  padding: 10px 10px;
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.09);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.09);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.09);
+}
+
+.contact-info {
+  margin-top: 30px;
+  background-color: #fff;
+}
+
+.contact-info__body p {
+  margin-bottom: 10px;
+}
+
+.contact-info__body {
+  padding: 20px;
+}
+
+.googlemap {
+  margin-top: 20px;
+  width: 100%;
+  height: 250px;
+}
