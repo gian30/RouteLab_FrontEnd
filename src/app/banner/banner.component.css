@@ -74,6 +74,10 @@
   flex-wrap: nowrap!important;
 }
 
+.navmenu {
+  margin-bottom: 30px;
+}
+
 .menu-item {
   font-weight: 600;
   text-decoration: none;

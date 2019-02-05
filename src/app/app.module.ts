@@ -23,6 +23,7 @@ const routes: Routes = [
   {path: 'routes', component: RoutesComponent},
   {path: 'route', component: RouteComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'user', component: BannerComponent},
   {path: '', component: MainComponent}
 ];
 
