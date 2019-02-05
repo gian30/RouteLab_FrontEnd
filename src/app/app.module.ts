@@ -18,12 +18,14 @@ import { LoginComponent } from './login/login.component';
 import { PersonalAreaComponent } from './personal-area/personal-area.component';
 import { FollowersComponent } from './followers/followers.component';
 import { GalleryComponent } from './gallery/gallery.component';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
   {path: 'routes', component: RoutesComponent},
   {path: 'route', component: RouteComponent},
   {path: 'login', component: LoginComponent},
   {path: 'user', component: BannerComponent},
+  {path: 'contact', component: ContactComponent},
   {path: '', component: MainComponent}
 ];
 
@@ -47,7 +49,8 @@ RouterModule.forRoot(routes,
     LoginComponent,
     PersonalAreaComponent,
     FollowersComponent,
-    GalleryComponent
+    GalleryComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
