@@ -1,0 +1,10 @@
+.addPhoto {
+  background-color: #22626E;
+  padding: 15px 24px;
+  align-items: center;
+  display: block;
+}
+
+.addPhoto:hover {
+  background-color: #13383E;
+}
