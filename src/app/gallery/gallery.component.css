@@ -8,3 +8,29 @@
 .addPhoto:hover {
   background-color: #13383E;
 }
+
+.uploadPhoto:hover {
+  -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.45);
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.45);
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.45);
+}
+
+img {
+  width: 370px;
+  height: 100%;
+}
+
+.route__info-box {
+  background-color: #F2F2F2;
+  padding: 5px;
+  font-size: 12px;
+  width: 110px;
+  border-radius: 5px;
+  text-align: center;
+  color: #797979;
+}
+
+.route__info-box img {
+  width: 17px;
+}
+
