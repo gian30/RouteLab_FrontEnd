@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LoginService} from './login.service';
+import {FormGroup, FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,19 @@ export class LoginComponent implements OnInit {
     'pass': '',
     'confpass': ''
   };
+
+  profileForm = new FormGroup({
+    email:  new FormControl(''),
+    pass:  new FormControl(''),
+    confpass:  new FormControl(''),
+    name: new FormControl(''),
+    username: new FormControl(''),
+    country: new FormControl(''),
+    city: new FormControl(''),
+    age: new FormControl(''),
+    phone: new FormControl(''),
+  });
+
 
   constructor(private _loginService: LoginService) {
   }
@@ -39,7 +53,6 @@ export class LoginComponent implements OnInit {
 
 
   loginAction() {
-    const reg = JSON.parse(JSON.stringify(this.login));
     if (this.register === true) {
       this.advanceRegister = true;
       /*this._loginService.sendRegister(reg).subscribe(
@@ -52,6 +65,10 @@ export class LoginComponent implements OnInit {
       */
 
     }
+  }
+
+  onSubmit() {
+    console.warn(this.profileForm.value);
   }
 
   ngOnInit() {

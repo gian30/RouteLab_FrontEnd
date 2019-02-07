@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule} from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
@@ -20,6 +20,8 @@ import { FollowersComponent } from './followers/followers.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { ContactComponent } from './contact/contact.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { TermsComponent } from './terms/terms.component';
+
 
 const routes: Routes = [
   {path: 'routes', component: RoutesComponent},
@@ -27,6 +29,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'user', component: BannerComponent},
   {path: 'contact', component: ContactComponent},
+  {path: 'terms', component: TermsComponent},
   {path: '', component: MainComponent}
 ];
 
@@ -52,14 +55,16 @@ RouterModule.forRoot(routes,
     FollowersComponent,
     GalleryComponent,
     ContactComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    TermsComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
