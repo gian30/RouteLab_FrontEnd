@@ -1,0 +1,34 @@
+h2 {
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.edit-form {
+  margin-bottom: 40px;
+}
+
+.edit-form__input {
+  font-size: 15px;
+  line-height: 20px;
+  padding: 10px;
+  width: 100%;
+  margin: 7px 0 25px;
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.09);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.09);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.09);
+}
+
+.edit-form__block {
+  width: 100%;
+}
+
+.edit-form__input_short {
+  width: 120px;
+  margin-right: 10px;
+}
+
+.button {
+  text-transform: uppercase;
+  padding: 10px 20px;
+  font-size: 15px;
+}

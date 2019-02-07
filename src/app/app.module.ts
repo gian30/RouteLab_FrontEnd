@@ -19,6 +19,7 @@ import { PersonalAreaComponent } from './personal-area/personal-area.component';
 import { FollowersComponent } from './followers/followers.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { ContactComponent } from './contact/contact.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 const routes: Routes = [
   {path: 'routes', component: RoutesComponent},
@@ -50,7 +51,8 @@ RouterModule.forRoot(routes,
     PersonalAreaComponent,
     FollowersComponent,
     GalleryComponent,
-    ContactComponent
+    ContactComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
