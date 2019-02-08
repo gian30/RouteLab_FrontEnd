@@ -23,7 +23,7 @@
   font-weight: bold;
 }
 
-.menu-item {
+.menu-link {
   margin-right: 50px;
 }
 
@@ -82,11 +82,56 @@
 .sign-button {
   font-weight: 600;
   display: block;
-  margin-left: auto;
   text-align: center;
   height: 35px;
   font-size: 13px;
   padding-top: 4px;
 }
+
+
+/* ------ Media Queries ------ */
+
+/* 992-1200px */
+@media screen and (max-width: 1199px) {
+  .menu-link {
+    margin-right: 30px;
+    font-size: 13px;
+  }
+
+}
+
+/* 768-992px */
+@media screen and (max-width: 991px) {
+  .search{
+    margin: 10px 0;
+    justify-content: center;
+    max-width: 100%;
+  }
+
+  .menu {
+    margin-top: 10px!important;
+    justify-content: center;
+  }
+
+  .sign-button {
+    display: block;
+    margin: auto;
+    width: 100px;
+    margin-top: 5px;
+  }
+}
+
+/* 576-768px */
+@media screen and (max-width: 767px) {
+
+
+}
+/* 320-576px */
+@media screen and (max-width: 575px) {
+
+
+}
+
+
 
 

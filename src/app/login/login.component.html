@@ -13,7 +13,7 @@
     </div>
     <div class="row">
       <div class="col-lg-5">
-        <form *ngIf="!advanceRegister" class="signin" [formGroup]="profileForm" (ngSubmit)="loginAction()">
+        <form *ngIf="!advanceRegister" class="signin" [formGroup]="registerForm" (ngSubmit)="loginAction()">
           <input type="text" class="signin__input" formControlName="email" placeholder="Email">
           <input type="password" class="signin__input" formControlName="pass" placeholder="Contraseña">
           <input *ngIf="register" type="password" class="signin__input" formControlName="confpass"
@@ -32,7 +32,7 @@
             </button>
           </div>
         </form>
-        <form *ngIf="advanceRegister" class="signin signin-second" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        <form *ngIf="advanceRegister" class="signin signin-second" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
           <h2>Completa tu perfil</h2>
           <input type="text" class="signin__input" formControlName="name" placeholder="Nombre">
           <input type="text" class="signin__input" formControlName="username" placeholder="Nombre de usuario">

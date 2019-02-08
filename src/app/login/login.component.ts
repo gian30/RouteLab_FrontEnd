@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {LoginService} from './login.service';
-import {FormGroup, FormControl} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {MustMatch} from './_helpers/must-match.validator';
 
 @Component({
   selector: 'app-login',
@@ -9,26 +10,11 @@ import {FormGroup, FormControl} from '@angular/forms';
   providers: [LoginService]
 })
 export class LoginComponent implements OnInit {
-  login = {
-    'email': '',
-    'pass': '',
-    'confpass': ''
-  };
 
-  profileForm = new FormGroup({
-    email:  new FormControl(''),
-    pass:  new FormControl(''),
-    confpass:  new FormControl(''),
-    name: new FormControl(''),
-    username: new FormControl(''),
-    country: new FormControl(''),
-    city: new FormControl(''),
-    age: new FormControl(''),
-    phone: new FormControl(''),
-  });
+  registerForm: FormGroup;
+  submitted = false;
 
-
-  constructor(private _loginService: LoginService) {
+  constructor(private formBuilder: FormBuilder, private _loginService: LoginService) {
   }
 
   register = false;
@@ -55,23 +41,44 @@ export class LoginComponent implements OnInit {
   loginAction() {
     if (this.register === true) {
       this.advanceRegister = true;
-      /*this._loginService.sendRegister(reg).subscribe(
+      this._loginService.sendRegister(JSON.stringify(this.registerForm.value)).subscribe(
         resul => {
           console.log(resul.body);
         }, error => {
           console.log(error);
         }
       );
-      */
-
     }
   }
 
-  onSubmit() {
-    console.warn(this.profileForm.value);
+  get f() {
+    return this.registerForm.controls;
   }
 
+  onSubmit() {
+    this.submitted = true;
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+      return;
+    }
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value));
+  }
+
+
   ngOnInit() {
+    this.registerForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      pass: ['', [Validators.required, Validators.minLength(6)]],
+      confpass: ['', Validators.required],
+      name: ['', Validators.required],
+      username: ['', Validators.required],
+      country: ['', Validators.required],
+      city: ['', Validators.required],
+      age: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.minLength(7)]]
+    }, {
+      validator: MustMatch('pass', 'confpass')
+    });
   }
 
 }

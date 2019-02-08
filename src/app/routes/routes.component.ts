@@ -22,4 +22,15 @@ export class RoutesComponent implements OnInit {
   ngOnInit() {
   }
 
+
+
+  category = 'Categoría';
+  categories =['Sol y playa', 'Deportivo', 'Naturaleza', 'De montaña', 'Histórico', 'Aventura', 'Rural', 'Científico'];
+
+
+
+  assignBlack () {
+    const element = document.getElementById('addBlack');
+    element.classList.add('black');
+  }
 }
