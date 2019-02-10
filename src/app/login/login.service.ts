@@ -16,7 +16,7 @@ export class LoginService {
     let httpHeaders = new HttpHeaders({
       'Content-Type' : 'application/json'
     });
-    let ruta = 'http://192.168.64.2/PHP/RouteLab_BackEnd-master/Final/insertuser.php';
+    let ruta = 'http://172.18.1.189/Proyecto/Final/Clases/WebService/api.php?controller=usuario';
     return this._conexHttp.post(ruta, info,
       {
         headers: httpHeaders,

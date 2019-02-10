@@ -41,13 +41,6 @@ export class LoginComponent implements OnInit {
   loginAction() {
     if (this.register === true) {
       this.advanceRegister = true;
-      this._loginService.sendRegister(JSON.stringify(this.registerForm.value)).subscribe(
-        resul => {
-          console.log(resul.body);
-        }, error => {
-          console.log(error);
-        }
-      );
     }
   }
 
@@ -60,6 +53,14 @@ export class LoginComponent implements OnInit {
     // stop here if form is invalid
     if (this.registerForm.invalid) {
       return;
+    }else {
+      this._loginService.sendRegister(JSON.stringify(this.registerForm.value)).subscribe(
+        resul => {
+          console.log(resul.body);
+        }, error => {
+          console.log(error);
+        }
+      );
     }
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value));
   }
@@ -69,16 +70,16 @@ export class LoginComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       pass: ['', [Validators.required, Validators.minLength(6)]],
-      confpass: ['', Validators.required],
-      name: ['', Validators.required],
-      username: ['', Validators.required],
-      country: ['', Validators.required],
-      city: ['', Validators.required],
-      age: ['', Validators.required],
-      phone: ['', [Validators.required, Validators.minLength(7)]]
-    }, {
-      validator: MustMatch('pass', 'confpass')
+      nombre: ['', Validators.required],
+      nombreusuario: ['', Validators.required],
+      idlocalidad: ['1'],
+      fechanacimiento: ['', Validators.required],
+      empresa: ['1'],
+      nombre_empresa: ['Routelab'],
+      foto: ['/img.jpg'],
     });
   }
 
 }
+
+

@@ -16,7 +16,7 @@
         <form *ngIf="!advanceRegister" class="signin" [formGroup]="registerForm" (ngSubmit)="loginAction()">
           <input type="text" class="signin__input" formControlName="email" placeholder="Email">
           <input type="password" class="signin__input" formControlName="pass" placeholder="Contraseña">
-          <input *ngIf="register" type="password" class="signin__input" formControlName="confpass"
+          <input *ngIf="register" type="password" class="signin__input"
                  placeholder="Confirmar contraseña">
           <div class="signin__details d-flex justify-content-between align-items-center">
             <div class="signin__reg">
@@ -34,13 +34,13 @@
         </form>
         <form *ngIf="advanceRegister" class="signin signin-second" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
           <h2>Completa tu perfil</h2>
-          <input type="text" class="signin__input" formControlName="name" placeholder="Nombre">
-          <input type="text" class="signin__input" formControlName="username" placeholder="Nombre de usuario">
-          <input type="text" class="signin__input" formControlName="country" placeholder="País">
-          <input type="text" class="signin__input" formControlName="city" placeholder="Población">
+          <input type="text" class="signin__input" formControlName="nombre" placeholder="Nombre">
+          <input type="text" class="signin__input" formControlName="nombreusuario" placeholder="Nombre de usuario">
+          <input type="text" class="signin__input" placeholder="País">
+          <input type="text" class="signin__input" placeholder="Población">
           <div class="signin__inputs d-flex">
-            <input type="text" class="signin__input signin__input_age"  formControlName="age" placeholder="Edad">
-            <input type="text" class="signin__input" formControlName="phone" placeholder="Teléfono">
+            <input type="text" class="signin__input signin__input_age"  formControlName="fechanacimiento" placeholder="Edad">
+            <input type="text" class="signin__input" placeholder="Teléfono">
           </div>
           <div class="signin__details d-flex justify-content-between">
             <div class="signin__reg">
