@@ -1,8 +1,17 @@
 .addPhoto {
   background-color: #22626E;
   padding: 15px 24px;
+  width: 70px;
   align-items: center;
   display: block;
+
+}
+
+a:not([href]):not([tabindex]) {
+  color: white;
+  text-decoration: none;
+  font-size: 37px;
+
 }
 
 .addPhoto:hover {
@@ -14,23 +23,21 @@
   -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.45);
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.45);
 }
+.uploadPhoto{
+  margin-top: 40px;
+  width: 100%;
 
+
+}
 img {
-  width: 370px;
+  width: 340px;
   height: 100%;
+  margin-bottom: 20px;
+  display: block;
+}
+.photoGal {
+  margin-bottom: 20px;
 }
 
-.route__info-box {
-  background-color: #F2F2F2;
-  padding: 5px;
-  font-size: 12px;
-  width: 110px;
-  border-radius: 5px;
-  text-align: center;
-  color: #797979;
-}
 
-.route__info-box img {
-  width: 17px;
-}
 
