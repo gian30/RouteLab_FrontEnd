@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import * as jQuery from 'jquery';
+import {AgmCoreModule} from '@agm/core';
 
 declare var $: any;
 declare var jquery: any;
@@ -25,6 +26,13 @@ export class RouteComponent implements OnInit {
     '../../assets/img/sample_images/10.jpg'
   ];
 
+
+  lat: number = 41.3907285;
+  lng: number = 2.1745089;
+  origin = { lat: 41.388909, lng: 2.167621 };
+  destination = { lat: 41.391496, lng: 2.155151 };
+
+
   constructor() {
   }
 
@@ -40,16 +48,14 @@ export class RouteComponent implements OnInit {
 
     });
   }
-  ngAfterViewChecked() {
-    window.scrollTo(0, 0);
-  }
+
 
   loadPhoto(photo) {
     this.CURRENTIMG = photo;
   }
 
   ngOnInit() {
-
+    window.scrollTo(0, 0);
   }
 
 }

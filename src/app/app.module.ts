@@ -1,9 +1,11 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { RouterModule, Routes } from '@angular/router';
-import { HttpClientModule} from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {RouterModule, Routes} from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AgmCoreModule} from '@agm/core';
+import { AgmDirectionModule } from 'agm-direction';
 
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
@@ -14,13 +16,13 @@ import {FooterComponent} from './footer/footer.component';
 import {RouteComponent} from './route/route.component';
 import {ChatComponent} from './chat/chat.component';
 import {NewRouteComponent} from './new-route/new-route.component';
-import { LoginComponent } from './login/login.component';
-import { PersonalAreaComponent } from './personal-area/personal-area.component';
-import { FollowersComponent } from './followers/followers.component';
-import { GalleryComponent } from './gallery/gallery.component';
-import { ContactComponent } from './contact/contact.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
-import { TermsComponent } from './terms/terms.component';
+import {LoginComponent} from './login/login.component';
+import {PersonalAreaComponent} from './personal-area/personal-area.component';
+import {FollowersComponent} from './followers/followers.component';
+import {GalleryComponent} from './gallery/gallery.component';
+import {ContactComponent} from './contact/contact.component';
+import {EditProfileComponent} from './edit-profile/edit-profile.component';
+import {TermsComponent} from './terms/terms.component';
 
 
 const routes: Routes = [
@@ -64,7 +66,11 @@ RouterModule.forRoot(routes,
     RouterModule.forRoot(routes),
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBQwgG1zHjVXd6omQVAccKdv9skMCPg3-E'
+    }),
+    AgmDirectionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

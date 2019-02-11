@@ -73,9 +73,10 @@ export class LoginComponent implements OnInit {
       nombre: ['', Validators.required],
       nombreusuario: ['', Validators.required],
       idlocalidad: ['1'],
-      fechanacimiento: ['', Validators.required],
+      edad: ['', Validators.required],
       empresa: ['1'],
       nombre_empresa: ['Routelab'],
+      telefono : ['', Validators.required],
       foto: ['/img.jpg'],
     });
   }
