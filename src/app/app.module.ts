@@ -5,7 +5,8 @@ import {RouterModule, Routes} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AgmCoreModule} from '@agm/core';
-import { AgmDirectionModule } from 'agm-direction';
+import {AgmDirectionModule} from 'agm-direction';
+import {GooglePlaceModule} from 'ngx-google-places-autocomplete';
 
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
@@ -67,6 +68,7 @@ RouterModule.forRoot(routes,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    GooglePlaceModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBQwgG1zHjVXd6omQVAccKdv9skMCPg3-E'
     }),

@@ -1,7 +1,17 @@
+/// <reference types="@types/googlemaps" />
 import {Component, OnInit} from '@angular/core';
+import {ViewChild, ElementRef, NgZone,} from '@angular/core';
 import {LoginService} from './login.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MustMatch} from './_helpers/must-match.validator';
+import {MapsAPILoader} from '@agm/core';
+import {FormControl} from '@angular/forms';
+import {GooglePlaceDirective} from 'ngx-google-places-autocomplete/ngx-google-places-autocomplete.directive';
+import {Address} from 'ngx-google-places-autocomplete/objects/address';
+
+
+declare var google;
+
 
 @Component({
   selector: 'app-login',
@@ -13,8 +23,17 @@ export class LoginComponent implements OnInit {
 
   registerForm: FormGroup;
   submitted = false;
+  errorform = '';
+  @ViewChild('placesRef') places: GooglePlaceDirective;
+  @ViewChild('search') public searchElement: ElementRef;
+  lat: number = -33.785809;
+  lng: number = 151.121195;
+  options = {
+    types: ['(cities)'],
+    componentRestrictions: {country: 'es'}
+  };
 
-  constructor(private formBuilder: FormBuilder, private _loginService: LoginService) {
+  constructor(private formBuilder: FormBuilder, private _loginService: LoginService, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) {
   }
 
   register = false;
@@ -22,6 +41,14 @@ export class LoginComponent implements OnInit {
   registerText = '¿Aún no estás registrado?';
   registerLink = 'Regístrate ahora';
   actionLink = 'Iniciar sesión';
+  fullAddress = [];
+
+  public handleAddressChange(address: Address) {
+
+
+    this.lng = address.geometry.location.lng();
+    this.lat = address.geometry.location.lat();
+  }
 
   goRegister() {
     this.register = !this.register;
@@ -40,7 +67,11 @@ export class LoginComponent implements OnInit {
 
   loginAction() {
     if (this.register === true) {
-      this.advanceRegister = true;
+      if (this.registerForm.controls['pass'].value === this.registerForm.controls['confpass'].value) {
+        this.advanceRegister = true;
+      } else {
+        this.errorform = 'Las contraseñas no coinciden!';
+      }
     }
   }
 
@@ -53,7 +84,7 @@ export class LoginComponent implements OnInit {
     // stop here if form is invalid
     if (this.registerForm.invalid) {
       return;
-    }else {
+    } else {
       this._loginService.sendRegister(JSON.stringify(this.registerForm.value)).subscribe(
         resul => {
           console.log(resul.body);
@@ -62,7 +93,7 @@ export class LoginComponent implements OnInit {
         }
       );
     }
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value));
+    alert('SUCCESS!\n\n' + JSON.stringify(this.registerForm.value));
   }
 
 
@@ -70,17 +101,20 @@ export class LoginComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       pass: ['', [Validators.required, Validators.minLength(6)]],
+      confpass: [''],
       nombre: ['', Validators.required],
       nombreusuario: ['', Validators.required],
       idlocalidad: ['1'],
       edad: ['', Validators.required],
       empresa: ['1'],
       nombre_empresa: ['Routelab'],
-      telefono : ['', Validators.required],
+      telefono: ['', Validators.required],
       foto: ['/img.jpg'],
     });
   }
 
+
 }
+
 
 

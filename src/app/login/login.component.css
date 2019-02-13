@@ -98,3 +98,12 @@
   background-color: #fff;
   height: 100%;
 }
+
+agm-map {
+  height: 350px;
+}
+
+.signin__span {
+  display: block;
+  height: 20px;
+}
