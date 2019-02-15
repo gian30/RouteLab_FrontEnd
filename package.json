@@ -24,6 +24,7 @@
     "@angular/router": "^7.2.4",
     "@ng-bootstrap/ng-bootstrap": "^4.0.1",
     "agm-direction": "^0.7.6",
+    "angularx-social-login": "^1.2.6",
     "core-js": "^2.6.4",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
