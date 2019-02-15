@@ -12,16 +12,17 @@ export class LoginService {
   }
 
 
-  sendRegister(info: String) {
+  sendRegister(info: String, funcion: String) {
     let httpHeaders = new HttpHeaders({
-      'Content-Type' : 'application/json'
+      'Content-Type': 'application/json'
     });
-    let ruta = 'http://172.18.1.189/Proyecto/Final/Clases/WebService/api.php?controller=usuario';
+    let ruta = 'http://172.18.1.189/Proyecto/Final/Clases/WebService/api.php?controller=usuario&funcion=' + funcion;
     return this._conexHttp.post(ruta, info,
       {
         headers: httpHeaders,
         observe: 'response'
       });
   }
+
 
 }

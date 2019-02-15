@@ -28,10 +28,20 @@
               <img [src]="'../../assets/icons/'+BARS" alt="Bars" class="categories-icon">
             </button>
             <div class="dropdown__content" ngbDropdownMenu>
-              <button (click)="BARS = 'road.png'" class="dropdown-item">Rutas</button>
-              <button (click)="BARS = 'photos.png'" class="dropdown-item">Fotos</button>
-              <button (click)="BARS = 'users.png'" class="dropdown-item">Usuarios</button>
-              <button (click)="BARS = 'bars-solid.png'" class="dropdown-item">Todo</button>
+              <div class="cont d-flex">
+                <button (click)="BARS = 'road.png'" class="dropdown-item">
+                  <img [src]="'../../assets/icons/road.png'" alt="road" class="categories-icon">
+                </button>
+                <button (click)="BARS = 'photos.png'" class="dropdown-item">
+                  <img [src]="'../../assets/icons/photos.png'" alt="photos" class="categories-icon">
+                </button>
+                <button (click)="BARS = 'users.png'" class="dropdown-item">
+                  <img [src]="'../../assets/icons/users.png'" alt="users" class="categories-icon">
+                </button>
+                <button (click)="BARS = 'bars-solid.png'" class="dropdown-item">
+                  <img [src]="'../../assets/icons/bars-solid.png'" alt="all" class="categories-icon">
+                </button>
+              </div>
             </div>
           </div>
           <input type="text" class="search-input">

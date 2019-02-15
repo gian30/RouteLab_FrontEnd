@@ -17,7 +17,7 @@
 }
 
 .route-button:hover {
-  background-color:  #16454E;
+  background-color: #16454E;
 }
 
 .stars {
@@ -25,10 +25,11 @@
   margin-bottom: 15px;
 }
 
-.stars img{
+.stars img {
   width: 20px;
   height: 20px;
 }
+
 .photo__current {
   display: block;
   -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.192);
@@ -131,7 +132,7 @@
   font-size: 22px;
 }
 
-.similar-routes-head, .recommendations-title, .comments-title{
+.similar-routes-head, .recommendations-title, .comments-title {
   margin-bottom: 20px;
 }
 
@@ -151,26 +152,50 @@
 }
 
 .comments-content {
-  background-color: #F6F7F7;
+  background-color: #f8f8f8;
   padding: 40px 35px;
   -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
   -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
 }
 
-.comment:not(:last-child) {
+.add-comment__text {
+  width: 100%;
+  height: 100px;
+  resize: none;
+  border: none;
+  border-bottom: 0.2em solid rgba(0, 0, 0, 0.192);
+  transition: all 0.5s ease;
+}
+
+.add-comment__text:focus {
+  border-color: #22626E;
+}
+
+.route-button_comment {
+  padding: 10px;
+  margin-top: 10px;
   margin-bottom: 30px;
+}
+
+.comment {
+  padding: 20px 10px;
+
+}
+
+.comment:not(:last-child) {
+  margin-bottom: 5px;
 }
 
 .comment__user {
   display: block;
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   margin-right: 20px;
 }
 
-.comment__username i{
+.comment__username i {
   color: #dfa801;
 }
 
@@ -180,6 +205,7 @@
 }
 
 .comment__text {
+  font-size: 14px;
   line-height: 1.4em;
 }
 
@@ -190,7 +216,6 @@
   -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
 }
-
 
 agm-map {
   height: 300px;

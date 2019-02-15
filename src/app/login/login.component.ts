@@ -26,14 +26,17 @@ export class LoginComponent implements OnInit {
   errorform = '';
   @ViewChild('placesRef') places: GooglePlaceDirective;
   @ViewChild('search') public searchElement: ElementRef;
-  lat: number = -33.785809;
-  lng: number = 151.121195;
   options = {
     types: ['(cities)'],
     componentRestrictions: {country: 'es'}
   };
 
-  constructor(private formBuilder: FormBuilder, private _loginService: LoginService, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private _loginService: LoginService,
+    private mapsAPILoader: MapsAPILoader,
+    private ngZone: NgZone
+  ) {
   }
 
   register = false;
@@ -41,13 +44,18 @@ export class LoginComponent implements OnInit {
   registerText = '¿Aún no estás registrado?';
   registerLink = 'Regístrate ahora';
   actionLink = 'Iniciar sesión';
-  fullAddress = [];
+  fullAddress = {};
+  login = {};
+  copy = [];
 
   public handleAddressChange(address: Address) {
-
-
-    this.lng = address.geometry.location.lng();
-    this.lat = address.geometry.location.lat();
+    this.fullAddress = {
+      poblacion: address.address_components[0]['long_name'],
+      pais: address.address_components[3]['long_name'],
+      direccion: address.formatted_address,
+      latitud: address.geometry.location.lat(),
+      longitud: address.geometry.location.lng()
+    };
   }
 
   goRegister() {
@@ -67,11 +75,33 @@ export class LoginComponent implements OnInit {
 
   loginAction() {
     if (this.register === true) {
-      if (this.registerForm.controls['pass'].value === this.registerForm.controls['confpass'].value) {
-        this.advanceRegister = true;
+      if (
+        this.registerForm.controls['email'].value !== ''
+        && this.registerForm.controls['confpass'].value !== ''
+        && this.registerForm.controls['pass'].value !== ''
+      ) {
+        if (this.registerForm.controls['pass'].value === this.registerForm.controls['confpass'].value) {
+          delete this.registerForm.controls['confpass'];
+          this.advanceRegister = true;
+        } else {
+          this.errorform = 'Las contraseñas no coinciden!';
+        }
       } else {
-        this.errorform = 'Las contraseñas no coinciden!';
+        this.errorform = 'Por favor, rellene todos los campos!';
       }
+    } else {
+      this.login = {
+        email: this.registerForm.controls['email'].value,
+        pass: this.registerForm.controls['pass'].value
+      };
+      alert('SUCCESS!\n\n' + JSON.stringify(this.login));
+      this._loginService.sendRegister(JSON.stringify(this.login), 'login').subscribe(
+        resul => {
+          console.log(resul.body);
+        }, error => {
+          console.log(error);
+        }
+      );
     }
   }
 
@@ -85,7 +115,10 @@ export class LoginComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     } else {
-      this._loginService.sendRegister(JSON.stringify(this.registerForm.value)).subscribe(
+      this.copy = this.registerForm.value;
+      this.copy['localidad'] = this.fullAddress;
+      alert('SUCCESS!\n\n' + JSON.stringify(this.copy));
+      this._loginService.sendRegister(JSON.stringify(this.copy), 'registro').subscribe(
         resul => {
           console.log(resul.body);
         }, error => {
@@ -93,7 +126,6 @@ export class LoginComponent implements OnInit {
         }
       );
     }
-    alert('SUCCESS!\n\n' + JSON.stringify(this.registerForm.value));
   }
 
 
@@ -104,13 +136,14 @@ export class LoginComponent implements OnInit {
       confpass: [''],
       nombre: ['', Validators.required],
       nombreusuario: ['', Validators.required],
-      idlocalidad: ['1'],
       edad: ['', Validators.required],
       empresa: ['1'],
       nombre_empresa: ['Routelab'],
       telefono: ['', Validators.required],
       foto: ['/img.jpg'],
     });
+
+
   }
 
 
