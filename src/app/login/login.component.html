@@ -15,7 +15,11 @@
       <div class="col-lg-5">
         <form *ngIf="!advanceRegister" class="signin" [formGroup]="registerForm" (ngSubmit)="loginAction()">
           <span class="signin__span">{{errorform}}</span>
-          <input type="text" class="signin__input" formControlName="email" placeholder="Email">
+          <input type="text" class="signin__input" formControlName="email" placeholder="Email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+          </div>
           <input type="password" class="signin__input" formControlName="pass" placeholder="Contraseña">
           <input *ngIf="register" type="password" formControlName="confpass" class="signin__input"
                  placeholder="Confirmar contraseña">
@@ -54,8 +58,10 @@
             <button type="submit" class="signin__button button">
               {{actionLink}}
             </button>
+            <button (click)="return()">Volver</button>
           </div>
         </form>
+        <button (click)="signInWithGoogle()">Sign in with Google</button>
       </div>
     </div>
   </div>

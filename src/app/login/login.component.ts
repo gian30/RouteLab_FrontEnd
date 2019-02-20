@@ -9,6 +9,12 @@ import {FormControl} from '@angular/forms';
 import {GooglePlaceDirective} from 'ngx-google-places-autocomplete/ngx-google-places-autocomplete.directive';
 import {Address} from 'ngx-google-places-autocomplete/objects/address';
 
+import {
+  SocialUser,
+  AuthService,
+  GoogleLoginProvider
+} from 'ng4-social-login';
+
 
 declare var google;
 
@@ -19,26 +25,12 @@ declare var google;
   styleUrls: ['./login.component.css'],
   providers: [LoginService]
 })
-export class LoginComponent implements OnInit {
 
+export class LoginComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
-  errorform = '';
   @ViewChild('placesRef') places: GooglePlaceDirective;
   @ViewChild('search') public searchElement: ElementRef;
-  options = {
-    types: ['(cities)'],
-    componentRestrictions: {country: 'es'}
-  };
-
-  constructor(
-    private formBuilder: FormBuilder,
-    private _loginService: LoginService,
-    private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone
-  ) {
-  }
-
   register = false;
   advanceRegister = false;
   registerText = '¿Aún no estás registrado?';
@@ -47,6 +39,47 @@ export class LoginComponent implements OnInit {
   fullAddress = {};
   login = {};
   copy = [];
+  options = {
+    types: ['(cities)'],
+    componentRestrictions: {country: 'es'}
+  };
+
+  get f() {
+    return this.registerForm.controls;
+  }
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private _loginService: LoginService,
+    private mapsAPILoader: MapsAPILoader,
+    private ngZone: NgZone,
+    private authService: AuthService
+  ) {
+  }
+
+
+  signInWithGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((userdata) => {
+      this.socialSignIn(userdata);
+    });
+  }
+
+  signOut(): void {
+    this.authService.signOut();
+  }
+
+  socialSignIn(userData) {
+    if (userData['email'] !== '') {
+      let user = {
+        name: userData['name'],
+        email: userData['email']
+      };
+      console.log(userData);
+      this.registerForm.controls['email'].setValue(user.email);
+      this.registerForm.controls['nombre'].setValue(user.name);
+      alert('user: ' + user);
+    }
+  }
 
   public handleAddressChange(address: Address) {
     this.fullAddress = {
@@ -74,21 +107,10 @@ export class LoginComponent implements OnInit {
 
 
   loginAction() {
+    this.submitted = true;
     if (this.register === true) {
-      if (
-        this.registerForm.controls['email'].value !== ''
-        && this.registerForm.controls['confpass'].value !== ''
-        && this.registerForm.controls['pass'].value !== ''
-      ) {
-        if (this.registerForm.controls['pass'].value === this.registerForm.controls['confpass'].value) {
-          delete this.registerForm.controls['confpass'];
-          this.advanceRegister = true;
-        } else {
-          this.errorform = 'Las contraseñas no coinciden!';
-        }
-      } else {
-        this.errorform = 'Por favor, rellene todos los campos!';
-      }
+      delete this.registerForm.controls['confpass'];
+      this.advanceRegister = true;
     } else {
       this.login = {
         email: this.registerForm.controls['email'].value,
@@ -105,13 +127,8 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  get f() {
-    return this.registerForm.controls;
-  }
-
   onSubmit() {
     this.submitted = true;
-    // stop here if form is invalid
     if (this.registerForm.invalid) {
       return;
     } else {
@@ -128,12 +145,15 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  return() {
+    this.advanceRegister = false;
+  }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       pass: ['', [Validators.required, Validators.minLength(6)]],
-      confpass: [''],
+      confpass: ['', [Validators.required, Validators.minLength(6)]],
       nombre: ['', Validators.required],
       nombreusuario: ['', Validators.required],
       edad: ['', Validators.required],
@@ -142,8 +162,6 @@ export class LoginComponent implements OnInit {
       telefono: ['', Validators.required],
       foto: ['/img.jpg'],
     });
-
-
   }
 
 

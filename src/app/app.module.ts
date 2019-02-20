@@ -24,7 +24,22 @@ import {GalleryComponent} from './gallery/gallery.component';
 import {ContactComponent} from './contact/contact.component';
 import {EditProfileComponent} from './edit-profile/edit-profile.component';
 import {TermsComponent} from './terms/terms.component';
+import {
+  SocialLoginModule,
+  AuthServiceConfig,
+  GoogleLoginProvider
+} from 'ng4-social-login';
 
+const CONFIG = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider('307596815036-s7ju0ki261cec6a5d1jalq1lef5u7mbk.apps.googleusercontent.com')
+  }
+], false);
+
+export function provideConfig() {
+  return CONFIG;
+}
 
 const routes: Routes = [
   {path: 'routes', component: RoutesComponent},
@@ -72,9 +87,13 @@ RouterModule.forRoot(routes,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBQwgG1zHjVXd6omQVAccKdv9skMCPg3-E'
     }),
-    AgmDirectionModule
+    AgmDirectionModule,
+    SocialLoginModule
   ],
-  providers: [],
+  providers: [{
+    provide: AuthServiceConfig,
+    useFactory: provideConfig
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {
