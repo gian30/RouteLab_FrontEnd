@@ -1,6 +1,6 @@
 /// <reference types="@types/googlemaps" />
 import {Component, OnInit} from '@angular/core';
-import {ViewChild, ElementRef, NgZone,} from '@angular/core';
+import {ViewChild, ElementRef, NgZone, } from '@angular/core';
 import {LoginService} from './login.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MustMatch} from './_helpers/must-match.validator';
@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit {
 
   socialSignIn(userData) {
     if (userData['email'] !== '') {
-      let user = {
+      const user = {
         name: userData['name'],
         email: userData['email']
       };
