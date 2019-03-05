@@ -14,12 +14,21 @@ export class LoginService {
 
   sendRegister(info: String, funcion: String) {
     let httpHeaders = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Access-Control-Allow-Origin': 'http://localhost:4200',
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Access-Control-Allow-Credentials': 'true',
+      'Access-Control-Allow-Methods': 'GET POST, OPTIONS, PUT, DELETE',
+      'Access-Control-Allow-Headers': 'X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method'
+
     });
-    let ruta = 'http://172.18.1.189/Proyecto/Final/Clases/WebService/api.php?controller=usuario&funcion=' + funcion;
+
+    let ruta = '/api.php?controller=usuario&funcion=' + funcion;
+
     return this._conexHttp.post(ruta, info,
       {
-        headers: httpHeaders,
+        headers:
+          {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
         observe: 'response'
       });
   }

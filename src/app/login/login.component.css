@@ -107,3 +107,9 @@ agm-map {
   display: block;
   height: 20px;
 }
+
+.error-message {
+  margin-top: 2px;
+  font-size: 14px;
+  color: #267581;
+}

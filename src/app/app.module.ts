@@ -43,7 +43,7 @@ export function provideConfig() {
 
 const routes: Routes = [
   {path: 'routes', component: RoutesComponent},
-  {path: 'route', component: RouteComponent},
+  {path: 'route/:id', component: RouteComponent},
   {path: 'login', component: LoginComponent},
   {path: 'user', component: BannerComponent},
   {path: 'contact', component: ContactComponent},
