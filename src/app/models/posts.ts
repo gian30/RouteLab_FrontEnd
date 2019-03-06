@@ -1,7 +1,7 @@
 class Post {
   private _postID: number;
   private _postTitle: string;
-  private _description: string;
+  private _postDescription: string;
   private _postType: string;
   private _userID: number;
 
@@ -9,7 +9,7 @@ class Post {
   constructor(postID: number, postTitle: string, description: string, postType: string, userID: number) {
     this._postID = postID;
     this._postTitle = postTitle;
-    this._description = description;
+    this._postDescription = description;
     this._postType = postType;
     this._userID = userID;
   }
@@ -31,12 +31,12 @@ class Post {
     this._postTitle = value;
   }
 
-  get description(): string {
-    return this._description;
+  get postDescription(): string {
+    return this._postDescription;
   }
 
-  set description(value: string) {
-    this._description = value;
+  set postDescription(value: string) {
+    this._postDescription = value;
   }
 
   get postType(): string {
