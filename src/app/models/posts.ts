@@ -1,4 +1,4 @@
-class Post {
+export class Post {
   private _postID: number;
   private _postTitle: string;
   private _postDescription: string;
@@ -6,7 +6,7 @@ class Post {
   private _userID: number;
 
 
-  constructor(postID: number, postTitle: string, description: string, postType: string, userID: number) {
+  constructor(postID: number, postTitle: string, description: string, postType="", userID: number) {
     this._postID = postID;
     this._postTitle = postTitle;
     this._postDescription = description;

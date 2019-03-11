@@ -40,7 +40,7 @@
             </button>
           </div>
         </form>
-        <form *ngIf="advanceRegister" class="signin signin-second" [formGroup]="registerFormSecond" (ngSubmit)="onSubmit()">
+        <form *ngIf="advanceRegister" class="signin signin-second" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
           <h2>Completa tu perfil</h2>
           <input type="text" class="signin__input" formControlName="nombre" placeholder="Nombre">
           <input type="text" class="signin__input" formControlName="nombreusuario" placeholder="Nombre de usuario">

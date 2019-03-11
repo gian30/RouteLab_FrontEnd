@@ -8,6 +8,7 @@ import {MapsAPILoader} from '@agm/core';
 import {FormControl} from '@angular/forms';
 import {GooglePlaceDirective} from 'ngx-google-places-autocomplete/ngx-google-places-autocomplete.directive';
 import {Address} from 'ngx-google-places-autocomplete/objects/address';
+import {Router} from '@angular/router';
 
 import {
   SocialUser,
@@ -27,10 +28,7 @@ declare var google;
 })
 
 export class LoginComponent implements OnInit {
-  registerFormTemp: FormGroup;
   registerForm: FormGroup;
-  registerFormSecond: FormGroup;
-  loginFormTemp: FormGroup;
   submitted = false;
   @ViewChild('placesRef') places: GooglePlaceDirective;
   @ViewChild('search') public searchElement: ElementRef;
@@ -40,6 +38,7 @@ export class LoginComponent implements OnInit {
   registerLink = 'Regístrate ahora';
   actionLink = 'Iniciar sesión';
   fullAddress = {};
+
   login = {};
   copy = [];
   options = {
@@ -56,7 +55,8 @@ export class LoginComponent implements OnInit {
     private _loginService: LoginService,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
   }
 
@@ -99,7 +99,6 @@ export class LoginComponent implements OnInit {
     this.submitted = false;
     this.register = !this.register;
     if (this.register === false) {
-      this.registerForm = this.loginFormTemp;
       this.registerText = '¿Aún no estás registrado?';
       this.registerLink = 'Regístrate ahora';
       this.actionLink = 'Iniciar sesión';
@@ -114,24 +113,25 @@ export class LoginComponent implements OnInit {
   loginAction() {
     this.submitted = true;
     if (this.register === true) {
-      this.registerForm = this.registerFormTemp;
-      //delete this.registerForm.controls['confpass'];
-      this.advanceRegister = true;
+      if (this.advanceRegister === false) {
+        delete this.registerForm.controls['confpass'];
+        this.advanceRegister = true;
+      }
     } else {
-      console.log(this.registerForm);
-      console.log(this.registerForm.invalid);
+      /*
       if (this.registerForm.invalid) {
         return;
       }
-
+      */
       this.login = {
         email: this.registerForm.controls['email'].value,
         pass: this.registerForm.controls['pass'].value
       };
-      alert('SUCCESS!\n\n' + JSON.stringify(this.login));
       this._loginService.sendRegister(JSON.stringify(this.login), 'login').subscribe(
         resul => {
-          console.log(resul.body);
+          if (resul.body !== null) {
+
+          }
         }, error => {
           alert('Usuario incorrecto!');
         }
@@ -140,6 +140,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    //Registro
     this.submitted = true;
     this.copy = this.registerForm.value;
     this.copy['localidad'] = this.fullAddress;
@@ -147,6 +148,8 @@ export class LoginComponent implements OnInit {
     this._loginService.sendRegister(JSON.stringify(this.copy), 'registro').subscribe(
       resul => {
         console.log(resul.body);
+        this.router.navigate(['/user']);
+
       }, error => {
         console.log(error);
       }
@@ -154,26 +157,34 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.registerFormTemp = this.formBuilder.group({
+
+
+    this.registerForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       pass: ['', [Validators.required, Validators.minLength(6)]],
       confpass: ['', [Validators.required, Validators.minLength(6)]],
-    });
-    this.registerFormSecond = this.formBuilder.group({
       nombre: ['', Validators.required],
       nombreusuario: ['', Validators.required],
       edad: ['', Validators.required],
       empresa: ['1'],
       nombre_empresa: ['Routelab'],
-      telefono: ['', Validators.required],
+      telefono: [''],
       foto: ['/img.jpg'],
     });
 
-    this.loginFormTemp = this.formBuilder.group({
+    /*this.loginFormTemp = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       pass: ['', [Validators.required, Validators.minLength(6)]],
     });
-    this.registerForm = this.loginFormTemp;
+
+
+    "SQLSTATE[23000]: Integrity constraint violation:
+    1048 Column 'token' cannot be null{"message":"Lista usuario","data":"
+    {\"idusuario\":\"0\",\"nombreusuario\":\"bhbhbh\",\"email\":\"ssssnsnsn@gmail.com\",\"pass\":\"123456789\",\"nombre\":\"bhbvhvh\",\"edad\":\"31\",\"localidad\":{},\"foto\":\"\\\/img.jpg\",\"telefono\":\"5656565655\",\"empresa\":\"1\",\"nombre_empresa\":\"Routelab\",\"token\":null}"}"
+
+
+    */
+    //this.registerForm = this.loginFormTemp;
   }
 
 

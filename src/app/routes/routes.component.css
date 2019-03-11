@@ -21,8 +21,7 @@
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.45);
 }
 
-.route::before {
-    content: "name of the route";
+.route-title{
     position: absolute;
     background-color: #22626E;
     color: #fff;
