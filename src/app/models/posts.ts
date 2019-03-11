@@ -6,7 +6,7 @@ export class Post {
   private _userID: number;
 
 
-  constructor(postID: number, postTitle: string, description: string, postType="", userID: number) {
+  constructor(postID: number, postTitle: string, description: string, postType= '', userID: number) {
     this._postID = postID;
     this._postTitle = postTitle;
     this._postDescription = description;
