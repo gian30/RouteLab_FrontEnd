@@ -32,13 +32,13 @@ export class LoginComponent implements OnInit {
   submitted = false;
   @ViewChild('placesRef') places: GooglePlaceDirective;
   @ViewChild('search') public searchElement: ElementRef;
+  currentUser: User;
   register = false;
   advanceRegister = false;
   registerText = '¿Aún no estás registrado?';
   registerLink = 'Regístrate ahora';
   actionLink = 'Iniciar sesión';
   fullAddress = {};
-
   login = {};
   copy = [];
   options = {
@@ -130,7 +130,11 @@ export class LoginComponent implements OnInit {
       this._loginService.sendRegister(JSON.stringify(this.login), 'login').subscribe(
         resul => {
           if (resul.body !== null) {
-
+            localStorage.setItem('access_token', resul.body['access_token']);
+            localStorage.setItem('currentUser', JSON.stringify(resul.body['data']));
+            this.currentUser = (<User> JSON.parse(localStorage.getItem('currentUser')));
+            console.log(this.currentUser);
+            this.router.navigate(['/user']);
           }
         }, error => {
           alert('Usuario incorrecto!');

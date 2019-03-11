@@ -10,13 +10,16 @@ declare var jquery: any
   styleUrls: ['./banner.component.css']
 })
 export class BannerComponent implements OnInit {
-
+public currentUser: User;
   constructor() {
   }
 
   ngOnInit() {
-    $(document).ready(function () {
 
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    this.currentUser = <User> user;
+    console.log(this.currentUser);
+    $(document).ready(function () {
       // Hide Header on on scroll down
       var didScroll;
       var navbarHeight = $('.user').outerHeight();
