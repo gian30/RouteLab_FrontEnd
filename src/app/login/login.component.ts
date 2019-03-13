@@ -131,9 +131,11 @@ export class LoginComponent implements OnInit {
         resul => {
           if (resul.body !== null) {
             localStorage.setItem('access_token', resul.body['access_token']);
-            localStorage.setItem('currentUser', JSON.stringify(resul.body['data']));
-            this.currentUser = (<User> JSON.parse(localStorage.getItem('currentUser')));
-            console.log(this.currentUser);
+            let obj: User = JSON.parse(resul.body['data']);
+            console.log(resul.body['data']);
+            console.log(resul.body['data']['locality']);
+            localStorage.setItem('currentUser', JSON.stringify(obj));
+
             this.router.navigate(['/user']);
           }
         }, error => {

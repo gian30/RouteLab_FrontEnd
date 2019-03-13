@@ -10,14 +10,14 @@ declare var jquery: any
   styleUrls: ['./banner.component.css']
 })
 export class BannerComponent implements OnInit {
-public currentUser: User;
+  public currentUser: User;
+
   constructor() {
   }
 
   ngOnInit() {
 
-    const user = JSON.parse(localStorage.getItem('currentUser'));
-    this.currentUser = <User> user;
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     console.log(this.currentUser);
     $(document).ready(function () {
       // Hide Header on on scroll down
@@ -42,7 +42,7 @@ public currentUser: User;
           $('.navmenu').addClass("fixed-nav");
           $('.user').addClass("nav-down");
 
-        }else {
+        } else {
           $('.navmenu').removeClass("fixed-nav");
           $('.user').removeClass("nav-down");
         }

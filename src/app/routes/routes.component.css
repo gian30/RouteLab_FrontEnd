@@ -3,66 +3,79 @@
   padding-bottom: 20px;
 }
 
+.masonry {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 1800px;
+  align-content: space-between;
+}
+
+.masonry-brick {
+  flex: 1 1 80px;
+}
+
 .route {
+  width: 32%;
   display: block;
-    background-color: #fff;
-    position: relative;
-    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.192);
-    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.192);
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.192);
-    margin-top: 40px;
-    cursor: pointer;
-    transition: all 0.5s ease;
+  background-color: #fff;
+  position: relative;
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.192);
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.192);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.192);
+  margin-top: 40px;
+  cursor: pointer;
+  transition: all 0.5s ease;
 }
 
 .route:hover {
-    -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.45);
-    -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.45);
-    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.45);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.45);
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.45);
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.45);
 }
 
-.route-title{
-    position: absolute;
-    background-color: #22626E;
-    color: #fff;
-    top: -13px;
-    padding: 5px 10px;
-    text-align: center;
-    font-size: 15px;
-    text-transform: uppercase;
+.route-title {
+  position: absolute;
+  background-color: #22626E;
+  color: #fff;
+  top: -13px;
+  padding: 5px 10px;
+  text-align: center;
+  font-size: 15px;
+  text-transform: uppercase;
 }
 
 .route__img img {
-    width: 100%;
+  width: 100%;
 }
 
 .route__main {
-    padding: 10px;
+  padding: 10px;
 
 }
 
 .route__desc {
-    padding: 10px 15px;
-    font-weight: 300;
-    font-size: 14px;
-    text-align: center;
-    color: #555555;
-    margin-bottom: 10px;
-    line-height: 1.4em;
+  padding: 10px 15px;
+  font-weight: 300;
+  font-size: 14px;
+  text-align: center;
+  color: #555555;
+  margin-bottom: 10px;
+  line-height: 1.4em;
 }
 
 .route__info-box {
-    background-color: #F2F2F2;
-    padding: 5px;
-    font-size: 12px;
-    width: 110px;
-    border-radius: 5px;
-    text-align: center;
-    color: #797979;
+  background-color: #F2F2F2;
+  padding: 5px;
+  font-size: 12px;
+  width: 110px;
+  border-radius: 5px;
+  text-align: center;
+  color: #797979;
 }
 
 .route__info-box img {
-    width: 17px;
+  width: 17px;
 }
 
 h2 {

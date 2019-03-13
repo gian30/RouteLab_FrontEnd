@@ -1,106 +1,126 @@
+
 class User {
-  private _userID: number;
-  private _userUsername: string;
-  private _userName: string;
-  private _userEmail: string;
-  private _userAge: string;
-  private _userPhone: string;
-  private _userLocality: Locality;
-  private _userPhoto: string;
-  private _userAdmin: boolean;
-  private _userEmpresa: string;
+  private _idusuario: number;
+  private _nombreusuario: string;
+  private _email: string;
+  private _pass: string;
+  private _nombre: string;
+  private _edad: string;
+  private _localidad: Localidad;
+  private _foto: string;
+  private _telefono: string;
+  private _empresa: string;
+  private _nombre_empresa: string;
+  private _token: string;
 
-  constructor(userID: number, userUsername: string, userName: string, userEmail: string, userAge: string,
-              userPhone: string, userLocality: Locality, userPhoto: string, userAdmin = false, userEmpresa = '') {
-    this._userID = userID;
-    this._userUsername = userUsername;
-    this._userName = userName;
-    this._userEmail = userEmail;
-    this._userAge = userAge;
-    this._userPhone = userPhone;
-    this._userLocality = userLocality;
-    this._userPhoto = userPhoto;
-    this._userAdmin = userAdmin;
-    this._userEmpresa = userEmpresa;
+  constructor(idusuario: number, nombreusuario: string, email: string, pass: string, nombre: string, edad: string, localidad: Localidad, foto: string, telefono: string, empresa: string, nombre_empresa: string, token: string) {
+    this._idusuario = idusuario;
+    this._nombreusuario = nombreusuario;
+    this._email = email;
+    this._pass = pass;
+    this._nombre = nombre;
+    this._edad = edad;
+    this._localidad = localidad;
+    this._foto = foto;
+    this._telefono = telefono;
+    this._empresa = empresa;
+    this._nombre_empresa = nombre_empresa;
+    this._token = token;
   }
 
-  get userID(): number {
-    return this._userID;
+  get idusuario(): number {
+    return this._idusuario;
   }
 
-  set userID(value: number) {
-    this._userID = value;
+  set idusuario(value: number) {
+    this._idusuario = value;
   }
 
-  get userUsername(): string {
-    return this._userUsername;
+  get nombreusuario(): string {
+    return this._nombreusuario;
   }
 
-  set userUsername(value: string) {
-    this._userUsername = value;
+  set nombreusuario(value: string) {
+    this._nombreusuario = value;
   }
 
-  get userName(): string {
-    return this._userName;
+  get email(): string {
+    return this._email;
   }
 
-  set userName(value: string) {
-    this._userName = value;
+  set email(value: string) {
+    this._email = value;
   }
 
-  get userEmail(): string {
-    return this._userEmail;
+  get pass(): string {
+    return this._pass;
   }
 
-  set userEmail(value: string) {
-    this._userEmail = value;
+  set pass(value: string) {
+    this._pass = value;
   }
 
-  get userAge(): string {
-    return this._userAge;
+  get nombre(): string {
+    return this._nombre;
   }
 
-  set userAge(value: string) {
-    this._userAge = value;
+  set nombre(value: string) {
+    this._nombre = value;
   }
 
-  get userPhone(): string {
-    return this._userPhone;
+  get edad(): string {
+    return this._edad;
   }
 
-  set userPhone(value: string) {
-    this._userPhone = value;
+  set edad(value: string) {
+    this._edad = value;
   }
 
-  get userLocality(): Locality {
-    return this._userLocality;
+  get localidad(): Localidad {
+    return this._localidad;
   }
 
-  set userLocality(value: Locality) {
-    this._userLocality = value;
+  set localidad(value: Localidad) {
+    this._localidad = value;
   }
 
-  get userPhoto(): string {
-    return this._userPhoto;
+  get foto(): string {
+    return this._foto;
   }
 
-  set userPhoto(value: string) {
-    this._userPhoto = value;
+  set foto(value: string) {
+    this._foto = value;
   }
 
-  get userAdmin(): boolean {
-    return this._userAdmin;
+  get telefono(): string {
+    return this._telefono;
   }
 
-  set userAdmin(value: boolean) {
-    this._userAdmin = value;
+  set telefono(value: string) {
+    this._telefono = value;
   }
 
-  get userEmpresa(): string {
-    return this._userEmpresa;
+  get empresa(): string {
+    return this._empresa;
   }
 
-  set userEmpresa(value: string) {
-    this._userEmpresa = value;
+  set empresa(value: string) {
+    this._empresa = value;
+  }
+
+  get nombre_empresa(): string {
+    return this._nombre_empresa;
+  }
+
+  set nombre_empresa(value: string) {
+    this._nombre_empresa = value;
+  }
+
+  get token(): string {
+    return this._token;
+  }
+
+  set token(value: string) {
+    this._token = value;
   }
 }
