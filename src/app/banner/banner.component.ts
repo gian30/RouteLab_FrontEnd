@@ -11,6 +11,7 @@ declare var jquery: any
 })
 export class BannerComponent implements OnInit {
   public currentUser: User;
+  public localidad: Localidad;
 
   constructor() {
   }

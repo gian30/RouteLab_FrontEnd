@@ -4,14 +4,17 @@ export class Post {
   private _postDescription: string;
   private _postType: string;
   private _userID: number;
+  private _postImg: string;
 
 
-  constructor(postID: number, postTitle: string, description: string, postType= '', userID: number) {
+  constructor(postID: number, postTitle: string, description: string, postType = '', userID: number, postImg = "../../assets/img/sample_route.png") {
     this._postID = postID;
     this._postTitle = postTitle;
     this._postDescription = description;
     this._postType = postType;
     this._userID = userID;
+    this._postImg = postImg;
+
   }
 
 
@@ -29,6 +32,14 @@ export class Post {
 
   set postTitle(value: string) {
     this._postTitle = value;
+  }
+
+  get postImg(): string {
+    return this._postImg;
+  }
+
+  set postImg(value: string) {
+    this._postImg = value;
   }
 
   get postDescription(): string {
