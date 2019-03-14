@@ -3,20 +3,7 @@
   padding-bottom: 20px;
 }
 
-.masonry {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  max-height: 1800px;
-  align-content: space-between;
-}
-
-.masonry-brick {
-  flex: 1 1 80px;
-}
-
 .route {
-  width: 32%;
   display: block;
   background-color: #fff;
   position: relative;
