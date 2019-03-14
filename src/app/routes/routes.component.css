@@ -45,8 +45,12 @@
   text-transform: uppercase;
 }
 
-.route__img img {
+.route__img-image {
   width: 100%;
+  height: 240px;
+  background-repeat: no-repeat!important;
+  background-size: cover!important;
+  background-position: center!important;
 }
 
 .route__main {
