@@ -58,8 +58,8 @@ img {
 }
 
 .button-photo:hover {
-  background: rgba(0,0,0, 0.3);
--webkit-backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.3);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   color: #fff;
 
@@ -76,6 +76,7 @@ img {
   margin: 10px 0;
 
 }
+
 .button-photo:hover .go-to {
   background-color: #22626E;
   color: #fff;
@@ -87,5 +88,3 @@ img {
   color: #fff;
 
 }
-
-
