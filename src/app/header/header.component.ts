@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  private BARS = 'bars-solid.png';
-  private SEARCH = ('../../assets/icons/search.png');
+   BARS = 'bars-solid.png';
+   SEARCH = ('../../assets/icons/search.png');
 
 
   constructor() { }

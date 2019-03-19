@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
-import {LoginComponent} from './login.component';
+import {LoginComponent} from '../login/login.component';
 
 
 @Injectable()

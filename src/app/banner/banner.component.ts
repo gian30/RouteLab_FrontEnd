@@ -11,6 +11,7 @@ declare var jquery: any
 })
 export class BannerComponent implements OnInit {
   public currentUser: User;
+  public currentLocation: Localidad;
 
   constructor() {
   }
@@ -18,7 +19,13 @@ export class BannerComponent implements OnInit {
   ngOnInit() {
 
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    console.log(this.currentUser);
+   /*
+    if (this.currentUser !== null) {
+      this.currentLocation = JSON.parse(this.currentUser.localidad);
+      console.log(this.currentLocation);
+    }
+*/
+
     $(document).ready(function () {
       // Hide Header on on scroll down
       var didScroll;

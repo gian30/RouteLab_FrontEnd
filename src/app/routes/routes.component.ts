@@ -1,18 +1,20 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {Post} from '../models/posts';
-
+import {Post} from '../models/post';
+import {PostService} from '../services/post.service';
+import {LoginService} from "../services/login.service";
 
 @Component({
   selector: 'app-routes',
   templateUrl: './routes.component.html',
-  styleUrls: ['./routes.component.css']
+  styleUrls: ['./routes.component.css'],
+  providers: [PostService]
 })
 export class RoutesComponent implements OnInit {
+  public posts: Post[] = [];
 
-
-
-  constructor() {
+  constructor(private _postService: PostService) {
   }
+
   private ROUTE_SAMPLE = ('../../assets/img/sample_route.png');
   private LOCATION = ('../../assets/icons/location.png');
   private STAR = ('../../assets/icons/star.png');
@@ -21,20 +23,7 @@ export class RoutesComponent implements OnInit {
   @Input() titleRoutes: string;
 
 
-  routes = [
-    new Post(1, "Ruta1", "Lorem ipsum dolor sit amet, in eos vivendo singulis. Eum illum gloriatur neglegentur ea. Te falli putent cum, probo ferri luptatum vix et.", "ruta", 1),
-    new Post(2, "Ruta2", "Vero dolvet mentitum atomrum ea quero dolorem iracundia at eum, movet mentitum atomorum ea quero dolorem iracundia at eum, movet mentitum atomorum ea qui, nostrum expetenda ne quo.", "ruta", 2),
-    new Post(3, "Ruta3", "Eum illum gloriatur neglegentur ea.njnjnjnjnjnVero dolorem iracundia at eum, movet mentitum atomorum ea quero dolorem iracundia at eum, movet mentitum atomorum ea quero dolorem ", "ruta", 3, "../../assets/img/2.jpeg"),
-    new Post(4, "Ruta4", "Te Lorem ipsum dolor sit amet, in eos vivendo singulis. Eum illum gloriaturfalli putent cum, probo ferri ipsum dolor sit amet, in eos vivendo singulis.  luptatuputent cum, probo ferri luptatuputent cum, probo ferri luptatum vix et.nn", "ruta", 1),
-    new Post(5, "Ruta5", "Lorem ipsum dolor sit amet, in eos vivendo singulis. Eum illum gloriatur neglegentur ea. Te falli putent cum, probo ferri luptatum vix et.", "ruta", 1),
-    new Post(6, "Ruta6", "Vero dolorem  ipsum dolor sit amet, nostrum expetenda n, in eos vivendo singulis. mentitum atomorum ea qui, nostrum expetenda ne quo.", "ruta", 2),
-    new Post(7, "Ruta7", "Eum illum Lorem ipsum dolor sit amet, in eos vivendo singulis. Eum illum gloriaturgloriatur neglegentur ea. I putent cum, probo ferri ipsum dolor sit amet, in eos vivendo singulis.", "ruta", 3, "../../assets/img/1.jpeg"),
-    new Post(8, "Ruta8", "Te falli putent cum, probo ferri luptatum vix et.", "ruta", 1),
-    new Post(9, "Ruta9", "Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, in eos vivendo singulis. Eum illum gloriaturLorem ipsum dolor sit amet, in eos vivendo singulis. Eum illum gloriaturin eos vivendo singulis. Eum illum gloriatur neglegentur ea. Te falli putent cum, probo ferri luptatum vix et.", "ruta", 1),
-    new Post(10, "Ruta10", "Vero dolorem iracundia at eum, movet mentitum atomorum ea qui, nostrum expetenda ne quo. , probo ferri luptatum vix et.", "ruta", 2),
-    new Post(11, "Ruta11", "Eum illum gloriatur neglegentur ea. , probo ferri luptatum vix et., probo ferri luptatum vix et.", "ruta", 3),
-    new Post(12, "Ruta12", "Te falli Lorem ipsum dolor sit amet, in eos vivendo singulis. Eum illum gloriaturputent cum, probo ferri  putent cum, probo ferri luptatum vix et.", "ruta", 1)];
-
+  routes = [];
 
   category = 'Categoría';
   categories = ['Sol y playa', 'Deportivo', 'Naturaleza', 'De montaña', 'Histórico', 'Aventura', 'Rural', 'Científico'];
@@ -44,8 +33,20 @@ export class RoutesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadPosts();
   }
 
+  loadPosts() {
+    this._postService.getPosts().subscribe(
+      resul => {
+        if (resul.body !== null) {
+          this.posts = <Post[]> resul.body['data'];
+        }
+      }, error => {
+        alert('error!');
+      }
+    );
+  }
 
   assignBlack() {
     const element = document.getElementById('addBlack');

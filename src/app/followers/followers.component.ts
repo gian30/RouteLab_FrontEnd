@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./followers.component.css']
 })
 export class FollowersComponent implements OnInit {
-  private STAR = ('../../assets/icons/star-black.png');
-  private STARNF = ('../../assets/icons/star-black2.png');
+   STAR = ('../../assets/icons/star-black.png');
+   STARNF = ('../../assets/icons/star-black2.png');
   constructor() { }
 
   ngOnInit() {

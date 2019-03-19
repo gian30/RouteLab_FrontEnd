@@ -2,17 +2,17 @@
   <div class="container">
     <h2>{{titleRoutes}}</h2>
     <div class="row">
-      <div *ngFor="let ruta of routes; let i=index" class="col-lg-4 col-md-6">
-        <a [routerLink]="'/route/'+ruta.postID" class="route">
+      <div *ngFor="let ruta of posts; let i=index" class="col-lg-4 col-md-6">
+        <a [routerLink]="'/route/'+ruta.idpost" class="route">
           <div class="route-title">
-            {{ruta.postTitle}}
+            {{ruta.titulo}}
           </div>
           <div class="route__img">
-            <div [style.background] = "'url('+ruta.postImg+')'" class="route__img-image"></div>
+            <div [style.background]="'url('+ruta.postImg+')'" class="route__img-image"></div>
           </div>
           <div class="route__main">
             <p class="route__desc">
-              {{ruta.postDescription}}
+              {{ruta.descripcion | slice:0:100 }}{{'...'}}
             </p>
             <div class="route__info d-flex justify-content-between">
               <div class="route__info-box">
@@ -39,4 +39,6 @@
 
 </div>
 
-<ng-template #showroute><app-route></app-route></ng-template>
+<ng-template #showroute>
+  <app-route></app-route>
+</ng-template>

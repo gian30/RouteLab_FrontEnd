@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import * as jQuery from 'jquery';
 import {AgmCoreModule} from '@agm/core';
+import {PostService} from "../services/post.service";
+import {Post} from "../models/post";
+import { ActivatedRoute } from '@angular/router';
 
 declare var $: any;
 declare var jquery: any;
@@ -8,12 +11,15 @@ declare var jquery: any;
 @Component({
   selector: 'app-route',
   templateUrl: './route.component.html',
-  styleUrls: ['./route.component.css']
+  styleUrls: ['./route.component.css'],
+  providers: [PostService]
 })
 export class RouteComponent implements OnInit {
-  private STAR = ('../../assets/icons/star.png');
-  private CURRENTIMG = ('../../assets/img/route_image.png');
-  private ROUTEIMGS = [
+  public post = new Post();
+  private id = this.route.snapshot.paramMap.get("id")
+   STAR = ('../../assets/icons/star.png');
+   CURRENTIMG = ('../../assets/img/route_image.png');
+   ROUTEIMGS = [
     '../../assets/img/sample_images/1.jpg',
     '../../assets/img/sample_images/2.jpg',
     '../../assets/img/sample_images/3.jpg',
@@ -33,7 +39,7 @@ export class RouteComponent implements OnInit {
   destination = { lat: 41.391496, lng: 2.155151 };
 
 
-  constructor() {
+  constructor(private _postService: PostService, private route: ActivatedRoute) {
   }
 
   ngAfterViewInit(): void {
@@ -49,6 +55,18 @@ export class RouteComponent implements OnInit {
     });
   }
 
+  loadPosts() {
+    this._postService.getPost(this.id).subscribe(
+      resul => {
+        if (resul.body !== null) {
+          this.post = <Post> resul.body['data'];
+          console.log(this.post);
+        }
+      }, error => {
+        alert('error!');
+      }
+    );
+  }
 
   loadPhoto(photo) {
     this.CURRENTIMG = photo;
@@ -56,6 +74,8 @@ export class RouteComponent implements OnInit {
 
   ngOnInit() {
     window.scrollTo(0, 0);
+    this.loadPosts()
+
   }
 
 }
