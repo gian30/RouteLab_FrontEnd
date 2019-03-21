@@ -81,7 +81,8 @@ a:not([href]):not([tabindex]) {
 .individual-photo {
   position: relative;
   align-items: center;
-  margin-bottom: 10%;
+  margin-bottom: 5%;
+  width: 105%;
 }
 
 .button-photo {

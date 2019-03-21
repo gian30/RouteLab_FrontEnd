@@ -22,8 +22,8 @@ declare var google;
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  templateUrl: './login.component2.html',
+  styleUrls: ['./login.component2.css'],
   providers: [LoginService]
 })
 
