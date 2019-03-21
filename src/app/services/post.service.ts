@@ -7,7 +7,7 @@ import {map} from 'rxjs/operators';
 
 export class PostService {
   httpHeaders = new HttpHeaders({
-    'Access-Control-Allow-Origin': 'http://localhost:4200',
+    'Access-Control-Allow-Origin': 'http://routelab.es',
     'Content-Type': 'application/json',
     'Accept': 'application/json',
     'Access-Control-Allow-Credentials': 'true',
@@ -19,7 +19,7 @@ export class PostService {
   }
 
   getPosts() {
-    let ruta = '/api.php?controller=post';
+    let ruta = '/backend/clases/webservice/api.php?controller=post';
     return this._conexHttp.get(ruta,
       {
         headers:
@@ -29,7 +29,7 @@ export class PostService {
   }
 
   getPost(id) {
-    let ruta = 'ng build --pro --base-href'+id;
+    let ruta = '/backend/clases/webservice/api.php?controller=post&id='+id;
     return this._conexHttp.get(ruta,
       {
         headers:

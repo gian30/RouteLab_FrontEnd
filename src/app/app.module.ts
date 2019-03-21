@@ -7,6 +7,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AgmCoreModule} from '@agm/core';
 import {AgmDirectionModule} from 'agm-direction';
 import {GooglePlaceModule} from 'ngx-google-places-autocomplete';
+import { Injectable } from '@angular/core';
+import { Router, CanActivate } from '@angular/router';
+import { LoginService } from './services/login.service';
 
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
@@ -41,11 +44,32 @@ export function provideConfig() {
   return CONFIG;
 }
 
+@Injectable()
+export class AuthGuard implements CanActivate {
+
+  base_url: string;
+
+  constructor(private router: Router
+    , private authService: LoginService) {}
+
+  canActivate() {
+    // Check to see if a user has a valid token
+    if (this.authService.isAuthenticated()) {
+      // If they do, return true and allow the user to load app
+      return true;
+    }
+    // If not, they redirect them to the login page
+    this.router.navigate(['/user']);
+    return false;
+  }
+
+}
+
 const routes: Routes = [
   {path: 'routes', component: RoutesComponent},
   {path: 'route/:id', component: RouteComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'user', component: BannerComponent},
+  {path: 'user', canActivate: [AuthGuard], component: BannerComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'terms', component: TermsComponent},
   {path: '', component: MainComponent}
@@ -93,8 +117,9 @@ RouterModule.forRoot(routes,
   providers: [{
     provide: AuthServiceConfig,
     useFactory: provideConfig
-  }],
-  bootstrap: [AppComponent]
+  }, AuthGuard, LoginService],
+  bootstrap: [AppComponent],
+
 })
 export class AppModule {
 }

@@ -1,6 +1,6 @@
 {
-  "/api.php*": {
-    "target": "http://172.18.1.233/Proyecto/Final/Clases/WebService/",
+  "/backend/*": {
+    "target": "http://www.routelab.es",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true

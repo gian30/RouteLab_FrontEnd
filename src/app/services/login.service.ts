@@ -14,7 +14,7 @@ export class LoginService {
 
   sendRegister(info: String, funcion: String) {
     let httpHeaders = new HttpHeaders({
-      'Access-Control-Allow-Origin': 'http://localhost:4200',
+      'Access-Control-Allow-Origin': 'http://www.routelab.es',
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       'Access-Control-Allow-Credentials': 'true',
@@ -23,7 +23,7 @@ export class LoginService {
 
     });
 
-    let ruta = '/api.php?controller=usuario&funcion=' + funcion;
+    let ruta = '/backend/clases/webservice/api.php?controller=usuario&funcion=' + funcion;
 
     return this._conexHttp.post(ruta, info,
       {
@@ -31,6 +31,19 @@ export class LoginService {
           {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
         observe: 'response'
       });
+  }
+
+
+  isAuthenticated() {
+    // get the auth token from localStorage
+    let token = localStorage.getItem('access_token');
+
+    // check if token is set, then...
+    if (token) {
+      return true;
+    }
+
+    return false;
   }
 
 

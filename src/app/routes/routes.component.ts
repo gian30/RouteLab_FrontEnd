@@ -43,7 +43,7 @@ export class RoutesComponent implements OnInit {
           this.posts = <Post[]> resul.body['data'];
         }
       }, error => {
-        alert('error!');
+        console.log(error);
       }
     );
   }
