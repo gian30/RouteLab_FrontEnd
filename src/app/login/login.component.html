@@ -26,14 +26,17 @@
           </div>
           <input *ngIf="register" type="password" formControlName="confpass" class="signin__input"
                  placeholder="Confirmar contraseña">
+          <div *ngIf="submitted && f['confpass'].errors !== null">
+            <div *ngIf="f['confpass'].errors.required" class="error-message">Password confirmation is required</div>
+          </div>
           <div class="signin__details d-flex justify-content-between align-items-center">
             <div class="signin__reg">
               <p class="signin__text">
                 {{registerText}}
               </p>
-              <a (click)="goRegister()" class="signin__link">
+              <button (click)="goRegister()" class="signin__link">
                 {{registerLink}}
-              </a>
+              </button>
             </div>
             <button type="submit" class="signin__button button">
               {{actionLink}}
@@ -49,7 +52,7 @@
             <input type="text" class="signin__input signin__input_age"  formControlName="edad" placeholder="Edad">
             <input type="text" class="signin__input" formControlName="telefono" placeholder="Teléfono">
           </div>
-          <div class="signin__details d-flex justify-content-between">
+          <div class="signin__details d-flex justify-content-between  align-items-center">
             <div class="signin__reg">
               <p class="signin__terms">
                 By signing up, you agree to our

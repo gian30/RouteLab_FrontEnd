@@ -19,12 +19,7 @@ export class BannerComponent implements OnInit {
   ngOnInit() {
 
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-   /*
-    if (this.currentUser !== null) {
-      this.currentLocation = JSON.parse(this.currentUser.localidad);
-      console.log(this.currentLocation);
-    }
-*/
+
 
     $(document).ready(function () {
       // Hide Header on on scroll down
