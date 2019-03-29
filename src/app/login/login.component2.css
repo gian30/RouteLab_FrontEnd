@@ -51,12 +51,11 @@
   margin-top: 15px;
   margin-bottom: 5px;
 
- }
+}
 
 .signin__button {
 
   padding: 10px 40px;
-
 
 }
 
@@ -118,9 +117,6 @@ agm-map {
   color: #267581;
 }
 
-
-
-
 /*______________________________________________________________*/
 
 .google-button {
@@ -137,11 +133,9 @@ agm-map {
   padding: 0;
 }
 
-
-
 .google-button:hover {
   box-shadow: 1px 4px 5px 1px rgba(0, 0, 0, 0.1);
-  background-color: rgba(225,225,225,0.7);
+  background-color: rgba(225, 225, 225, 0.7);
 }
 
 .google-button:active {
