@@ -1,6 +1,6 @@
 <header></header>
 <router-outlet></router-outlet>
-<app-chat></app-chat>
+<app-chat *ngIf="authService.isAuthenticated()"></app-chat>
 <app-footer></app-footer>
 
 

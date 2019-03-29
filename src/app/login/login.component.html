@@ -27,7 +27,7 @@
           <input *ngIf="register" type="password" formControlName="confpass" class="signin__input"
                  placeholder="Confirmar contraseña">
           <div *ngIf="submitted && f['confpass'].errors !== null">
-            <div *ngIf="f['confpass'].errors.required" class="error-message">Password confirmation is required</div>
+            <div *ngIf="f['confpass'].errors" class="error-message">Password don't match</div>
           </div>
           <div class="signin__details d-flex justify-content-between align-items-center">
             <div class="signin__reg">

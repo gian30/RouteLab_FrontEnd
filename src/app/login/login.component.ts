@@ -115,6 +115,8 @@ export class LoginComponent implements OnInit {
         email: ['', [Validators.required, Validators.email]],
         pass: ['', [Validators.required, Validators.minLength(6)]],
         confpass: ['', [Validators.required, Validators.minLength(6)]]
+      }, {
+        validator: MustMatch('pass', 'confpass')
       });
     }
   }
@@ -124,7 +126,6 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
     if (this.register === true) {
       if (this.registerForm.invalid) {
-        console.log(this.f['confpass'].errors);
         return;
       }
       if (this.advanceRegister === false) {
@@ -141,7 +142,6 @@ export class LoginComponent implements OnInit {
         });
       }
     } else {
-
       this.login = {
         email: this.registerForm.controls['email'].value,
         pass: this.registerForm.controls['pass'].value

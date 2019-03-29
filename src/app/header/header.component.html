@@ -28,18 +28,22 @@
               <img [src]="'../../assets/icons/'+BARS" alt="Bars" class="categories-icon">
             </button>
             <div class="dropdown__content" ngbDropdownMenu>
-              <div class="cont d-flex">
-                <button (click)="BARS = 'road.png'" class="dropdown-item">
+              <div class="d-flex flex-column">
+                <button (click)="BARS = 'road.png'" class="dropdown-item d-flex align-items-center">
                   <img [src]="'../../assets/icons/road.png'" alt="road" class="categories-icon">
+                  <p class="d-block dropdown-item-desc">Rutas</p>
                 </button>
-                <button (click)="BARS = 'photos.png'" class="dropdown-item">
+                <button (click)="BARS = 'photos.png'" class="dropdown-item d-flex">
                   <img [src]="'../../assets/icons/photos.png'" alt="photos" class="categories-icon">
+                  <p class="d-block dropdown-item-desc">Fotos</p>
                 </button>
-                <button (click)="BARS = 'users.png'" class="dropdown-item">
+                <button (click)="BARS = 'users.png'" class="dropdown-item d-flex">
                   <img [src]="'../../assets/icons/users.png'" alt="users" class="categories-icon">
+                  <p class="d-block dropdown-item-desc">Usuarios</p>
                 </button>
-                <button (click)="BARS = 'bars-solid.png'" class="dropdown-item">
-                  <img [src]="'../../assets/icons/bars-solid.png'" alt="all" class="categories-icon">
+                <button (click)="BARS = 'distance.png'" class="dropdown-item d-flex">
+                  <img [src]="'../../assets/icons/distance.png'" alt="all" class="categories-icon">
+                  <p class="d-block dropdown-item-desc">Todo</p>
                 </button>
               </div>
             </div>

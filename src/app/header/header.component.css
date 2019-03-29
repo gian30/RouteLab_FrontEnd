@@ -49,6 +49,10 @@
   padding: 7px;
 }
 
+.dropdown-item-desc {
+  margin-left: 5px
+}
+
 .dropdown-item:hover {
   background-color: #D8D8D8;
 }
@@ -76,7 +80,7 @@
 }
 
 .search-icon, .categories-icon {
-  width: 15px;
+  width: 20px;
 }
 
 .sign-button {

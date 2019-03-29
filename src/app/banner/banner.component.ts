@@ -19,6 +19,7 @@ export class BannerComponent implements OnInit {
   ngOnInit() {
 
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.currentLocation = JSON.parse(String(this.currentUser.localidad));
 
 
     $(document).ready(function () {
