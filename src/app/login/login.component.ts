@@ -1,6 +1,6 @@
 /// <reference types="@types/googlemaps" />
 import {Component, OnInit} from '@angular/core';
-import {ViewChild, ElementRef, NgZone, } from '@angular/core';
+import {ViewChild, ElementRef, NgZone,} from '@angular/core';
 import {LoginService} from '../services/login.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MustMatch} from './_helpers/must-match.validator';
@@ -29,6 +29,7 @@ declare var google;
 
 export class LoginComponent implements OnInit {
   registerForm: FormGroup;
+  registerFormFirst: FormGroup;
   submitted = false;
   @ViewChild('placesRef') places: GooglePlaceDirective;
   @ViewChild('search') public searchElement: ElementRef;
@@ -102,10 +103,19 @@ export class LoginComponent implements OnInit {
       this.registerText = '¿Aún no estás registrado?';
       this.registerLink = 'Regístrate ahora';
       this.actionLink = 'Iniciar sesión';
+      this.registerForm = this.formBuilder.group({
+        email: ['', [Validators.required, Validators.email]],
+        pass: ['', [Validators.required, Validators.minLength(6)]]
+      });
     } else {
       this.registerText = '¿Ya registrado?';
       this.registerLink = 'Iniciar sesión';
       this.actionLink = 'Crear cuenta';
+      this.registerForm = this.formBuilder.group({
+        email: ['', [Validators.required, Validators.email]],
+        pass: ['', [Validators.required, Validators.minLength(6)]],
+        confpass: ['', [Validators.required, Validators.minLength(6)]]
+      });
     }
   }
 
@@ -113,16 +123,25 @@ export class LoginComponent implements OnInit {
   loginAction() {
     this.submitted = true;
     if (this.register === true) {
+      if (this.registerForm.invalid) {
+        console.log(this.f['confpass'].errors);
+        return;
+      }
       if (this.advanceRegister === false) {
         delete this.registerForm.controls['confpass'];
         this.advanceRegister = true;
+        this.registerForm = this.formBuilder.group({
+          nombre: ['', Validators.required],
+          nombreusuario: ['', Validators.required],
+          edad: ['', Validators.required],
+          empresa: ['1'],
+          nombre_empresa: ['Routelab'],
+          telefono: [''],
+          foto: ['/img.jpg'],
+        });
       }
     } else {
-      /*
-      if (this.registerForm.invalid) {
-        return;
-      }
-      */
+
       this.login = {
         email: this.registerForm.controls['email'].value,
         pass: this.registerForm.controls['pass'].value
@@ -148,7 +167,10 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     //Registro
     this.submitted = true;
+
     this.copy = this.registerForm.value;
+    this.copy['email'] = this.registerFormFirst.controls['email'].value;
+    this.copy['pass'] = this.registerFormFirst.controls['pass'].value;
     this.copy['localidad'] = this.fullAddress;
     alert('SUCCESS!\n\n' + JSON.stringify(this.copy));
     this._loginService.sendRegister(JSON.stringify(this.copy), 'registro').subscribe(
@@ -161,20 +183,14 @@ export class LoginComponent implements OnInit {
     );
   }
 
+  onChangeEmail() {
+    console.log("changed!!!");
+  }
+
   ngOnInit() {
-
-
     this.registerForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      pass: ['', [Validators.required, Validators.minLength(6)]],
-      confpass: ['', [Validators.required, Validators.minLength(6)]],
-      nombre: ['', Validators.required],
-      nombreusuario: ['', Validators.required],
-      edad: ['', Validators.required],
-      empresa: ['1'],
-      nombre_empresa: ['Routelab'],
-      telefono: [''],
-      foto: ['/img.jpg'],
+      pass: ['', [Validators.required, Validators.minLength(6)]]
     });
 
     /*this.loginFormTemp = this.formBuilder.group({
