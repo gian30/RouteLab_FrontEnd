@@ -34,6 +34,8 @@ import {
 } from 'ng4-social-login';
 
 const CONFIG = new AuthServiceConfig([
+
+  // LOGIN
   {
     id: GoogleLoginProvider.PROVIDER_ID,
     provider: new GoogleLoginProvider('307596815036-s7ju0ki261cec6a5d1jalq1lef5u7mbk.apps.googleusercontent.com')
@@ -109,6 +111,7 @@ RouterModule.forRoot(routes,
     ReactiveFormsModule,
     GooglePlaceModule,
     AgmCoreModule.forRoot({
+      // GOOLGE
       apiKey: 'AIzaSyBQwgG1zHjVXd6omQVAccKdv9skMCPg3-E'
     }),
     AgmDirectionModule,

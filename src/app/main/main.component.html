@@ -29,18 +29,22 @@
               </div>
             </div>
           </div>
-          <div class="search__section search__section_location">
+          <div class="search__section search__section_location" *ngIf="loadGoogle">
             <p class="search__title">
-              ¿Dónde estás?
+              ¿Dónde estas?
             </p>
-            <input type="text" class="search__input" placeholder="Barcelona">
+            <input type="text" class="search__input" placeholder="Ciudad"
+                   ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
+                   (onAddressChange)="handleAddressChange($event)"/>
           </div>
-          <div class="search__section search__section_destination">
+          <div class="search__section search__section_location" >
             <p class="search__title">
-              ¿Dónde te gustaría ir?
+              Opciones de ruta
             </p>
-            <input type="text" class="search__input" placeholder="Paris">
+            <input type="text" class="search__input" placeholder="Selecciona"
+                   />
           </div>
+
           <button class="search__button">Encuentra tu ruta</button>
         </div>
       </div>
@@ -50,3 +54,4 @@
 <div class="routes__component">
   <app-routes titleRoutes="Mejores rutas"></app-routes>
 </div>
+
