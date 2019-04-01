@@ -24,8 +24,18 @@ export class LoginService {
     });
 
     let ruta = '/backend/clases/webservice/api.php?controller=usuario&funcion=' + funcion;
-
     return this._conexHttp.post(ruta, info,
+      {
+        headers:
+          {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+        observe: 'response'
+      });
+  }
+
+
+  checkEmail(email: String) {
+    let ruta = "backend/clases/webservice/api.php?controller=usuario&funcion=existe";
+    return this._conexHttp.post(ruta, email,
       {
         headers:
           {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},

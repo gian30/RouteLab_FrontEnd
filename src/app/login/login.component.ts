@@ -36,12 +36,14 @@ export class LoginComponent implements OnInit {
   currentUser: User;
   register = false;
   advanceRegister = false;
+  emailExist = false;
   registerText = '¿Aún no estás registrado?';
   registerLink = 'Regístrate ahora';
   actionLink = 'Iniciar sesión';
   fullAddress = {};
   login = {};
   copy = [];
+  email = {};
   options = {
     types: ['(cities)'],
     componentRestrictions: {country: 'es'}
@@ -184,7 +186,14 @@ export class LoginComponent implements OnInit {
   }
 
   onChangeEmail() {
-    console.log("changed!!!");
+    this.email['email'] = this.registerForm.controls['email'].value;
+    this._loginService.checkEmail(JSON.stringify(this.email)).subscribe(
+      resul => {
+        this.emailExist = resul.body['data'];
+      }, error => {
+        console.log(error);
+      }
+    );
   }
 
   ngOnInit() {
