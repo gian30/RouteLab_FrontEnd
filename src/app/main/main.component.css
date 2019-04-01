@@ -43,14 +43,12 @@
   background-color: #fff;
   padding: 25px 40px;
   min-width: 310px;
-
   border: solid #d2e0df;
   border-left: none;
   border-width: 0.001em;
 }
 
 .search__section_category {
-  border-left: solid #d2e0df;
   border-width: 0.001em;
 }
 

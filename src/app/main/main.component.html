@@ -38,8 +38,7 @@
             <input type="text" class="search__input" placeholder="Ciudad"
                    ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
                    (onAddressChange)="handleAddressChange($event)"/>
-          </div>
-          <!--Opcines de rutas-->
+          </div><!--Opcines de rutas-->
           <div class="search__section search__section_category">
             <p class="search__title">
               Opciones de ruta
@@ -56,7 +55,6 @@
               </div>
             </div>
           </div>
-
           <button class="search__button">Encuentra tu ruta</button>
         </div>
       </div>
