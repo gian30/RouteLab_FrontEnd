@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import * as jQuery from 'jquery';
 import {AgmCoreModule} from '@agm/core';
-import {PostService} from "../services/post.service";
-import {Post} from "../models/post";
+import {PostService} from '../services/post.service';
+import {Post} from '../models/post';
 import { ActivatedRoute } from '@angular/router';
 
 declare var $: any;
@@ -16,7 +16,7 @@ declare var jquery: any;
 })
 export class RouteComponent implements OnInit {
   public post = new Post();
-  private id = this.route.snapshot.paramMap.get("id")
+  private id = this.route.snapshot.paramMap.get('id');
    STAR = ('../../assets/icons/star.png');
    CURRENTIMG = ('../../assets/img/route_image.png');
    ROUTEIMGS = [
@@ -33,8 +33,8 @@ export class RouteComponent implements OnInit {
   ];
 
 
-  lat: number = 41.3907285;
-  lng: number = 2.1745089;
+  lat = 41.3907285;
+  lng = 2.1745089;
   origin = { lat: 41.388909, lng: 2.167621 };
   destination = { lat: 41.391496, lng: 2.155151 };
 
@@ -74,7 +74,7 @@ export class RouteComponent implements OnInit {
 
   ngOnInit() {
     window.scrollTo(0, 0);
-    this.loadPosts()
+    this.loadPosts();
 
   }
 

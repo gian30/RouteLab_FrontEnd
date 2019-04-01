@@ -1,6 +1,6 @@
 /// <reference types="@types/googlemaps" />
 import {Component, OnInit} from '@angular/core';
-import {ViewChild, ElementRef, NgZone,} from '@angular/core';
+import {ViewChild, ElementRef, NgZone, } from '@angular/core';
 import {LoginService} from '../services/login.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MustMatch} from './_helpers/must-match.validator';
@@ -149,8 +149,9 @@ export class LoginComponent implements OnInit {
       this._loginService.sendRegister(JSON.stringify(this.login), 'login').subscribe(
         resul => {
           if (resul.body !== null) {
+            console.log(resul);
             localStorage.setItem('access_token', resul.body['access_token']);
-            let obj: User = JSON.parse(resul.body['data']);
+            const obj: User = JSON.parse(resul.body['data']);
             console.log(resul.body['data']);
             console.log(resul.body['data']['locality']);
             localStorage.setItem('currentUser', JSON.stringify(obj));
@@ -165,7 +166,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    //Registro
+    // Registro
     this.submitted = true;
 
     this.copy = this.registerForm.value;
@@ -184,7 +185,7 @@ export class LoginComponent implements OnInit {
   }
 
   onChangeEmail() {
-    console.log("changed!!!");
+    console.log('changed!!!');
   }
 
   ngOnInit() {
@@ -192,6 +193,7 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       pass: ['', [Validators.required, Validators.minLength(6)]]
     });
+
 
     /*this.loginFormTemp = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -205,7 +207,7 @@ export class LoginComponent implements OnInit {
 
 
     */
-    //this.registerForm = this.loginFormTemp;
+    // this.registerForm = this.loginFormTemp;
   }
 
 
