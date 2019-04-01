@@ -3,6 +3,7 @@ import {GooglePlaceDirective} from 'ngx-google-places-autocomplete/ngx-google-pl
 import {Address} from 'ngx-google-places-autocomplete/objects/address';
 import {ViewChild, NgZone} from '@angular/core';
 import * as jQuery from 'jquery';
+
 declare var $: any;
 declare var jquery: any;
 declare var google;
@@ -19,27 +20,35 @@ export class MainComponent implements OnInit {
   private BG = ('../../assets/img/home_bg.png');
   category = 'Categoría';
   categories = ['Sol y playa', 'Deportivo', 'Naturaleza', 'De montaña', 'Histórico', 'Aventura', 'Rural', 'Científico'];
+  mainMenuOptions = [' En pareja', ' En grupo', ' En solitario', ' Autores que sigues', ' Sólo ida', ' Circular'];
+  mainMenuOption = 'Opciones';
   titleVisible = true;
   searchVisible = true;
   fullAddress = {};
   options = {
     types: ['(cities)']
   };
+
   clickToggle(value) {
     value = !value;
   }
 
-
+// asignBlack() cambia el color de 'categoria' una vez seleccionda una opcion
   assignBlack() {
     const element = document.getElementById('addBlack');
     element.classList.add('black');
   }
 
+  assignBlack2() {
+    const element = document.getElementById('addBlack2');
+    element.classList.add('black');
+  }
 
 
   constructor() {
   }
 
+// formato de dirección
   public handleAddressChange(address: Address) {
     this.fullAddress = {
       poblacion: address.address_components[0]['long_name'],
@@ -51,7 +60,9 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit() {
-    window.setTimeout(() => {this.loadGoogle = true; }, 0.0001);
+    window.setTimeout(() => {
+      this.loadGoogle = true;
+    }, 0.0001);
   }
 
 }

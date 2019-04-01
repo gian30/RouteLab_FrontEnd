@@ -102,7 +102,6 @@ select::-ms-expand {
   display: none;
 }
 
-
 .search__select {
 
   /*background: url("../../assets/icons/icons8-expand2.png") 50% / 8% no-repeat #fff; */
@@ -186,8 +185,6 @@ select::-ms-expand {
   font-weight: 700;
 }
 
-
-
 /* ------ Media Queries ------ */
 
 /* 992-1200px */
@@ -222,6 +219,7 @@ select::-ms-expand {
     max-width: 100%;
     text-align: center;
   }
+
   .search__button {
     max-width: 100%;
     padding: 20px 0;
@@ -238,11 +236,10 @@ select::-ms-expand {
 /* 576-768px */
 @media screen and (max-width: 767px) {
 
-
 }
+
 /* 320-576px */
 @media screen and (max-width: 575px) {
-
 
 }
 

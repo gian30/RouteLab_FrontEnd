@@ -14,6 +14,7 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="search d-flex">
+          <!--Seleccionar categoria-->
           <div class="search__section search__section_category">
             <p class="search__title">
               ¿Que te gustaría hacer?
@@ -29,6 +30,7 @@
               </div>
             </div>
           </div>
+          <!--Autocomplete google-->
           <div class="search__section search__section_location" *ngIf="loadGoogle">
             <p class="search__title">
               ¿Dónde estas?
@@ -37,12 +39,22 @@
                    ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
                    (onAddressChange)="handleAddressChange($event)"/>
           </div>
-          <div class="search__section search__section_location" >
+          <!--Opcines de rutas-->
+          <div class="search__section search__section_category">
             <p class="search__title">
               Opciones de ruta
             </p>
-            <input type="text" class="search__input" placeholder="Selecciona"
-                   />
+            <div class="search__select">
+              <div ngbDropdown class="d-inline-block">
+                <button class="search__dropdown" id="addBlack2" ngbDropdownToggle>Opciones</button>
+                <div class="dropdown__content" ngbDropdownMenu>
+                  <button *ngFor="let opt of mainMenuOptions" (click)="mainMenuOption = opt; assignBlack2()"
+                          class="dropdown-item">
+                    <input type="checkbox">{{opt}}
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
 
           <button class="search__button">Encuentra tu ruta</button>
