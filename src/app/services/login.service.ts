@@ -2,13 +2,14 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {LoginComponent} from '../login/login.component';
+import {Router} from "@angular/router";
 
 
 @Injectable()
 
 export class LoginService {
 
-  constructor(private _conexHttp: HttpClient) {
+  constructor(private _conexHttp: HttpClient, private router: Router) {
   }
 
 
@@ -42,8 +43,11 @@ export class LoginService {
         observe: 'response'
       });
   }
+
+
   logout() {
     localStorage.removeItem('access_token');
+    this.router.navigate(['/main']);
   }
 
   isAuthenticated() {

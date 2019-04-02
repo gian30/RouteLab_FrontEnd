@@ -96,3 +96,25 @@ html {
   transition: all 0.5s ease;
 }
 
+/*add button*/
+.addPhoto {
+  background-color: #22626E;
+  padding: 15px 24px;
+  width: 70px;
+  align-items: center;
+  display: block;
+  margin: auto;
+  margin-bottom: 6%;
+
+}
+
+.addPhoto {
+  color: white!important;
+  text-decoration: none;
+  font-size: 37px;
+
+}
+
+.addPhoto:hover {
+  background-color: #13383E;
+}

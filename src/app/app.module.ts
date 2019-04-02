@@ -21,7 +21,6 @@ import {RouteComponent} from './route/route.component';
 import {ChatComponent} from './chat/chat.component';
 import {NewRouteComponent} from './new-route/new-route.component';
 import {LoginComponent} from './login/login.component';
-import {PersonalAreaComponent} from './personal-area/personal-area.component';
 import {FollowersComponent} from './followers/followers.component';
 import {GalleryComponent} from './gallery/gallery.component';
 import {ContactComponent} from './contact/contact.component';
@@ -61,7 +60,7 @@ export class AuthGuard implements CanActivate {
       return true;
     }
     // If not, they redirect them to the login page
-    this.router.navigate(['/user']);
+    this.router.navigate(['/login']);
     return false;
   }
 
@@ -95,7 +94,6 @@ RouterModule.forRoot(routes,
     ChatComponent,
     NewRouteComponent,
     LoginComponent,
-    PersonalAreaComponent,
     FollowersComponent,
     GalleryComponent,
     ContactComponent,

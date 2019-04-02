@@ -53,36 +53,13 @@ img {
 
 }
 
-/*add button*/
-.addPhoto {
-  background-color: #22626E;
-  padding: 15px 24px;
-  width: 70px;
-  align-items: center;
-  display: block;
-  margin: auto;
-  margin-bottom: 6%;
-
-}
-
-a:not([href]):not([tabindex]) {
-  color: white;
-  text-decoration: none;
-  font-size: 37px;
-
-}
-
-.addPhoto:hover {
-  background-color: #13383E;
-}
-
 /*foto y ruta*/
 
 .individual-photo {
   position: relative;
   align-items: center;
   margin-bottom: 5%;
-  width: 105%;
+  width: 100%;
 }
 
 .button-photo {
