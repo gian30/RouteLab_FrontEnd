@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {LoginService} from '../services/login.service';
 
 @Component({
   selector: 'header',
@@ -7,11 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-   BARS = 'distance.png';
+   BARS = 'bars-solid.png';
    SEARCH = ('../../assets/icons/search.png');
 
 
-  constructor() { }
+  constructor( private _loginService: LoginService) { }
 
   ngOnInit() {
 

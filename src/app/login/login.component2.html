@@ -15,7 +15,9 @@
       <div class="col-lg-5">
         <form *ngIf="!advanceRegister" class="signin" [formGroup]="registerForm" (ngSubmit)="loginAction()">
           <span class="signin__span">{{errorform}}</span>
-          <input type="text" class="signin__input" formControlName="email" placeholder="Email">
+          <input type="text" class="signin__input" formControlName="email" placeholder="Email"
+                 (change)="onChangeEmail()">
+          <div *ngIf="emailExist && register" class="error-message">Ya existe un usuario con este email</div>
           <div *ngIf="submitted && f['email'].errors !== null">
             <div *ngIf="f['email'].errors.required" class="error-message">Email is required</div>
             <div *ngIf="f['email'].errors.email" class="error-message">Email must be a valid email address</div>
@@ -23,7 +25,8 @@
           <input type="password" class="signin__input" formControlName="pass" placeholder="Contraseña">
           <div *ngIf="submitted && f['pass'].errors !== null">
             <div *ngIf="f['pass'].errors.required" class="error-message">Password is required</div>
-            <div *ngIf="f['pass'].errors.length" class="error-message">Password should contain at least 6 characters</div>
+            <div *ngIf="f['pass'].errors.length" class="error-message">Password should contain at least 6 characters
+            </div>
           </div>
           <input *ngIf="register" type="password" formControlName="confpass" class="signin__input"
                  placeholder="Confirmar contraseña">

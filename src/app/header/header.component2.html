@@ -60,9 +60,11 @@
         </a>
       </div>
       <div class="col-lg-1 col-md-2 order-sm-2 order-lg-4">
-        <button (click)="logout()" class="sign-button button justify-content-end" >
-          Cerrar<br>sesión
-        </button>
+        <a href="/main" >
+          <button (click)="_loginService.logout()" class="sign-button button justify-content-end">
+            Cerrar<br>sesión
+          </button>
+        </a>
       </div>
     </div>
   </div>
