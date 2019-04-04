@@ -54,17 +54,15 @@
           </button>
         </div>
       </div>
-      <div class="col-lg-1 col-md-2 order-sm-2 order-lg-4">
+      <div *ngIf="!_loginService.isAuthenticated()" class="col-lg-1 col-md-2 order-sm-2 order-lg-4">
         <a href="/login" class="sign-button button justify-content-end">
           Iniciar<br>sesión
         </a>
       </div>
-      <div class="col-lg-1 col-md-2 order-sm-2 order-lg-4">
-
-          <button (click)="_loginService.logout()" class="sign-button button justify-content-end">
+      <div *ngIf="_loginService.isAuthenticated()"  class="col-lg-1 col-md-2 order-sm-2 order-lg-4">
+          <a (click)="_loginService.logout()" class="sign-button button justify-content-end">
             Cerrar<br>sesión
-          </button>
-
+          </a>
       </div>
     </div>
   </div>

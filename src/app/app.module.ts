@@ -73,6 +73,7 @@ const routes: Routes = [
   {path: 'user', canActivate: [AuthGuard], component: BannerComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'terms', component: TermsComponent},
+  {path: 'main', component: MainComponent},
   {path: '', component: MainComponent}
 ];
 

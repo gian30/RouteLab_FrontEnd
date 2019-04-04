@@ -20,8 +20,8 @@ export class MainComponent implements OnInit {
   private BG = ('../../assets/img/home_bg.png');
   category = 'Categoría';
   categories = ['Sol y playa', 'Deportivo', 'Naturaleza', 'De montaña', 'Histórico', 'Aventura', 'Rural', 'Científico'];
-  mainMenuOptions = [' En pareja', ' En grupo', ' En solitario', ' Autores que sigues', ' Sólo ida', ' Circular'];
-  mainMenuOption = 'Opciones';
+  mainOptions = ['En pareja', 'En grupo', 'En solitario', 'Autores que sigues', 'Sólo ida', 'Circular'];
+  selectedOptions = 'Opciones';
   titleVisible = true;
   searchVisible = true;
   fullAddress = {};
@@ -42,6 +42,10 @@ export class MainComponent implements OnInit {
   assignBlack2() {
     const element = document.getElementById('addBlack2');
     element.classList.add('black');
+  }
+
+  addElement(opt:string) {
+    this.selectedOptions = opt;
   }
 
 

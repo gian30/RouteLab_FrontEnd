@@ -45,13 +45,14 @@
               Opciones de ruta
             </p>
             <div class="search__select">
-              <div ngbDropdown class="d-inline-block">
-                <button class="search__dropdown" id="addBlack2" ngbDropdownToggle>Opciones</button>
-                <div class="dropdown__content" ngbDropdownMenu>
-                  <button *ngFor="let opt of mainMenuOptions" (click)="mainMenuOption = opt; assignBlack2()"
-                          class="dropdown-item">
-                    <input type="checkbox">{{opt}}
-                  </button>
+              <div ngbDropdown autoClose=false class="d-inline-block">
+                <button class="search__dropdown"  id="dropdownForm1"ngbDropdownToggle>{{selectedOptions}}</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownForm1">
+                  <div class="container-chk">
+                    <ul class="ks-cboxtags d-flex">
+                      <li *ngFor="let opt of mainOptions"><input type="checkbox" id="checkbox{{opt}}" [value]="opt" (change)="addElement(opt)"><label for="checkbox{{opt}}">{{opt}}</label></li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>

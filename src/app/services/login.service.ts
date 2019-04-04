@@ -53,12 +53,10 @@ export class LoginService {
   isAuthenticated() {
     // get the auth token from localStorage
     const token = localStorage.getItem('access_token');
-
     // check if token is set, then...
     if (token) {
       return true;
     }
-
     return false;
   }
 
