@@ -3,7 +3,7 @@ import * as jQuery from 'jquery';
 import {AgmCoreModule} from '@agm/core';
 import {PostService} from '../services/post.service';
 import {Post} from '../models/post';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 
 declare var $: any;
 declare var jquery: any;
@@ -17,9 +17,9 @@ declare var jquery: any;
 export class RouteComponent implements OnInit {
   public post = new Post();
   private id = this.route.snapshot.paramMap.get('id');
-   STAR = ('../../assets/icons/star.png');
-   CURRENTIMG = ('../../assets/img/route_image.png');
-   ROUTEIMGS = [
+  STAR = ('../../assets/icons/star.png');
+  CURRENTIMG = ('../../assets/img/route_image.png');
+  ROUTEIMGS = [
     '../../assets/img/sample_images/1.jpg',
     '../../assets/img/sample_images/2.jpg',
     '../../assets/img/sample_images/3.jpg',
@@ -35,8 +35,8 @@ export class RouteComponent implements OnInit {
 
   lat = 41.3907285;
   lng = 2.1745089;
-  origin = { lat: 41.388909, lng: 2.167621 };
-  destination = { lat: 41.391496, lng: 2.155151 };
+  origin = {lat: 41.388909, lng: 2.167621};
+  destination = {lat: 41.391496, lng: 2.155151};
 
 
   constructor(private _postService: PostService, private route: ActivatedRoute) {
@@ -55,15 +55,18 @@ export class RouteComponent implements OnInit {
     });
   }
 
-  loadPosts() {
+  loadPost() {
     this._postService.getPost(this.id).subscribe(
       resul => {
         if (resul.body !== null) {
           this.post = <Post> resul.body['data'];
+
           console.log(this.post);
         }
       }, error => {
-        alert('error!');
+        console.log("dddd");
+        console.log(error);
+
       }
     );
   }
@@ -74,7 +77,7 @@ export class RouteComponent implements OnInit {
 
   ngOnInit() {
     window.scrollTo(0, 0);
-    this.loadPosts();
+    this.loadPost();
 
   }
 

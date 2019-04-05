@@ -29,7 +29,8 @@ export class PostService {
   }
 
   getPost(id) {
-    let ruta = '/backend/clases/webservice/api.php?controller=post&id='+id;
+
+    let ruta = '/backend/clases/webservice/api.php?controller=post&funcion=ver&id='+id;
     return this._conexHttp.get(ruta,
       {
         headers:
