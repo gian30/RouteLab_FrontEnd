@@ -49,12 +49,12 @@
             4 comentarios
           </p>
           <div class="comments-content">
-            <div class="post-comment">
-              <textarea class="post-comment__text"></textarea>
+            <form class="post-comment" *ngIf="_loginService.isAuthenticated()" [formGroup]="commentForm" (ngSubmit)="addComment()">
+              <textarea class="post-comment__text" formControlName="comment"></textarea>
               <button class="ml-auto route-button route-button_comment">
                 Comentar
               </button>
-            </div>
+            </form>
             <div class="comment d-flex align-items-center">
               <img src="../../assets/img/users/6.jpg" alt="user profile" class="comment__user">
               <div class="comment__info">

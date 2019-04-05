@@ -74,6 +74,7 @@ const routes: Routes = [
   {path: 'contact', component: ContactComponent},
   {path: 'terms', component: TermsComponent},
   {path: 'main', component: MainComponent},
+  {path: 'new-route', component: NewRouteComponent},
   {path: '', component: MainComponent}
 ];
 

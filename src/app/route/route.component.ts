@@ -4,6 +4,9 @@ import {AgmCoreModule} from '@agm/core';
 import {PostService} from '../services/post.service';
 import {Post} from '../models/post';
 import {ActivatedRoute} from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {LoginService} from "../services/login.service";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 declare var $: any;
 declare var jquery: any;
@@ -16,6 +19,8 @@ declare var jquery: any;
 })
 export class RouteComponent implements OnInit {
   public post = new Post();
+  commentForm: FormGroup;
+  public currentUser: User;
   private id = this.route.snapshot.paramMap.get('id');
   STAR = ('../../assets/icons/star.png');
   CURRENTIMG = ('../../assets/img/route_image.png');
@@ -39,7 +44,7 @@ export class RouteComponent implements OnInit {
   destination = {lat: 41.391496, lng: 2.155151};
 
 
-  constructor(private _postService: PostService, private route: ActivatedRoute) {
+  constructor(private _loginService: LoginService, private _postService: PostService, private route: ActivatedRoute, private formBuilder: FormBuilder) {
   }
 
   ngAfterViewInit(): void {
@@ -71,6 +76,22 @@ export class RouteComponent implements OnInit {
     );
   }
 
+  addComment() {
+    let comment = {
+      'idusuario': this.currentUser.idusuario,
+      'comentario': this.commentForm.controls.comment.value,
+      'idpost': this.id
+    };
+    this._postService.postComent(JSON.stringify(comment)).subscribe(
+      resul => {
+        console.log(resul.body);
+      }, error => {
+        console.log(error);
+      }
+    );
+    this.commentForm.controls.comment.setValue("");
+  }
+
   loadPhoto(photo) {
     this.CURRENTIMG = photo;
   }
@@ -78,6 +99,10 @@ export class RouteComponent implements OnInit {
   ngOnInit() {
     window.scrollTo(0, 0);
     this.loadPost();
+    this.commentForm = this.formBuilder.group({
+      comment: ['', [Validators.required]]
+    });
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
   }
 
