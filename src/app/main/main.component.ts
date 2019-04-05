@@ -44,7 +44,7 @@ export class MainComponent implements OnInit {
     element.classList.add('black');
   }
 
-  addElement(opt:string) {
+  addElement(opt: string) {
     this.selectedOptions = opt;
   }
 

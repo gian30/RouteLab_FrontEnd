@@ -53,3 +53,7 @@ export class RoutesComponent implements OnInit {
     element.classList.add('black');
   }
 }
+function addNewRoute() {
+  console.log('adding');
+
+}

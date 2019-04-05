@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {LoginComponent} from '../login/login.component';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 
 @Injectable()
