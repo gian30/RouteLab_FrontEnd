@@ -29,7 +29,8 @@ export class PostService {
   }
 
   getPost(id) {
-    let ruta = '/backend/clases/webservice/api.php?controller=post&id='+id;
+
+    let ruta = '/backend/clases/webservice/api.php?controller=post&funcion=ver&id='+id;
     return this._conexHttp.get(ruta,
       {
         headers:
@@ -47,16 +48,9 @@ http://localhost/ProyectoRouteLab/RouteLab_BackEnd/Final/Clases/WebService/api.p
 
 
   postComent(info: String){
-    let httpHeaders = new HttpHeaders({
-      'Access-Control-Allow-Origin': 'http://www.routelab.es',
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Access-Control-Allow-Credentials': 'true',
-      'Access-Control-Allow-Methods': 'GET POST, OPTIONS, PUT, DELETE',
-      'Access-Control-Allow-Headers': 'X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method'
-    });
 
-    let ruta = 'http://localhost/ProyectoRouteLab/RouteLab_BackEnd/Final/Clases/WebService/api.php?controller=comentariopost&funcion=comentario';
+
+    let ruta = '/backend/clases/webservice/api.php?controller=comentariopost&funcion=comentario';
 
     return this._conexHttp.post(ruta, info,
       {

@@ -1,3 +1,4 @@
+/// <reference types="@types/googlemaps" />
 import {Component, ElementRef, OnInit} from '@angular/core';
 import {GooglePlaceDirective} from 'ngx-google-places-autocomplete/ngx-google-places-autocomplete.directive';
 import {Address} from 'ngx-google-places-autocomplete/objects/address';
@@ -14,7 +15,6 @@ declare var google;
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  loadGoogle = false;
   @ViewChild('placesRef') places: GooglePlaceDirective;
   @ViewChild('search') public searchElement: ElementRef;
   private BG = ('../../assets/img/home_bg.png');
@@ -64,9 +64,7 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit() {
-    window.setTimeout(() => {
-      this.loadGoogle = true;
-    }, 0.0001);
+
   }
 
 }
