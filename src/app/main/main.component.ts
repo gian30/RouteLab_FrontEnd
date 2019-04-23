@@ -44,8 +44,13 @@ export class MainComponent implements OnInit {
     element.classList.add('black');
   }
 
-  addElement(opt:string) {
-    this.selectedOptions = opt;
+  addElement(opt: string) {
+    if (this.selectedOptions == "Opciones") {
+      this.selectedOptions = "";
+      this.selectedOptions = opt;
+    } else {
+      this.selectedOptions += ', ' + opt;
+    }
   }
 
 

@@ -4,7 +4,6 @@ import {AgmCoreModule} from '@agm/core';
 import {PostService} from '../services/post.service';
 import {Post} from '../models/post';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LoginService} from "../services/login.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
@@ -18,10 +17,12 @@ declare var jquery: any;
   providers: [PostService]
 })
 export class RouteComponent implements OnInit {
-  public post = new Post();
+
   commentForm: FormGroup;
   public currentUser: User;
   private id = this.route.snapshot.paramMap.get('id');
+  public post: Post = new Post();
+  public comments:any = [];
   STAR = ('../../assets/icons/star.png');
   CURRENTIMG = ('../../assets/img/route_image.png');
   ROUTEIMGS = [
@@ -44,7 +45,7 @@ export class RouteComponent implements OnInit {
   destination = {lat: 41.391496, lng: 2.155151};
 
 
-  constructor(private _loginService: LoginService, private _postService: PostService, private route: ActivatedRoute, private formBuilder: FormBuilder) {
+  constructor(public _loginService: LoginService, private _postService: PostService, private route: ActivatedRoute, private formBuilder: FormBuilder) {
   }
 
   ngAfterViewInit(): void {
@@ -65,11 +66,22 @@ export class RouteComponent implements OnInit {
       resul => {
         if (resul.body !== null) {
           this.post = <Post> resul.body['data'];
-
           console.log(this.post);
         }
       }, error => {
-        console.log("dddd");
+        console.log(error);
+
+      }
+    );
+  }
+  loadComments() {
+    this._postService.getComment(this.id).subscribe(
+      resul => {
+        if (resul.body !== null) {
+          this.comments = resul.body['data'];
+          console.log(this.comments);
+        }
+      }, error => {
         console.log(error);
 
       }
@@ -82,9 +94,10 @@ export class RouteComponent implements OnInit {
       'comentario': this.commentForm.controls.comment.value,
       'idpost': this.id
     };
-    this._postService.postComent(JSON.stringify(comment)).subscribe(
+    this._postService.postComment(JSON.stringify(comment)).subscribe(
       resul => {
         console.log(resul.body);
+        this.loadComments()
       }, error => {
         console.log(error);
       }
@@ -99,6 +112,7 @@ export class RouteComponent implements OnInit {
   ngOnInit() {
     window.scrollTo(0, 0);
     this.loadPost();
+    this.loadComments();
     this.commentForm = this.formBuilder.group({
       comment: ['', [Validators.required]]
     });

@@ -22,8 +22,8 @@ declare var google;
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component2.html',
-  styleUrls: ['./login.component2.css'],
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css'],
   providers: [LoginService]
 })
 
@@ -126,10 +126,13 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
     if (this.register === true) {
       if (this.registerForm.invalid) {
+        console.log("here invalid")
         return;
       }
       if (this.advanceRegister === false) {
+        console.log("here 1")
         delete this.registerForm.controls['confpass'];
+        this.registerFormFirst = this.registerForm;
         this.advanceRegister = true;
         this.registerForm = this.formBuilder.group({
           nombre: ['', Validators.required],
@@ -142,6 +145,7 @@ export class LoginComponent implements OnInit {
         });
       }
     } else {
+      console.log("login")
       this.login = {
         email: this.registerForm.controls['email'].value,
         pass: this.registerForm.controls['pass'].value
