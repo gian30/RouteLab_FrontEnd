@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as jQuery from 'jquery';
 
 declare var $: any;
@@ -12,8 +12,9 @@ declare var jquery: any
 export class BannerComponent implements OnInit {
   public currentUser: User;
   public currentLocation: Localidad;
-
+  public followed = false;
   constructor() {
+
   }
 
   ngOnInit() {
