@@ -1,27 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import * as jQuery from 'jquery';
+import { ActivatedRoute } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 declare var $: any;
 declare var jquery: any
 
 @Component({
-  selector: 'app-banner',
-  templateUrl: './banner.component.html',
-  styleUrls: ['./banner.component.css']
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.css'],
+  providers: [UserService]
 })
-export class BannerComponent implements OnInit {
+export class UserComponent implements OnInit {
   public currentUser: User;
   public currentLocation: Localidad;
   public followed = false;
-  constructor() {
+  private id = this.route.snapshot.paramMap.get('id');
+  constructor(private route: ActivatedRoute, private _userService: UserService) {
 
   }
 
   ngOnInit() {
-
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.currentLocation = JSON.parse(String(this.currentUser.localidad));
-
+    if (this.id == null) {
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      this.currentLocation = JSON.parse(String(this.currentUser.localidad));
+    } else {
+      this.loadUser()
+    }
 
     $(document).ready(function () {
       // Hide Header on on scroll down
@@ -54,6 +60,17 @@ export class BannerComponent implements OnInit {
 
     });
   }
-
+  loadUser() {
+    this._userService.getUser(Number(this.id)).subscribe(
+      resul => {
+        if (resul.body !== null) {
+          this.currentUser = <User>resul.body['data'];
+          console.log(this.currentUser);
+        }
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
 
 }
