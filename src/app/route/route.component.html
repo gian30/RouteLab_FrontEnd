@@ -53,7 +53,7 @@
             <div *ngFor="let comment of comments" class="comment d-flex align-items-center">
               <img src="../../assets/img/users/6.jpg" alt="user profile" class="comment__user">
               <div class="comment__info">
-                <p class="comment__username">{{comment.nombreusuario}}<i class="fas fa-crown"></i></p>
+                <a class="comment__username" href="/user/{{comment.idusuario}}"><p >{{comment.nombreusuario}}</p></a>
                 <div class="comment__text">
                   {{comment.comentario}}
                 </div>

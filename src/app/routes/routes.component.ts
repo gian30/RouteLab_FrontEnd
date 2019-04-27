@@ -40,7 +40,8 @@ export class RoutesComponent implements OnInit {
     this._postService.getPosts().subscribe(
       resul => {
         if (resul.body !== null) {
-          this.posts = <Post[]> resul.body['data'];
+          this.posts = <Post[]>resul.body['data'];
+          console.log(this.posts);
         }
       }, error => {
         console.log(error);

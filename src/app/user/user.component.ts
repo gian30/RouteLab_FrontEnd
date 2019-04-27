@@ -26,7 +26,7 @@ export class UserComponent implements OnInit {
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
       this.currentLocation = JSON.parse(String(this.currentUser.localidad));
     } else {
-      this.loadUser()
+      this.loadUser();
     }
 
     $(document).ready(function () {
@@ -65,7 +65,10 @@ export class UserComponent implements OnInit {
       resul => {
         if (resul.body !== null) {
           this.currentUser = <User>resul.body['data'];
+          console.log(this.currentUser.localidad);
+          this.currentLocation = <Localidad> this.currentUser.localidad;
           console.log(this.currentUser);
+          console.log(this.currentLocation);
         }
       }, error => {
         console.log(error);
