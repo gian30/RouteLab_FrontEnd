@@ -33,9 +33,8 @@
             {{post.descripcion}}
           </div>
           <div class="description__map">
-
-            <agm-map [latitude]="lat" [longitude]="lng">
-              <agm-direction [origin]="origin" [destination]="destination">
+            <agm-map *ngIf="routeMarkers !== null" [latitude]="routeMarkers.lat" [longitude]="routeMarkers.lng">
+              <agm-direction [origin]="routeMarkers.origin" [waypoints]="routeMarkers.waypoints" [destination]="routeMarkers.destination">
               </agm-direction>
             </agm-map>
           </div>

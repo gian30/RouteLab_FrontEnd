@@ -1,11 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as jQuery from 'jquery';
-import {AgmCoreModule} from '@agm/core';
-import {PostService} from '../services/post.service';
-import {Post} from '../models/post';
-import {ActivatedRoute} from '@angular/router';
-import {LoginService} from "../services/login.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { AgmCoreModule } from '@agm/core';
+import { PostService } from '../services/post.service';
+import { Post } from '../models/post';
+import { ActivatedRoute } from '@angular/router';
+import { LoginService } from "../services/login.service";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { post } from 'selenium-webdriver/http';
 
 declare var $: any;
 declare var jquery: any;
@@ -22,7 +23,7 @@ export class RouteComponent implements OnInit {
   public currentUser: User;
   private id = this.route.snapshot.paramMap.get('id');
   public post: Post = new Post();
-  public comments:any = [];
+  public comments: any = [];
   STAR = ('../../assets/icons/star.png');
   CURRENTIMG = ('../../assets/img/route_image.png');
   ROUTEIMGS = [
@@ -38,11 +39,7 @@ export class RouteComponent implements OnInit {
     '../../assets/img/sample_images/10.jpg'
   ];
 
-
-  lat = 41.3907285;
-  lng = 2.1745089;
-  origin = {lat: 41.388909, lng: 2.167621};
-  destination = {lat: 41.391496, lng: 2.155151};
+  routeMarkers: any = null;
 
 
   constructor(public _loginService: LoginService, private _postService: PostService, private route: ActivatedRoute, private formBuilder: FormBuilder) {
@@ -65,8 +62,11 @@ export class RouteComponent implements OnInit {
     this._postService.getPost(this.id).subscribe(
       resul => {
         if (resul.body !== null) {
-          this.post = <Post> resul.body['data'];
+          this.post = <Post>resul.body['data'];
+
           console.log(this.post);
+          console.log(this.post.markers[0].latitud);
+          this.loadMarkers();
         }
       }, error => {
         console.log(error);
@@ -87,7 +87,35 @@ export class RouteComponent implements OnInit {
       }
     );
   }
-
+  loadMarkers() {
+    this.routeMarkers = {
+      lat: parseFloat(this.post.markers[0].latitud),
+      lng: parseFloat(this.post.markers[0].longitud),
+      origin: {
+        lat: parseFloat(this.post.markers[0].latitud),
+        lng: parseFloat(this.post.markers[0].longitud)
+      },
+      destination: {
+        lat: parseFloat(this.post.markers[this.post.markers.length - 1].latitud),
+        lng: parseFloat(this.post.markers[this.post.markers.length - 1].longitud)
+      }
+    }
+    this.routeMarkers.waypoints = [];
+    if (this.post.markers.length > 2) {
+      for (let cont in this.post.markers) {
+        if (Number(cont) != 0 && Number(cont) != this.post.markers.length - 1) {
+          let location = {
+            lat: parseFloat(this.post.markers[cont].latitud),
+            lng: parseFloat(this.post.markers[cont].longitud)
+          }
+          this.routeMarkers.waypoints.push({
+            location: location
+          });
+        }
+      }
+    }
+    console.log(this.routeMarkers);
+  }
   addComment() {
     let comment = {
       'idusuario': this.currentUser.idusuario,
