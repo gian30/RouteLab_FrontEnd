@@ -14,7 +14,7 @@ import { LoginService } from './services/login.service';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
-import { BannerComponent } from './banner/banner.component';
+import { UserComponent } from "./user/user.component";
 import { RoutesComponent } from './routes/routes.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouteComponent } from './route/route.component';
@@ -70,8 +70,8 @@ const routes: Routes = [
   { path: 'routes', component: RoutesComponent },
   { path: 'route/:id', component: RouteComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'user', canActivate: [AuthGuard], component: BannerComponent },
-  { path: 'user/:id', component: BannerComponent },
+  { path: 'user', canActivate: [AuthGuard], component: UserComponent },
+  { path: 'user/:id', component: UserComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'terms', component: TermsComponent },
   { path: 'main', component: MainComponent },
@@ -90,7 +90,7 @@ RouterModule.forRoot(routes,
     AppComponent,
     HeaderComponent,
     MainComponent,
-    BannerComponent,
+    UserComponent,
     RoutesComponent,
     FooterComponent,
     RouteComponent,
