@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {map} from 'rxjs/operators';
-import {LoginComponent} from '../login/login.component';
-import {Router} from "@angular/router";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { LoginComponent } from '../login/login.component';
+import { Router } from "@angular/router";
 
 
 @Injectable()
@@ -28,7 +28,7 @@ export class LoginService {
     return this._conexHttp.post(ruta, info,
       {
         headers:
-          {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+          { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
         observe: 'response'
       });
   }
@@ -39,15 +39,17 @@ export class LoginService {
     return this._conexHttp.post(ruta, email,
       {
         headers:
-          {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+          { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
         observe: 'response'
       });
   }
 
 
   logout() {
-    localStorage.removeItem('access_token');
-    this.router.navigate(['/main']);
+    if (confirm("Estas seguro que quieres cerrar tu sesión?")) {
+      localStorage.removeItem('access_token');
+      this.router.navigate(['/main']);
+    }
   }
 
   isAuthenticated() {
