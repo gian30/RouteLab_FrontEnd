@@ -1,6 +1,6 @@
 /// <reference types="@types/googlemaps" />
 import {Component, OnInit} from '@angular/core';
-import {ViewChild, ElementRef, NgZone,} from '@angular/core';
+import {ViewChild, ElementRef, NgZone, } from '@angular/core';
 import {LoginService} from '../services/login.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MustMatch} from './_helpers/must-match.validator';
@@ -150,7 +150,7 @@ export class LoginComponent implements OnInit {
         resul => {
           if (resul.body !== null) {
             localStorage.setItem('access_token', resul.body['access_token']);
-            let obj: User = JSON.parse(resul.body['data']);
+            const obj: User = JSON.parse(resul.body['data']);
             console.log(resul.body['data']);
             console.log(resul.body['data']['locality']);
             localStorage.setItem('currentUser', JSON.stringify(obj));
@@ -165,7 +165,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    //Registro
+    // Registro
     this.submitted = true;
 
     this.copy = this.registerForm.value;
@@ -184,7 +184,7 @@ export class LoginComponent implements OnInit {
   }
 
   onChangeEmail() {
-    console.log("changed!!!");
+    console.log('changed!!!');
   }
 
   ngOnInit() {
@@ -200,12 +200,17 @@ export class LoginComponent implements OnInit {
 
 
     "SQLSTATE[23000]: Integrity constraint violation:
-    1048 Column 'token' cannot be null{"message":"Lista usuario","data":"
-    {\"idusuario\":\"0\",\"nombreusuario\":\"bhbhbh\",\"email\":\"ssssnsnsn@gmail.com\",\"pass\":\"123456789\",\"nombre\":\"bhbvhvh\",\"edad\":\"31\",\"localidad\":{},\"foto\":\"\\\/img.jpg\",\"telefono\":\"5656565655\",\"empresa\":\"1\",\"nombre_empresa\":\"Routelab\",\"token\":null}"}"
+    1048 Column 'token' cannot be null{"message":"Lista
+     usuario","data":"
+    {\"idusuario\":\"0\",\"nombreusuario\":\"bhbhbh\",\"email\":\"
+    ssssnsnsn@gmail.com\",\"pass\":\"123456789\",\"nombre\":\"bhbvhvh\",
+    \"edad\":\"31\",\"localidad\":{},\"foto\":\"\\\/img.jpg\",\"telefono\
+    ":\"5656565655\",\"empresa\":\"1\",\"nombre_empresa\":\"Routelab\",\"
+    token\":null}"}"
 
 
     */
-    //this.registerForm = this.loginFormTemp;
+    // this.registerForm = this.loginFormTemp;
   }
 
 

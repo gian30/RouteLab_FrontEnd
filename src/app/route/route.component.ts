@@ -4,9 +4,8 @@ import {AgmCoreModule} from '@agm/core';
 import {PostService} from '../services/post.service';
 import {Post} from '../models/post';
 import {ActivatedRoute} from '@angular/router';
+import {LoginService} from '../services/login.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {LoginService} from "../services/login.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 declare var $: any;
 declare var jquery: any;
@@ -44,7 +43,8 @@ export class RouteComponent implements OnInit {
   destination = {lat: 41.391496, lng: 2.155151};
 
 
-  constructor(private _loginService: LoginService, private _postService: PostService, private route: ActivatedRoute, private formBuilder: FormBuilder) {
+  constructor(private _loginService: LoginService, private _postService: PostService, private route: ActivatedRoute,
+              private formBuilder: FormBuilder) {
   }
 
   ngAfterViewInit(): void {
@@ -69,7 +69,7 @@ export class RouteComponent implements OnInit {
           console.log(this.post);
         }
       }, error => {
-        console.log("dddd");
+        console.log('dddd');
         console.log(error);
 
       }
@@ -77,7 +77,7 @@ export class RouteComponent implements OnInit {
   }
 
   addComment() {
-    let comment = {
+    const comment = {
       'idusuario': this.currentUser.idusuario,
       'comentario': this.commentForm.controls.comment.value,
       'idpost': this.id
@@ -89,7 +89,7 @@ export class RouteComponent implements OnInit {
         console.log(error);
       }
     );
-    this.commentForm.controls.comment.setValue("");
+    this.commentForm.controls.comment.setValue('');
   }
 
   loadPhoto(photo) {

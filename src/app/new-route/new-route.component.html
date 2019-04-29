@@ -1,86 +1,19 @@
 <div class="newR">
   <div class="container">
     <div class="row">
-      <div class="col-lg-3 offset-1 ">
-        <div class="nameRoute"> Nombre de la ruta
-          <div>
-            <input class="text">
-          </div>
-        </div>
-        <div class="locationA ">Origen
-          <div class="d-flex ">
-            <input class="text">
-            <button class="iconCameraB ">
-              <i class="fas fa-camera iconCamera"></i>
-            </button>
-          </div>
-          <div class="d-flex justify-content-between">
-            <img class="uploadPhoto" src="../../assets/img/sample_images/1.jpg">
-            <img class="uploadPhoto" src="../../assets/img/sample_images/2.jpg">
-            <img class="uploadPhoto" src="../../assets/img/sample_images/3.jpg">
-          </div>
-        </div>
-        <div class="locationA">Destino
-          <div class="d-flex ">
-            <input class="text">
-            <button class="iconCameraB ">
-              <i class="fas fa-camera iconCamera"></i>
-            </button>
-          </div>
-          <div class="photoUp">
-            <div class="d-flex">
-              <img class="uploadPhoto" src="../../assets/img/sample_images/1.jpg">
-              <img class="uploadPhoto" src="../../assets/img/sample_images/2.jpg">
-              <img class="uploadPhoto" src="../../assets/img/sample_images/3.jpg">
+      <app-new-route-form></app-new-route-form>
+        <div class="col-lg-6 offset-1">
+          <div class="mapaYnombre">
+            <div class="mapRoute">
+              <iframe width="100%" height="400px" frameborder="0" style="border:0"
+                      src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyBQwgG1zHjVXd6omQVAccKdv9skMCPg3-E&origin=Toronto&destination=Montreal"
+                      allowfullscreen>
+              </iframe>
             </div>
           </div>
         </div>
-        <div>
-          <button class="addLocation addRoute"> Añade destino</button>
-        </div>
       </div>
-      <div class="col-lg-6 offset-1">
-        <div class="mapaYnombre">
-          <div class="mapRoute">
-            <iframe width="100%" height="400px" frameborder="0" style="border:0"
-                    src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyBQwgG1zHjVXd6omQVAccKdv9skMCPg3-E&origin=Toronto&destination=Montreal"
-                    allowfullscreen>
-            </iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row ">
-      <div class="col-lg-10 offset-1">
-        <div class="description">
-          <textarea class="nr1-input">
-          </textarea>
-        </div>
-      </div>
-    </div>
-    <div class="row d-flex">
-      <div class="col-lg-10 offset-1">
-        <div class="text">
-          Recomendaciones:
-        </div>
-        <div class="recomendations">
-          <select>
-            <option>Ropa de abrigo
-            </option>
-            <option>Calzado cómodo</option>
-            <option> Agua</option>
-            <option>Comida</option>
-            <option>Ropa de baño</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-lg-12 ">
-        <div class="addButton ">
-          <button class="addRoute m-auto ">
-            <a class="iconAdd"> + </a>
-          </button>
-        </div>
-      </div>
+
+
     </div>
   </div>
-</div>
