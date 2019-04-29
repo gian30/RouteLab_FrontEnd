@@ -38,6 +38,7 @@ export class PostService {
         observe: 'response'
       });
   }
+
   getComment(id) {
 
     let ruta = '/backend/clases/webservice/api.php?controller=comentariopost&funcion=comenpost&id='+id;
@@ -57,18 +58,34 @@ export class PostService {
 http://localhost/ProyectoRouteLab/RouteLab_BackEnd/Final/Clases/WebService/api.php?controller=comentariopost&funcion=comentario*/
 
 
-  postComment(info: String){
-
-
+  postComment(info: string){
     let ruta = '/backend/clases/webservice/api.php?controller=comentariopost&funcion=comentario';
-
     return this._conexHttp.post(ruta, info,
       {
         headers:
           {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
         observe: 'response'
       });
+  }
 
+  getRecomendacion(id: string) {
+    let ruta = '/backend/clases/webservice/api.php?controller=recasociada&funcion=recid&id=' + id;
+    return this._conexHttp.get(ruta,
+      {
+        headers:
+          { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+        observe: 'response'
+      });
+  }
+
+  getRecomendaciones() {
+    let ruta = '/backend/clases/webservice/api.php?controller=recomendaciones&funcion=recomendaciones';
+    return this._conexHttp.get(ruta,
+      {
+        headers:
+          { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+        observe: 'response'
+      });
   }
 
 
