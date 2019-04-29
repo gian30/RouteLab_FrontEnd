@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FollowersService } from '../services/followers.service';
 import { Router } from '@angular/router';
+import { UserComponent } from '../user/user.component'
 
 @Component({
   selector: 'app-followers',
@@ -14,10 +15,10 @@ export class FollowersComponent implements OnInit {
   @Input()
   followed: boolean;
   followers: User[] = [];
-  constructor(public _followersService: FollowersService, private router: Router) { }
+  constructor(public _followersService: FollowersService, private router: Router, private usr: UserComponent) { }
 
   loadFollowers(func: string) {
-    let user = <User>JSON.parse(localStorage.getItem('currentUser'));
+    let user = <User> this.usr.currentUser;
     console.log(user.idusuario);
     this._followersService.getFollowers(user.idusuario, func).subscribe(
       resul => {
@@ -38,7 +39,7 @@ export class FollowersComponent implements OnInit {
       this.followers.push(<User>usr.usuario);
     }
   }
- 
+
   ngOnInit() {
     console.log(this.followed);
     if (this.followed == false) {
