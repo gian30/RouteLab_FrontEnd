@@ -75,17 +75,9 @@
             <img src="../../assets/icons/timer.png" class="recommendation__icon">
             <span class="recommendation__name">4 horas de tiempo libre</span>
           </div>
-          <div class="recommendation d-flex align-items-center">
-            <img src="../../assets/icons/footwear.png" class="recommendation__icon">
-            <span class="recommendation__name">Calzado especial</span>
-          </div>
-          <div class="recommendation d-flex align-items-center">
-            <img src="../../assets/icons/snow.png" class="recommendation__icon">
-            <span class="recommendation__name">Temperaturas bajas</span>
-          </div>
-          <div class="recommendation d-flex align-items-center">
-            <img src="../../assets/icons/food.png" class="recommendation__icon">
-            <span class="recommendation__name">Llevar comida y agua</span>
+          <div *ngFor="let rec of recomendations" class="recommendation d-flex align-items-center">
+          <i class="{{recomendaciones[rec.descripcion.pclave]}}"></i>
+            <span class="recommendation__name">{{rec.recomendacion}}</span>
           </div>
         </div>
         <div class="similar-routes">

@@ -85,7 +85,8 @@
   font-size: 16px;
 }
 
-.recommendation__icon {
+.recommendation__icon, .fas {
+  color: #52858F;
   width: 22px;
 }
 
@@ -108,7 +109,6 @@
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.45);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.45);
   cursor: pointer;
-
 }
 
 .similar-route__img {
@@ -138,7 +138,6 @@
 
 .ad-banner {
   margin-top: 60px;
-
 }
 
 .ad-banner iframe {
@@ -180,7 +179,6 @@
 
 .comment {
   padding: 20px 10px;
-
 }
 
 .comment:not(:last-child) {

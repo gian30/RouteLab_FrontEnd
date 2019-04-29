@@ -24,6 +24,7 @@ export class RouteComponent implements OnInit {
   private id = this.route.snapshot.paramMap.get('id');
   public post: Post = new Post();
   public comments: any = [];
+  public recomendations: any = [];
   STAR = ('../../assets/icons/star.png');
   CURRENTIMG = ('../../assets/img/route_image.png');
   ROUTEIMGS = [
@@ -39,11 +40,16 @@ export class RouteComponent implements OnInit {
     '../../assets/img/sample_images/10.jpg'
   ];
 
+  public recomendaciones = {
+    Tiempo: "fas fa-cloud",
+    Ropa: "fas fa-tshirt",
+  }
+
   routeMarkers: any = null;
 
 
   constructor(public _loginService: LoginService, private _postService: PostService, private route: ActivatedRoute,
-              private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder) {
   }
 
   ngAfterViewInit(): void {
@@ -81,6 +87,19 @@ export class RouteComponent implements OnInit {
         if (resul.body !== null) {
           this.comments = resul.body['data'];
           console.log(this.comments);
+        }
+      }, error => {
+        console.log(error);
+
+      }
+    );
+  }
+  loadRecomendaciones() {
+    this._postService.getRecomendacion(this.id).subscribe(
+      resul => {
+        if (resul.body !== null) {
+          this.recomendations = resul.body['data'];
+          console.log(this.recomendations);
         }
       }, error => {
         console.log(error);
@@ -141,6 +160,7 @@ export class RouteComponent implements OnInit {
   ngOnInit() {
     window.scrollTo(0, 0);
     this.loadPost();
+    this.loadRecomendaciones();
     this.loadComments();
     this.commentForm = this.formBuilder.group({
       comment: ['', [Validators.required]]
