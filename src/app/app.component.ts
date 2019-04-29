@@ -9,7 +9,7 @@ import {LoginService} from "./services/login.service";
 export class AppComponent {
   title = 'routelab';
 
-  constructor(private authService: LoginService) {
+  constructor(public authService: LoginService) {
 
   }
 }

@@ -97,12 +97,23 @@
   width: 150px;
   margin: 10px 0;
 }
+.follower__button a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+}
 
-.follower__overlay:hover .follower__button {
+
+.follower__overlay:hover .follower__button{
   background-color: #22626E;
   color: #fff;
-
 }
+
+.follower__overlay:hover a {
+  color: #fff;
+}
+
 
 .follower__overlay:hover .follower__button:hover {
   background-color: #13383E;

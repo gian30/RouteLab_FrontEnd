@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
    SEARCH = ('../../assets/icons/search.png');
 
 
-  constructor( private _loginService: LoginService) { }
+  constructor( public _loginService: LoginService) { }
 
   ngOnInit() {
 

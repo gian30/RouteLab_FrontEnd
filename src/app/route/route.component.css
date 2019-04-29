@@ -200,6 +200,8 @@
 }
 
 .comment__username {
+  display: block;
+  color: #000;
   font-weight: 600;
   margin-bottom: 10px;
 }

@@ -4,7 +4,8 @@ export class Post {
   private _descripcion: string;
   private _tipo: string;
   private _idusuario: number;
-
+  private _markers: any = [];
+  private _media: number;
 
   get idpost(): number {
     return this._idpost;
@@ -44,5 +45,21 @@ export class Post {
 
   set idusuario(value: number) {
     this._idusuario = value;
+  }
+
+  get markers(): any {
+    return this._markers;
+  }
+
+  set markers(value: any) {
+    this._markers = value;
+  }
+
+  get media(): number {
+    return this._media;
+  }
+
+  set media(value: number) {
+    this._media = value;
   }
 }

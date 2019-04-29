@@ -45,7 +45,12 @@ export class MainComponent implements OnInit {
   }
 
   addElement(opt: string) {
-    this.selectedOptions = opt;
+    if (this.selectedOptions === 'Opciones') {
+      this.selectedOptions = '';
+      this.selectedOptions = opt;
+    } else {
+      this.selectedOptions += ', ' + opt;
+    }
   }
 
 

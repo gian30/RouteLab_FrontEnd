@@ -29,7 +29,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   scrollToBottom(): void {
     try {
       this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
-    } catch(err) { }
+    } catch (err) { }
   }
 
   openUser() {

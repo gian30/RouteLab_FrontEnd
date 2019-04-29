@@ -13,11 +13,7 @@
     <div class="row">
       <div class="col">
         <div class="stars d-flex justify-content-between">
-          <img [src]=STAR alt="star image">
-          <img [src]=STAR alt="star image">
-          <img [src]=STAR alt="star image">
-          <img [src]=STAR alt="star image">
-          <img [src]=STAR alt="star image">
+          <img *ngFor="let dummy of ' '.repeat(post.media).split('')" [src]=STAR alt="star image">
         </div>
       </div>
     </div>
@@ -37,16 +33,15 @@
             {{post.descripcion}}
           </div>
           <div class="description__map">
-
-            <agm-map [latitude]="lat" [longitude]="lng">
-              <agm-direction [origin]="origin" [destination]="destination">
+            <agm-map *ngIf="routeMarkers !== null" [latitude]="routeMarkers.lat" [longitude]="routeMarkers.lng">
+              <agm-direction [origin]="routeMarkers.origin" [waypoints]="routeMarkers.waypoints" [destination]="routeMarkers.destination">
               </agm-direction>
             </agm-map>
           </div>
         </div>
         <div class="comments">
           <p class="comments-title">
-            4 comentarios
+            {{comments.length}} comentarios
           </p>
           <div class="comments-content">
             <form class="post-comment" *ngIf="_loginService.isAuthenticated()" [formGroup]="commentForm" (ngSubmit)="addComment()">
@@ -55,39 +50,12 @@
                 Comentar
               </button>
             </form>
-            <div class="comment d-flex align-items-center">
+            <div *ngFor="let comment of comments" class="comment d-flex align-items-center">
               <img src="../../assets/img/users/6.jpg" alt="user profile" class="comment__user">
               <div class="comment__info">
-                <p class="comment__username">itsisma97 <i class="fas fa-crown"></i></p>
+                <a class="comment__username" href="/user/{{comment.idusuario}}"><p >{{comment.nombreusuario}}</p></a>
                 <div class="comment__text">
-                  Lorem ipsum dolor sit amet, in eos vivendo singulis. Eum illum gloriatur neglegentur ea
-                </div>
-              </div>
-            </div>
-            <div class="comment d-flex align-items-center">
-              <img src="../../assets/img/users/2.jpg" alt="user profile" class="comment__user">
-              <div class="comment__info">
-                <p class="comment__username">itsisma97</p>
-                <div class="comment__text">
-                  Lorem ipsum dolor sit amet, in eos vivendo singulis. Eum illum gloriatur neglegentur ea
-                </div>
-              </div>
-            </div>
-            <div class="comment d-flex align-items-center">
-              <img src="../../assets/img/users/3.jpg" alt="user profile" class="comment__user">
-              <div class="comment__info">
-                <p class="comment__username">itsisma97</p>
-                <div class="comment__text">
-                  Lorem ipsum dolor sit amet, in eos vivendo singulis. Eum illum gloriatur neglegentur ea
-                </div>
-              </div>
-            </div>
-            <div class="comment d-flex align-items-center">
-              <img src="../../assets/img/users/4.jpg" alt="user profile" class="comment__user">
-              <div class="comment__info">
-                <p class="comment__username">itsisma97</p>
-                <div class="comment__text">
-                  Lorem ipsum dolor sit amet, in eos vivendo singulis. Eum illum gloriatur neglegentur ea
+                  {{comment.comentario}}
                 </div>
               </div>
             </div>

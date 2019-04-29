@@ -30,7 +30,17 @@ export class PostService {
 
   getPost(id) {
 
-    let ruta = '/backend/clases/webservice/api.php?controller=post&funcion=ver&id='+id;
+    let ruta = '/backend/clases/webservice/api.php?controller=post&funcion=postbyid&id='+id;
+    return this._conexHttp.get(ruta,
+      {
+        headers:
+          {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+        observe: 'response'
+      });
+  }
+  getComment(id) {
+
+    let ruta = '/backend/clases/webservice/api.php?controller=comentariopost&funcion=comenpost&id='+id;
     return this._conexHttp.get(ruta,
       {
         headers:
@@ -47,7 +57,7 @@ export class PostService {
 http://localhost/ProyectoRouteLab/RouteLab_BackEnd/Final/Clases/WebService/api.php?controller=comentariopost&funcion=comentario*/
 
 
-  postComent(info: String){
+  postComment(info: String){
 
 
     let ruta = '/backend/clases/webservice/api.php?controller=comentariopost&funcion=comentario';
