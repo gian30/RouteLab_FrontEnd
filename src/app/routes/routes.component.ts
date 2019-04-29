@@ -1,7 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {Post} from '../models/post';
 import {PostService} from '../services/post.service';
-import {LoginService} from "../services/login.service";
+import {LoginService} from '../services/login.service';
 
 @Component({
   selector: 'app-routes',
@@ -53,4 +53,8 @@ export class RoutesComponent implements OnInit {
     const element = document.getElementById('addBlack');
     element.classList.add('black');
   }
+}
+function addNewRoute() {
+  console.log('adding');
+
 }

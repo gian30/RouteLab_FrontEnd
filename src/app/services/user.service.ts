@@ -19,7 +19,7 @@ export class UserService {
     }
 
     getUser(id: number) {
-        let ruta = '/backend/clases/webservice/api.php?controller=usuario&funcion=verusuario&id=' + id;
+        const ruta = '/backend/clases/webservice/api.php?controller=usuario&funcion=verusuario&id=' + id;
         return this._conexHttp.get(ruta,
             {
                 headers:

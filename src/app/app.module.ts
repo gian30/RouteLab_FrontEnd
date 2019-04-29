@@ -31,6 +31,8 @@ import {
   AuthServiceConfig,
   GoogleLoginProvider
 } from 'ng4-social-login';
+import { UploadPhotoComponent } from './upload-photo/upload-photo.component';
+import { NewRouteFormComponent } from './new-route-form/new-route-form.component';
 
 const CONFIG = new AuthServiceConfig([
 
@@ -101,7 +103,9 @@ RouterModule.forRoot(routes,
     GalleryComponent,
     ContactComponent,
     EditProfileComponent,
-    TermsComponent
+    TermsComponent,
+    UploadPhotoComponent,
+    NewRouteFormComponent
   ],
   imports: [
     BrowserModule,

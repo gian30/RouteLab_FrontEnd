@@ -1,0 +1,9 @@
+<!--<span style="color:red;" *ngIf="message">{{message}}</span>
+<input #file type="file" accept='image/*' (change)="preview(file.files)" />
+<img [src]="imgURL" height="100" *ngIf="imgURL">-->
+<span style="color:red;" *ngIf="message">{{message}}</span>
+<input #file type="file" accept='image/*' (change)="preview(file.files)" />
+<div>
+  <img [src]="image" height="75" *ngFor="let image of imagesURL">
+
+</div>

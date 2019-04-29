@@ -1,6 +1,6 @@
 /// <reference types="@types/googlemaps" />
 import {Component, OnInit} from '@angular/core';
-import {ViewChild, ElementRef, NgZone,} from '@angular/core';
+import {ViewChild, ElementRef, NgZone, } from '@angular/core';
 import {LoginService} from '../services/login.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MustMatch} from './_helpers/must-match.validator';
@@ -126,11 +126,11 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
     if (this.register === true) {
       if (this.registerForm.invalid) {
-        console.log("here invalid")
+        console.log('here invalid');
         return;
       }
       if (this.advanceRegister === false) {
-        console.log("here 1")
+        console.log('here 1');
         delete this.registerForm.controls['confpass'];
         this.registerFormFirst = this.registerForm;
         this.advanceRegister = true;
@@ -145,7 +145,7 @@ export class LoginComponent implements OnInit {
         });
       }
     } else {
-      console.log("login")
+      console.log('login');
       this.login = {
         email: this.registerForm.controls['email'].value,
         pass: this.registerForm.controls['pass'].value
@@ -154,7 +154,7 @@ export class LoginComponent implements OnInit {
         resul => {
           if (resul.body !== null) {
             localStorage.setItem('access_token', resul.body['access_token']);
-            let obj: User = JSON.parse(resul.body['data']);
+            const obj: User = JSON.parse(resul.body['data']);
             console.log(resul.body['data']);
             console.log(resul.body['data']['locality']);
             localStorage.setItem('currentUser', JSON.stringify(obj));
@@ -169,18 +169,18 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    //Registro
+    // Registro
     this.submitted = true;
 
     this.copy = this.registerForm.value;
     this.copy['email'] = this.registerFormFirst.controls['email'].value;
     this.copy['pass'] = this.registerFormFirst.controls['pass'].value;
     this.copy['localidad'] = this.fullAddress;
-   
+
     this._loginService.sendRegister(JSON.stringify(this.copy), 'registro').subscribe(
       resul => {
         if (resul.body !== null) {
-          alert("Usuario registrado! Ya puedes iniciar sesíon usando tu correo electronico.")
+          alert('Usuario registrado! Ya puedes iniciar sesíon usando tu correo electronico.');
           this.router.navigate(['']);
         }
       }, error => {
@@ -190,7 +190,7 @@ export class LoginComponent implements OnInit {
   }
 
   onChangeEmail() {
-    console.log("changed!!!");
+    console.log('changed!!!');
   }
 
   ngOnInit() {
@@ -206,12 +206,17 @@ export class LoginComponent implements OnInit {
 
 
     "SQLSTATE[23000]: Integrity constraint violation:
-    1048 Column 'token' cannot be null{"message":"Lista usuario","data":"
-    {\"idusuario\":\"0\",\"nombreusuario\":\"bhbhbh\",\"email\":\"ssssnsnsn@gmail.com\",\"pass\":\"123456789\",\"nombre\":\"bhbvhvh\",\"edad\":\"31\",\"localidad\":{},\"foto\":\"\\\/img.jpg\",\"telefono\":\"5656565655\",\"empresa\":\"1\",\"nombre_empresa\":\"Routelab\",\"token\":null}"}"
+    1048 Column 'token' cannot be null{"message":"Lista
+     usuario","data":"
+    {\"idusuario\":\"0\",\"nombreusuario\":\"bhbhbh\",\"email\":\"
+    ssssnsnsn@gmail.com\",\"pass\":\"123456789\",\"nombre\":\"bhbvhvh\",
+    \"edad\":\"31\",\"localidad\":{},\"foto\":\"\\\/img.jpg\",\"telefono\
+    ":\"5656565655\",\"empresa\":\"1\",\"nombre_empresa\":\"Routelab\",\"
+    token\":null}"}"
 
 
     */
-    //this.registerForm = this.loginFormTemp;
+    // this.registerForm = this.loginFormTemp;
   }
 
 

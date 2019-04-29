@@ -1,0 +1,111 @@
+.newR {
+  background-color: #E9F0EF;
+  padding-bottom: 35px;
+  padding-top: 55px;
+}
+button, input, optgroup, select, textarea {
+  margin-bottom: 25px;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.addRoute {
+  background-color: #22626E;
+  padding: 15px 24px;
+  align-items: center;
+  display: block;
+  margin-top: 20px;
+
+}
+
+.mapRoute {
+  padding-bottom: 30px;
+  align-items: center;
+  display: block;
+  margin-right: auto;
+
+}
+
+.addRoute:hover {
+  background-color: #13383E;
+
+}
+
+.addLocation {
+  color: #ffffff;
+}
+
+.description {
+  padding-bottom: 30px;
+  vertical-align: baseline;
+  margin-top:20px;
+}
+
+.nr1-input {
+  padding:0px;
+  width: 100%;
+  height: 90px;
+  resize: none;
+  display: block;
+}
+
+select {
+  width: 150px;
+}
+
+a:not([href]):not([tabindex]) {
+  color: white;
+  text-decoration: none;
+  font-size: 37px;
+
+}
+
+a {
+  margin-top: 20px;
+}
+
+.iconCameraB {
+  background-color: transparent;
+}
+
+.iconCamera:hover {
+  color: #22626E;
+}
+
+.iconCamera {
+  font-size: 30px;
+  margin-left: 15px;
+  margin-bottom: 15px;
+
+}
+
+.locationA {
+  margin-bottom: 15px;
+}
+
+
+.uploadPhoto {
+
+  display: block;
+  width: 40%;
+  height: 35%;
+  margin-left: 4px;
+}
+
+.text {
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+input {
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.09);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.09);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.09);
+}
+
+.thumb {
+  height: 75px;
+  border: 1px solid #000;
+  margin: 10px 5px 0 0;
+}

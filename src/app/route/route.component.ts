@@ -4,8 +4,8 @@ import { AgmCoreModule } from '@agm/core';
 import { PostService } from '../services/post.service';
 import { Post } from '../models/post';
 import { ActivatedRoute } from '@angular/router';
-import { LoginService } from "../services/login.service";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { LoginService } from '../services/login.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { post } from 'selenium-webdriver/http';
 
 declare var $: any;
@@ -42,7 +42,8 @@ export class RouteComponent implements OnInit {
   routeMarkers: any = null;
 
 
-  constructor(public _loginService: LoginService, private _postService: PostService, private route: ActivatedRoute, private formBuilder: FormBuilder) {
+  constructor(public _loginService: LoginService, private _postService: PostService, private route: ActivatedRoute,
+              private formBuilder: FormBuilder) {
   }
 
   ngAfterViewInit(): void {
@@ -99,15 +100,15 @@ export class RouteComponent implements OnInit {
         lat: parseFloat(this.post.markers[this.post.markers.length - 1].latitud),
         lng: parseFloat(this.post.markers[this.post.markers.length - 1].longitud)
       }
-    }
+    };
     this.routeMarkers.waypoints = [];
     if (this.post.markers.length > 2) {
-      for (let cont in this.post.markers) {
-        if (Number(cont) != 0 && Number(cont) != this.post.markers.length - 1) {
-          let location = {
+      for (const cont in this.post.markers) {
+        if (Number(cont) !== 0 && Number(cont) !== this.post.markers.length - 1) {
+          const location = {
             lat: parseFloat(this.post.markers[cont].latitud),
             lng: parseFloat(this.post.markers[cont].longitud)
-          }
+          };
           this.routeMarkers.waypoints.push({
             location: location
           });
@@ -117,7 +118,7 @@ export class RouteComponent implements OnInit {
     console.log(this.routeMarkers);
   }
   addComment() {
-    let comment = {
+    const comment = {
       'idusuario': this.currentUser.idusuario,
       'comentario': this.commentForm.controls.comment.value,
       'idpost': this.id
@@ -125,12 +126,12 @@ export class RouteComponent implements OnInit {
     this._postService.postComment(JSON.stringify(comment)).subscribe(
       resul => {
         console.log(resul.body);
-        this.loadComments()
+        this.loadComments();
       }, error => {
         console.log(error);
       }
     );
-    this.commentForm.controls.comment.setValue("");
+    this.commentForm.controls.comment.setValue('');
   }
 
   loadPhoto(photo) {
