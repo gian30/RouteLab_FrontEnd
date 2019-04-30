@@ -34,7 +34,8 @@
           </div>
           <div class="description__map">
             <agm-map *ngIf="routeMarkers !== null" [latitude]="routeMarkers.lat" [longitude]="routeMarkers.lng">
-              <agm-direction [origin]="routeMarkers.origin" [waypoints]="routeMarkers.waypoints" [destination]="routeMarkers.destination">
+              <agm-direction [origin]="routeMarkers.origin" [waypoints]="routeMarkers.waypoints"
+                             [destination]="routeMarkers.destination">
               </agm-direction>
             </agm-map>
           </div>
@@ -44,7 +45,8 @@
             {{comments.length}} comentarios
           </p>
           <div class="comments-content">
-            <form class="post-comment" *ngIf="_loginService.isAuthenticated()" [formGroup]="commentForm" (ngSubmit)="addComment()">
+            <form class="post-comment" *ngIf="_loginService.isAuthenticated()" [formGroup]="commentForm"
+                  (ngSubmit)="addComment()">
               <textarea class="post-comment__text" formControlName="comment"></textarea>
               <button class="ml-auto route-button route-button_comment">
                 Comentar
@@ -53,7 +55,7 @@
             <div *ngFor="let comment of comments" class="comment d-flex align-items-center">
               <img src="../../assets/img/users/6.jpg" alt="user profile" class="comment__user">
               <div class="comment__info">
-                <a class="comment__username" href="/user/{{comment.idusuario}}"><p >{{comment.nombreusuario}}</p></a>
+                <a class="comment__username" href="/user/{{comment.idusuario}}"><p>{{comment.nombreusuario}}</p></a>
                 <div class="comment__text">
                   {{comment.comentario}}
                 </div>
@@ -76,7 +78,7 @@
             <span class="recommendation__name">4 horas de tiempo libre</span>
           </div>
           <div *ngFor="let rec of recomendations" class="recommendation d-flex align-items-center">
-          <i class="{{recomendaciones[rec.descripcion.pclave]}}"></i>
+            <i class="{{recomendaciones[rec.descripcion.pclave]}}"></i>
             <span class="recommendation__name">{{rec.recomendacion}}</span>
           </div>
         </div>
@@ -170,3 +172,5 @@
         </div>
       </div>
     </div>
+  </div>
+</div>

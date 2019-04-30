@@ -1,7 +1,7 @@
 <form [formGroup]="productForm">
   <div class="col-lg-3 offset-1 ">
     <div class="nameRoute"> Nombre de la ruta
-      <span style="color:red;" *ngIf="message">{{message}}</span>
+
       <div>
         <input class="text">
       </div>
@@ -45,7 +45,7 @@
   </div>
   <div class="row ">
     <div class="col-lg-10 offset-1">
-      <div class="description">
+      <div class="">
           <textarea formControlName="description" class="nr1-input">
           </textarea>
       </div>
@@ -56,7 +56,11 @@
       <div class="text">
         Recomendaciones:
       </div>
-      <div class="recomendations">
+      <div class="recommendation d-flex align-items-center">
+        <div *ngFor="let rec of recomendations">
+          <input type="checkbox" value="{{rec}}">{{rec}}
+        </div>
+
 
         <!-- <select formControlName="select">
            <option>Ropa de abrigo
