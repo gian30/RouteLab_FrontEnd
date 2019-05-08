@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, FormArray, FormControl} from '@angular/forms';
-import {stringify} from 'querystring';
-import {Address} from 'ngx-google-places-autocomplete/objects/address';
-import {ActivatedRoute} from '@angular/router';
-import {PostService} from '../services/post.service';
-import {HttpClient, HttpEventType} from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
+import { stringify } from 'querystring';
+import { Address } from 'ngx-google-places-autocomplete/objects/address';
+import { ActivatedRoute } from '@angular/router';
+import { PostService } from '../services/post.service';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 import * as events from 'events';
 
 
@@ -66,21 +66,21 @@ export class NewRouteFormComponent implements OnInit {
     const element = document.getElementById('addBlack');
     element.classList.add('black');
   }
-/*
-  loadRecomendaciones() {
-    this._postService.getRecomendacion(this.id).subscribe(
-      resul => {
-        if (resul.body !== null) {
-          this.recomendations = resul.body['data'];
-          console.log(this.recomendations);
+  /*
+    loadRecomendaciones() {
+      this._postService.getRecomendacion(this.id).subscribe(
+        resul => {
+          if (resul.body !== null) {
+            this.recomendations = resul.body['data'];
+            console.log(this.recomendations);
+          }
+        }, error => {
+          console.log(error);
+  
         }
-      }, error => {
-        console.log(error);
-
-      }
-    );
-  }
-*/
+      );
+    }
+  */
   // -----------------------------------------------------------------------------------
   // ------------------------------------------------------------------------------------
 
@@ -110,24 +110,26 @@ export class NewRouteFormComponent implements OnInit {
   }
 
 
-  /*  onSubmit() {
-      const payload = new FormData();
-      payload.append('name', this.name);
-      payload.append('image', this.selectedFile, this.selectedFile.name);
+  onSubmit() {
+    /*
+     const payload = new FormData();
+     payload.append('name', this.name);
+     payload.append('image', this.selectedFile, this.selectedFile.name);
 
-      this.http
-        .post(``,
-          payload, {
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          }
-        ).subscribe((data: any) => {
-        this.resData = data;
-        console.log(this.resData);
-      });
-    }*/
-
+     this.http
+       .post(``,
+         payload, {
+           headers: {
+             'Content-Type': 'multipart/form-data'
+           }
+         }
+       ).subscribe((data: any) => {
+       this.resData = data;
+       console.log(this.resData);
+     });
+  
+}*/
+  }
 
 }
 
