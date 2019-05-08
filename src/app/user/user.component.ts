@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import * as jQuery from 'jquery';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../services/user.service';
+import { LoginService } from '../services/login.service';
+import { strict } from 'assert';
 
 declare var $: any;
 declare var jquery: any;
@@ -16,8 +18,12 @@ export class UserComponent implements OnInit {
   public currentUser: User;
   public currentLocation: Localidad;
   public followed = false;
-  private id = this.route.snapshot.paramMap.get('id');
-  constructor(private route: ActivatedRoute, private _userService: UserService) {
+  public id = this.route.snapshot.paramMap.get('id');
+  public imagePath;
+  public currentFileUpload: File
+  imgURL: any;
+  imagesURL: any[] = [];
+  constructor(public route: ActivatedRoute, public _userService: UserService, public _loginService: LoginService) {
 
   }
 
@@ -60,13 +66,32 @@ export class UserComponent implements OnInit {
 
     });
   }
+
+
+  sendPhoto() {
+  
+    this._userService.postImage(this.currentFileUpload).subscribe(
+      resul => {
+        console.log(resul.body);
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+
+  addPhoto(event) {
+ 
+    this.currentFileUpload = event.target.files[0];
+    this.sendPhoto();
+  }
+
   loadUser() {
     this._userService.getUser(Number(this.id)).subscribe(
       resul => {
         if (resul.body !== null) {
           this.currentUser = <User>resul.body['data'];
           console.log(this.currentUser.localidad);
-          this.currentLocation = <Localidad> this.currentUser.localidad;
+          this.currentLocation = <Localidad>this.currentUser.localidad;
           console.log(this.currentUser);
           console.log(this.currentLocation);
         }

@@ -13,7 +13,7 @@ export class NewRouteComponent implements OnInit {
   @ViewChild('placesRef') places: GooglePlaceDirective;
   @ViewChild('search') public searchElement: ElementRef;
   fullAddress = {};
-  options = {
+  public options = {
     types: ['(cities)']
   };
 

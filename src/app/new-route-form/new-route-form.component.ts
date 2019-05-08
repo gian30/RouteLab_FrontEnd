@@ -8,11 +8,11 @@ import {stringify} from 'querystring';
   styleUrls: ['./new-route-form.component.css']
 })
 export class NewRouteFormComponent implements OnInit {
-  category = 'Categoría';
-  categories = ['Sol y playa', 'Deportivo', 'Naturaleza', 'De montaña', 'Histórico', 'Aventura', 'Rural', 'Científico'];
+  public category = 'Categoría';
+  public categories = ['Sol y playa', 'Deportivo', 'Naturaleza', 'De montaña', 'Histórico', 'Aventura', 'Rural', 'Científico'];
 
 
-  constructor(private fb: FormBuilder) {
+  constructor(public fb: FormBuilder) {
   }
 
   public message = 'Título necesario.';

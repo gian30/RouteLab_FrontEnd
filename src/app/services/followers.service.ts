@@ -19,7 +19,8 @@ export class FollowersService {
     }
 
     getFollowers(id: number, funct: string) {
-        let ruta = '/backend/clases/webservice/api.php?controller=social&funcion=' + funct+'&id='+id;
+        console.log(localStorage);
+        let ruta = '/backend/clases/webservice/api.php?controller=social&funcion=' + funct + '&token=' + localStorage.getItem('access_token');
         return this._conexHttp.get(ruta,
             {
                 headers:

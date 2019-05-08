@@ -6,10 +6,11 @@
       <div class='row'>
         <div class='col-lg-1'>
           <div class='profile'>
-            <div class="profilePicture">
-              <div class="blurPicture">
-
-              </div>
+            <div class="profilePicture" [style.backgroundImage]="'url(../../assets/uploads/usuarios/'+ currentUser.nombreusuario +'.jpg)'">
+              <form class="blurPicture" enctype="multipart/form-data">
+                  <label id="imagetext" for="imagesel">Select Image</label>
+                <input *ngIf="_loginService.isAuthenticated()" id="imagesel" class="btn-photo" #file type="file" accept='image/*' (change)="addPhoto($event)"/>
+              </form>
             </div>
           </div>
         </div>

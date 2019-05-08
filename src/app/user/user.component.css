@@ -18,17 +18,43 @@
   background-position: right;
   background-size: cover;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
-
 }
 
 .profilePicture {
   width: 140px;
   height: 140px;
-  background-image: url("../../assets/img/0.jpg");
-  background-size: cover;
+  background-size: cover!important;
+  background-position: center!important;
+  background-repeat: no-repeat!important;
   border-radius: 50%;
   margin-top: 20px;
   position: relative;
+}
+
+.blurPicture {
+  opacity: 0;
+}
+
+#imagetext {
+  background-color: #fff;
+  color: #000;
+  padding: 5px;
+  width: 100px;
+  display: block;
+  position: relative;
+  top: 45px;
+  text-align: center;
+  margin: auto;
+  cursor: pointer;
+}
+
+.btn-photo {
+  display: none;
+}
+
+.blurPicture:hover {
+  opacity: 1;
+  background: #22626E;
 }
 
 .profileDescription {
@@ -40,7 +66,6 @@
   border-radius: 5px;
   text-align: left;
   color: #ffffff;
-
 }
 
 .name {
@@ -101,7 +126,6 @@
 }
 
 a:link, a:visited {
-
   color: black;
   text-align: center;
   text-decoration: none;
@@ -111,10 +135,6 @@ a:link, a:visited {
 .coverpage {
   background-color: #E9F0EF;
   padding-bottom: 35px;
-}
-
-.profilePicture:hover {
-
 }
 
 .blurPicture {
@@ -138,7 +158,6 @@ a:link, a:visited {
   border-radius: 50%;
 }*/
 
-
 .nav-down {
   margin-bottom: 95px;
 }
@@ -150,7 +169,7 @@ a:link, a:visited {
   z-index: 300;
   transition: all 0.5s ease;
   -webkit-backdrop-filter: blur(10px);
-  background: rgba(208,222,224, 0.7);
+  background: rgba(208, 222, 224, 0.7);
 }
 
 .stars {

@@ -153,12 +153,12 @@ export class LoginComponent implements OnInit {
       this._loginService.sendRegister(JSON.stringify(this.login), 'login').subscribe(
         resul => {
           if (resul.body !== null) {
-            localStorage.setItem('access_token', resul.body['access_token']);
+            
             const obj: User = JSON.parse(resul.body['data']);
             console.log(resul.body['data']);
             console.log(resul.body['data']['locality']);
             localStorage.setItem('currentUser', JSON.stringify(obj));
-
+            localStorage.setItem('access_token', obj.token);
             this.router.navigate(['/user']);
           }
         }, error => {
