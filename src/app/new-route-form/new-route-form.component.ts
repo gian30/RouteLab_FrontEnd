@@ -4,6 +4,8 @@ import {stringify} from 'querystring';
 import {Address} from 'ngx-google-places-autocomplete/objects/address';
 import {ActivatedRoute} from '@angular/router';
 import {PostService} from '../services/post.service';
+import {HttpClient, HttpEventType} from '@angular/common/http';
+import * as events from 'events';
 
 
 @Component({
@@ -17,16 +19,16 @@ export class NewRouteFormComponent implements OnInit {
   recomendations = ['Ropa de abrigo', 'Calzado cómodo', 'Agua', 'Comida', 'Ropa de baño'];
   fullAddress = {};
   private id = this.route.snapshot.paramMap.get('id');
+  // ---------------------------------------------------------------//
+  name = 'Angular';
+  image: File;
+  resData: any;
+  selectedFile: File = null;
 
-  constructor(private fb: FormBuilder, private route: ActivatedRoute, private _postService: PostService) {
+  constructor(private fb: FormBuilder, private route: ActivatedRoute, private _postService: PostService, private http: HttpClient) {
   }
 
-  // public message = 'Título necesario.';
-
-
   productForm: FormGroup;
-
-
 
 
   /*Google Maps API*/
@@ -39,6 +41,7 @@ export class NewRouteFormComponent implements OnInit {
       longitud: address.geometry.location.lng()
     };
   }
+
   ngOnInit() {
     /* Initiate the form structure */
     this.productForm = this.fb.group({
@@ -46,7 +49,7 @@ export class NewRouteFormComponent implements OnInit {
       destino: [],
       select: [],
       description: [],
-
+      uploadF: [],
 
 
     });
@@ -59,7 +62,8 @@ export class NewRouteFormComponent implements OnInit {
     // asignBlack() cambia el color de 'categoria' una vez seleccionda una opcion
 
   }
-   uploadRoute() {
+
+  uploadRoute() {
     console.log(this.productForm);
   }
 
@@ -67,6 +71,7 @@ export class NewRouteFormComponent implements OnInit {
     const element = document.getElementById('addBlack');
     element.classList.add('black');
   }
+
   loadRecomendaciones() {
     this._postService.getRecomendacion(this.id).subscribe(
       resul => {
@@ -80,4 +85,52 @@ export class NewRouteFormComponent implements OnInit {
       }
     );
   }
+
+  // -----------------------------------------------------------------------------------
+  // ------------------------------------------------------------------------------------
+
+  onFileSelected(event) {
+    this.selectedFile = <File>event.target.files[0];
+    console.log(event);
+  }
+
+  onUpload() {
+    const fd = new FormData();
+    fd.append('image', this.selectedFile, this.selectedFile.name);
+    this.http.post('', fd,
+      {
+        reportProgress: true,
+        observe: (events)
+      },
+    ).subscribe(event => {
+        if (event.type === HttpEventType.UploadProgress) {
+          console.log('Upload Progress: ' + Math.round(event.loaded / event.total) * 100 + '%');
+        } else if (event.type === HttpEventType.Response) {
+          console.log(event);
+        }
+      }
+    );
+  }
+
+
+  /*  onSubmit() {
+      const payload = new FormData();
+      payload.append('name', this.name);
+      payload.append('image', this.selectedFile, this.selectedFile.name);
+
+      this.http
+        .post(``,
+          payload, {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          }
+        ).subscribe((data: any) => {
+        this.resData = data;
+        console.log(this.resData);
+      });
+    }*/
+
+
 }
+

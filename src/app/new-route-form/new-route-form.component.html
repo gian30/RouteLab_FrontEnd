@@ -1,84 +1,77 @@
-<form [formGroup]="productForm">
-  <div class="col-lg-3 offset-1 ">
-    <div class="nameRoute"> Nombre de la ruta
+<div class="container">
+  <form [formGroup]="productForm" (submit)="onSubmit()">
+    <div class="col-lg-3 offset-1 ">
+      <div class="nameRoute"> Nombre de la ruta
+        <div>
+          <input class="text">
+        </div>
+      </div>
 
-      <div>
-        <input class="text">
+      <div class="row">
+        <div class="locationA ">Destino
+          <div class="d-flex ">
+            <input formControlName="origen" class="text" type="text" class="search__input" placeholder="Ciudad"
+                   ngx-google-places-autocomplete  #placesRef="ngx-places"
+                   (onAddressChange)="handleAddressChange($event)">
+          </div>
+          <div>
+            <input style="display: none"
+                   type="file" name="image"
+                   (change)="onFileSelected($event)"
+                   #fileInput>
+            <button class="addRoute m-auto "
+                    type="button"
+                    (click)="fileInput.click()">Elige una foto
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="locationA ">Origen
-      <div class="d-flex ">
-        <input formControlName="origen" class="text" type="text" class="search__input" placeholder="Ciudad"
-               ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
-               (onAddressChange)="handleAddressChange($event)">
-      </div>
-      <div>
-        <app-upload-photo></app-upload-photo>
-      </div>
-    </div>
-    <div class="locationA">Destino
-      <div class="d-flex ">
-        <input class="text" formControlName="destino" class="text" type="text" class="search__input"
-               placeholder="Ciudad"
-               ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
-               (onAddressChange)="handleAddressChange($event)">
-      </div>
-      <div>
-        <app-upload-photo></app-upload-photo>
-      </div>
-      <!--
-  AÑADIR PARADAS
-  <div>
-     <div formArrayName="selling_points">
-       <div *ngFor="let item of sellingPoints.controls; let pointIndex=index" [formGroupName]="pointIndex">
-         <div>
-           Lugar: <input formControlName="point" />
-         </div>
-         <app-upload-photo></app-upload-photo>
-       </div>
-     </div>
-     <div>
-       <button class="addLocation addRoute" (click)="nuevoDestino()"> Añade un nuevo destino</button>
-     </div>
-   </div>-->
-    </div>
-  </div>
-  <div class="row ">
-    <div class="col-lg-10 offset-1">
-      <div class="">
+
+      <div class="row ">
+        <div class="col-lg-10 offset-1">
+          <div class="">
           <textarea formControlName="description" class="nr1-input">
           </textarea>
-      </div>
-    </div>
-  </div>
-  <div class="row d-flex">
-    <div class="col-lg-10 offset-1">
-      <div class="text">
-        Recomendaciones:
-      </div>
-      <div class="recommendation d-flex align-items-center">
-        <div *ngFor="let rec of recomendations">
-          <input type="checkbox" value="{{rec}}">{{rec}}
+          </div>
         </div>
-
-
-        <!-- <select formControlName="select">
-           <option>Ropa de abrigo
-           </option>
-           <option>Calzado cómodo</option>
-           <option> Agua</option>
-           <option>Comida</option>
-           <option>Ropa de baño</option>
-         </select>-->
       </div>
-    </div>
 
-    <div class="col-lg-12 ">
-      <div class="addButton ">
-        <button class="addRoute m-auto " (click)="uploadRoute()">
-          <a class="iconAdd"> + </a>
-        </button>
+      <div class="row d-flex">
+        <div class="col-lg-10 offset-1">
+          <div class="text">
+            Recomendaciones:
+          </div>
+          <div class="recommendation d-flex align-items-center">
+            <div *ngFor="let rec of recomendations">
+              <input type="checkbox" value="{{rec}}">{{rec}}
+            </div>
+          </div>
+        </div>
       </div>
+
+  </form>
+
+
+
+  <!-- <select formControlName="select">
+     <option>Ropa de abrigo
+     </option>
+     <option>Calzado cómodo</option>
+     <option> Agua</option>
+     <option>Comida</option>
+     <option>Ropa de baño</option>
+   </select>-->
+
+
+  <div class="col-lg-12 ">
+    <div class="addButton ">
+      <button class="addRoute m-auto " (click)="onUpload()">
+        <a class="iconAdd"> + </a>
+      </button>
     </div>
   </div>
-</form>
+</div>
+
+
+
