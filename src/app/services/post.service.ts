@@ -19,7 +19,7 @@ export class PostService {
   }
 
   getPosts() {
-    let ruta = '/backend/clases/webservice/api.php?controller=post';
+    const ruta = '/backend/clases/webservice/api.php?controller=post';
     return this._conexHttp.get(ruta,
       {
         headers:
@@ -30,7 +30,7 @@ export class PostService {
 
   getPost(id) {
 
-    let ruta = '/backend/clases/webservice/api.php?controller=post&funcion=postbyid&id='+id;
+    const ruta = '/backend/clases/webservice/api.php?controller=post&funcion=postbyid&id=' + id;
     return this._conexHttp.get(ruta,
       {
         headers:
@@ -41,7 +41,7 @@ export class PostService {
 
   getComment(id) {
 
-    let ruta = '/backend/clases/webservice/api.php?controller=comentariopost&funcion=comenpost&id='+id;
+    const ruta = '/backend/clases/webservice/api.php?controller=comentariopost&funcion=comenpost&id=' + id;
     return this._conexHttp.get(ruta,
       {
         headers:
@@ -58,8 +58,8 @@ export class PostService {
 http://localhost/ProyectoRouteLab/RouteLab_BackEnd/Final/Clases/WebService/api.php?controller=comentariopost&funcion=comentario*/
 
 
-  postComment(info: string){
-    let ruta = '/backend/clases/webservice/api.php?controller=comentariopost&funcion=comentario';
+  postComment(info: string) {
+    const ruta = '/backend/clases/webservice/api.php?controller=comentariopost&funcion=comentario';
     return this._conexHttp.post(ruta, info,
       {
         headers:
@@ -69,7 +69,7 @@ http://localhost/ProyectoRouteLab/RouteLab_BackEnd/Final/Clases/WebService/api.p
   }
 
   getRecomendacion(id: string) {
-    let ruta = '/backend/clases/webservice/api.php?controller=recasociada&funcion=recid&id=' + id;
+    const ruta = '/backend/clases/webservice/api.php?controller=recasociada&funcion=recid&id=' + id;
     return this._conexHttp.get(ruta,
       {
         headers:
@@ -79,7 +79,7 @@ http://localhost/ProyectoRouteLab/RouteLab_BackEnd/Final/Clases/WebService/api.p
   }
 
   getRecomendaciones() {
-    let ruta = '/backend/clases/webservice/api.php?controller=recomendaciones&funcion=recomendaciones';
+    const ruta = '/backend/clases/webservice/api.php?controller=recomendaciones&funcion=recomendaciones';
     return this._conexHttp.get(ruta,
       {
         headers:
@@ -89,7 +89,7 @@ http://localhost/ProyectoRouteLab/RouteLab_BackEnd/Final/Clases/WebService/api.p
   }
 
 
-  //http://localhost/ProyectoRouteLab/RouteLab_BackEnd/Final/Clases/WebService/api.php?controller=recomendaciones&funcion=recomendaciones
+  // http://localhost/ProyectoRouteLab/RouteLab_BackEnd/Final/Clases/WebService/api.php?controller=recomendaciones&funcion=recomendaciones
 
 
 }

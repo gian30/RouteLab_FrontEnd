@@ -14,7 +14,7 @@ import { LoginService } from './services/login.service';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
-import { UserComponent } from "./user/user.component";
+import { UserComponent } from './user/user.component';
 import { RoutesComponent } from './routes/routes.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouteComponent } from './route/route.component';

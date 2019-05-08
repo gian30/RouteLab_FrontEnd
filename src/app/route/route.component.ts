@@ -41,9 +41,9 @@ export class RouteComponent implements OnInit {
   ];
 
   public recomendaciones = {
-    Tiempo: "fas fa-cloud",
-    Ropa: "fas fa-tshirt",
-  }
+    Tiempo: 'fas fa-cloud',
+    Ropa: 'fas fa-tshirt',
+  };
 
   routeMarkers: any = null;
 
