@@ -33,6 +33,20 @@ import {
 } from 'ng4-social-login';
 import { UploadPhotoComponent } from './upload-photo/upload-photo.component';
 import { NewRouteFormComponent } from './new-route-form/new-route-form.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDOghCYt-cQiyWr2C0i4Lm_d-LX_hceLLs",
+  authDomain: "routelab-1550230083545.firebaseapp.com",
+  databaseURL: "https://routelab-1550230083545.firebaseio.com",
+  projectId: "routelab-1550230083545",
+  storageBucket: "routelab-1550230083545.appspot.com",
+  messagingSenderId: "307596815036",
+  appId: "1:307596815036:web:4b9b9a1283cbf760"
+};
 
 const CONFIG = new AuthServiceConfig([
 
@@ -117,10 +131,15 @@ RouterModule.forRoot(routes,
     GooglePlaceModule,
     AgmCoreModule.forRoot({
       // GOOLGE
-      apiKey: 'AIzaSyBQwgG1zHjVXd6omQVAccKdv9skMCPg3-E'
+      apiKey: 'AIzaSyBQwgG1zHjVXd6omQVAccKdv9skMCPg3-E',
+      libraries: ['geometry']
     }),
     AgmDirectionModule,
-    SocialLoginModule
+    SocialLoginModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule, // firestore
+    AngularFireAuthModule, // auth
+    AngularFireStorageModule // storage
   ],
   providers: [{
     provide: AuthServiceConfig,

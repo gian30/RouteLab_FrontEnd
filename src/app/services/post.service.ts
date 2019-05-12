@@ -71,6 +71,7 @@ http://localhost/ProyectoRouteLab/RouteLab_BackEnd/Final/Clases/WebService/api.p
   postPost(files: File[], info: string) {
     const ruta = '/backend/clases/webservice/api.php?controller=post&funcion=post&token=' + localStorage.getItem('access_token');
     let httpHeaders = new HttpHeaders();
+    console.log(info);
     httpHeaders.append('enctype', "multipart/form-data");
     httpHeaders.append('Content - Type', 'application/x-www-form-urlencoded');
     const fd = new FormData();

@@ -23,6 +23,7 @@ export class NewRouteFormComponent implements OnInit {
       categories: [],
       markers: [],
       photos: [],
+      distance: [],
       recs: new FormArray([
       ])
     });
@@ -115,7 +116,6 @@ export class NewRouteFormComponent implements OnInit {
         }
       }, error => {
         console.log(error);
-
       }
     );
   }
@@ -136,8 +136,16 @@ export class NewRouteFormComponent implements OnInit {
     );
   }
 
+  calculateDistance(origin, destination) {
+    const org = new google.maps.LatLng(origin.latitud, origin.longitud);
+    const dest = new google.maps.LatLng(destination.latitud, destination.longitud);
+    const distance = google.maps.geometry.spherical.computeDistanceBetween(org, dest);
+    return distance;
+  }
+
   onUpload() {
     this.routeForm.controls['markers'].setValue(this.markers);
+    this.routeForm.controls['distance'].setValue(this.calculateDistance(this.markers[0], this.markers[this.markers.length]));
     console.log(this.routeForm);
     this.addPost();
   }
