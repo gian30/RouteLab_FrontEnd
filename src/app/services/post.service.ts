@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {map} from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 
 @Injectable()
@@ -19,11 +19,11 @@ export class PostService {
   }
 
   getPosts() {
-    const ruta = '/backend/clases/webservice/api.php?controller=post';
+    const ruta = '/backend/clases/webservice/api.php?controller=post&funcion=todo';
     return this._conexHttp.get(ruta,
       {
         headers:
-          {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+          { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
         observe: 'response'
       });
   }
@@ -34,7 +34,7 @@ export class PostService {
     return this._conexHttp.get(ruta,
       {
         headers:
-          {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+          { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
         observe: 'response'
       });
   }
@@ -45,7 +45,7 @@ export class PostService {
     return this._conexHttp.get(ruta,
       {
         headers:
-          {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+          { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
         observe: 'response'
       });
   }
@@ -59,11 +59,43 @@ http://localhost/ProyectoRouteLab/RouteLab_BackEnd/Final/Clases/WebService/api.p
 
 
   postComment(info: string) {
-    const ruta = '/backend/clases/webservice/api.php?controller=comentariopost&funcion=comentario';
+    const ruta = '/backend/clases/webservice/api.php?controller=comentariopost&funcion=comentario&token=' + localStorage.getItem('access_token');
     return this._conexHttp.post(ruta, info,
       {
         headers:
-          {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+          { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+        observe: 'response'
+      });
+  }
+
+  postPost(files: File[], info: string) {
+    const ruta = '/backend/clases/webservice/api.php?controller=post&funcion=post&token=' + localStorage.getItem('access_token');
+    let httpHeaders = new HttpHeaders();
+    httpHeaders.append('enctype', "multipart/form-data");
+    httpHeaders.append('Content - Type', 'application/x-www-form-urlencoded');
+    const fd = new FormData();
+    for (let file of files) {
+      fd.append('images[]', file);
+    }
+    //fd.append('images[]', JSON.stringify(info));
+    console.log(JSON.stringify(info));
+    return this._conexHttp.post(ruta, fd,
+      {
+        headers: httpHeaders,
+        observe: 'response'
+      });
+  }
+
+  postImage(currentFileUpload: File, funcion: string) {
+    let httpHeaders = new HttpHeaders();
+    httpHeaders.append('enctype', "multipart/form-data");
+    httpHeaders.append('Content - Type', 'application/x-www-form-urlencoded');
+    const formData = new FormData();
+    formData.append('photo', currentFileUpload);
+    let ruta = '/backend/clases/webservice/api.php?controller=usuario&funcion=' + funcion + '&token=' + localStorage.getItem('access_token');
+    return this._conexHttp.post(ruta, formData,
+      {
+        headers: httpHeaders,
         observe: 'response'
       });
   }
@@ -79,7 +111,7 @@ http://localhost/ProyectoRouteLab/RouteLab_BackEnd/Final/Clases/WebService/api.p
   }
 
   getRecomendaciones() {
-    const ruta = '/backend/clases/webservice/api.php?controller=recomendaciones&funcion=recomendaciones';
+    const ruta = '/backend/clases/webservice/api.php?controller=recomendaciones&funcion=recomendaciones&token=' + localStorage.getItem('access_token');
     return this._conexHttp.get(ruta,
       {
         headers:
@@ -89,7 +121,9 @@ http://localhost/ProyectoRouteLab/RouteLab_BackEnd/Final/Clases/WebService/api.p
   }
 
 
-  // http://localhost/ProyectoRouteLab/RouteLab_BackEnd/Final/Clases/WebService/api.php?controller=recomendaciones&funcion=recomendaciones
+  // http://localhost/ProyectoRouteLab/RouteLab_BackEnd/Final/Clases/WebService/api.php?controller=post&funcion=buscadorpost
+  // http://localhost/ProyectoRouteLab/RouteLab_BackEnd/Final/Clases/WebService/api.php?controller=post&funcion=buscadorpost
+  // http://localhost/ProyectoRouteLab/RouteLab_BackEnd/Final/Clases/WebService/api.php?controller=post&funcion=buscadorpost
 
 
 }

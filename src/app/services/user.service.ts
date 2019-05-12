@@ -27,13 +27,13 @@ export class UserService {
                 observe: 'response'
             });
     }
-    postImage(currentFileUpload: File) {
+    postImage(currentFileUpload: File, funcion: string) {
         let httpHeaders = new HttpHeaders();
         httpHeaders.append('enctype', "multipart/form-data");
         httpHeaders.append('Content - Type', 'application/x-www-form-urlencoded');
         const formData = new FormData();
         formData.append('photo', currentFileUpload);
-        let ruta = '/backend/clases/webservice/api.php?controller=usuario&funcion=fotoperfil&token=' + localStorage.getItem('access_token');
+        let ruta = '/backend/clases/webservice/api.php?controller=usuario&funcion='+funcion+'&token=' + localStorage.getItem('access_token');
         return this._conexHttp.post(ruta, formData,
             {
                 headers: httpHeaders,

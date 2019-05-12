@@ -1,112 +1,152 @@
 .newR {
-  background-color: #E9F0EF;
-  padding-bottom: 35px;
-  padding-top: 55px;
-}
-button, input, optgroup, select, textarea {
-  margin-bottom: 25px;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
+    background-color: #E9F0EF;
+    padding-bottom: 35px;
+    padding-top: 55px;
 }
 
-.addRoute {
-  background-color: #22626E;
-  padding: 15px 24px;
-  align-items: center;
-  display: block;
-  margin-top: 20px;
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
 
+.add-route__button {
+    background-color: #22626E;
+    padding: 15px 24px;
+    align-items: center;
+    display: block;
+    margin-top: 20px;
+    color: #fff!important;
 }
 
 .mapRoute {
-  padding-bottom: 30px;
-  align-items: center;
-  display: block;
-  margin-right: auto;
-
+    padding-bottom: 30px;
+    align-items: center;
+    display: block;
+    margin-right: auto;
 }
 
-.addRoute:hover {
-  background-color: #13383E;
-
+.add-route__button:hover {
+    background-color: #13383E;
 }
 
 .addLocation {
-  color: #ffffff;
+    color: #ffffff;
 }
 
 .description {
-  padding-bottom: 30px;
-  vertical-align: baseline;
-  margin-top:20px;
+    padding-bottom: 30px;
+    vertical-align: baseline;
+    margin-top: 20px;
 }
 
 .nr1-input {
-  padding:0px;
-  width: 100%;
-  height: 90px;
-  resize: none;
-  display: block;
-}
-
-select {
-  width: 150px;
+    padding: 0px;
+    width: 100%;
+    height: 90px;
+    resize: none;
+    display: block;
 }
 
 a:not([href]):not([tabindex]) {
-  color: white;
-  text-decoration: none;
-  font-size: 37px;
-
+    color: white;
+    text-decoration: none;
+    font-size: 37px;
 }
 
 a {
-  margin-top: 20px;
-  margin-bottom: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .iconCameraB {
-  background-color: transparent;
+    background-color: transparent;
 }
 
 .iconCamera:hover {
-  color: #22626E;
+    color: #22626E;
 }
 
 .iconCamera {
-  font-size: 30px;
-  margin-left: 15px;
-  margin-bottom: 15px;
-
+    font-size: 30px;
+    margin-left: 15px;
+    margin-bottom: 15px;
 }
 
-.locationA {
-  margin-bottom: 15px;
+.add-route__location {
+    margin-bottom: 15px;
 }
-
 
 .uploadPhoto {
-
-  display: block;
-  width: 40%;
-  height: 35%;
-  margin-left: 4px;
+    display: block;
+    width: 40%;
+    height: 35%;
+    margin-left: 4px;
 }
 
-.text {
-  margin-top: 5px;
-  margin-bottom: 20px;
+.form-input {
+    margin-top: 5px;
+    margin-bottom: 20px;
+    width: 100%;
 }
 
-input {
-  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.09);
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.09);
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.09);
+input,
+textarea,
+select {
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.09);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.09);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.09);
 }
 
-.thumb {
-  height: 75px;
-  border: 1px solid #000;
-  margin: 10px 5px 0 0;
+.add-route__photo {
+    height: 40px;
+}
+
+textarea {
+    border: none;
+    resize: none;
+    padding: 15px!important;
+    width: 100%;
+    height: 70px;
+    margin-top: 10px;
+}
+
+span {
+    font-weight: 500;
+    display: block;
+    margin: 7px
+}
+
+.btn-small {
+    padding: 5px 0 10px;
+    margin: 0;
+    margin-left: auto;
+}
+
+.inp-additional {
+    width: 95%;
+}
+
+.trash {
+    float: right;
+    margin-top: 18px;
+    cursor: pointer;
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+select {
+    margin: 10px 0;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 0;
+    border: none;
 }

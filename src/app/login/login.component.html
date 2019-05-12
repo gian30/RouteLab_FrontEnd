@@ -1,44 +1,42 @@
 <div class="main">
-  <div class="main-image"></div>
-  <div class="container">
-    <div *ngIf="!advanceRegister" class="row">
-      <div class="col-lg-12">
-        <h1 class="main-title">
-          You deserve <br> a route today!
-        </h1>
-        <h2 class="second-title">
-          Find your perfect route with RouteLab
-        </h2>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-5">
-        <form *ngIf="!advanceRegister" class="signin" [formGroup]="registerForm" (ngSubmit)="loginAction()">
-          <span class="signin__span">{{errorform}}</span>
-          <input type="text" class="signin__input" formControlName="email" placeholder="Email"
-                 (change)="onChangeEmail()">
-          <div *ngIf="emailExist && register" class="error-message">Ya existe un usuario con este email</div>
-          <div *ngIf="submitted && f['email'].errors !== null">
-            <div *ngIf="f['email'].errors.required" class="error-message">Email is required</div>
-            <div *ngIf="f['email'].errors.email" class="error-message">Email must be a valid email address</div>
-          </div>
-          <input type="password" class="signin__input" formControlName="pass" placeholder="Contraseña">
-          <div *ngIf="submitted && f['pass'].errors !== null">
-            <div *ngIf="f['pass'].errors.required" class="error-message">Password is required</div>
-            <div *ngIf="f['pass'].errors.length" class="error-message">Password should contain at least 6 characters
+    <div class="main-image"></div>
+    <div class="container">
+        <div *ngIf="!advanceRegister" class="row">
+            <div class="col-lg-12">
+                <h1 class="main-title">
+                    You deserve <br> a route today!
+                </h1>
+                <h2 class="second-title">
+                    Find your perfect route with RouteLab
+                </h2>
             </div>
-          </div>
-          <input *ngIf="register" type="password" formControlName="confpass" class="signin__input"
-                 placeholder="Confirmar contraseña">
-          <div *ngIf="submitted && register && f['confpass'].errors !== null">
-            <div *ngIf="f['confpass'].errors" class="error-message">Passwords don't match</div>
-          </div>
-          <div class="log ">
-            <div class="signin__details d-flex justify-content-between">
+        </div>
+        <div class="row">
+            <div class="col-lg-5">
+                <form *ngIf="!advanceRegister" class="signin" [formGroup]="registerForm" (ngSubmit)="loginAction()">
+                    <span class="signin__span">{{errorform}}</span>
+                    <input type="text" class="signin__input" formControlName="email" placeholder="Email" (change)="onChangeEmail()">
+                    <div *ngIf="emailExist && register" class="error-message">Ya existe un usuario con este email</div>
+                    <div *ngIf="submitted && f['email'].errors !== null">
+                        <div *ngIf="f['email'].errors.required" class="error-message">Email is required</div>
+                        <div *ngIf="f['email'].errors.email" class="error-message">Email must be a valid email address</div>
+                    </div>
+                    <input type="password" class="signin__input" formControlName="pass" placeholder="Contraseña">
+                    <div *ngIf="submitted && f['pass'].errors !== null">
+                        <div *ngIf="f['pass'].errors.required" class="error-message">Password is required</div>
+                        <div *ngIf="f['pass'].errors.length" class="error-message">Password should contain at least 6 characters
+                        </div>
+                    </div>
+                    <input *ngIf="register" type="password" formControlName="confpass" class="signin__input" placeholder="Confirmar contraseña">
+                    <div *ngIf="submitted && register && f['confpass'].errors !== null">
+                        <div *ngIf="f['confpass'].errors" class="error-message">Passwords don't match</div>
+                    </div>
+                    <div class="log ">
+                        <div class="signin__details d-flex justify-content-between">
 
-              <!--BOTON REGISTRO GOOGLE-->
-              <div class="sign__google">
-                <button type="button" class="google-button" (click)="signInWithGoogle()">
+                            <!--BOTON REGISTRO GOOGLE-->
+                            <div class="sign__google">
+                                <button type="button" class="google-button" (click)="signInWithGoogle()">
                   <span class="google-button__icon">
                   <svg viewBox="0 0 366 372" xmlns="http://www.w3.org/2000/svg"><path
                     d="M125.9 10.2c40.2-13.9 85.3-13.6 125.3 1.1 22.2 8.2 42.5 21 59.9 37.1-5.8 6.3-12.1 12.2-18.1 18.3l-34.2 34.2c-11.3-10.8-25.1-19-40.1-23.6-17.6-5.3-36.6-6.1-54.6-2.2-21 4.5-40.5 15.5-55.6 30.9-12.2 12.3-21.4 27.5-27 43.9-20.3-15.8-40.6-31.5-61-47.3 21.5-43 60.1-76.9 105.4-92.4z"
@@ -52,48 +50,47 @@
                   </span>
                   <span class="google-button__text">Sign in with Google</span>
                 </button>
-              </div>
+                            </div>
 
-              <!--REGISTRO FORMULARIO-->
+                            <!--REGISTRO FORMULARIO-->
 
-              <div class="signin__reg">
-                <button type="submit" class="signin__button button">
+                            <div class="signin__reg">
+                                <button type="submit" class="signin__button button">
                   {{actionLink}}
                 </button>
-                <p class="signin__text">
-                  {{registerText}}
-                </p>
-                <a (click)="goRegister()" class="signin__link">
+                                <p class="signin__text">
+                                    {{registerText}}
+                                </p>
+                                <a (click)="goRegister()" class="signin__link">
                   {{registerLink}}
                 </a>
-              </div>
+                            </div>
 
-            </div>
-          </div>
-        </form>
-        <form *ngIf="advanceRegister" class="signin signin-second" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-          <h2>Completa tu perfil</h2>
-          <input type="text" class="signin__input" formControlName="nombre" placeholder="Nombre">
-          <input type="text" class="signin__input" formControlName="nombreusuario" placeholder="Nombre de usuario">
-          <input type="text" class="signin__input" placeholder="Localidad" ngx-google-places-autocomplete
-                 [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
-          <div class="signin__inputs d-flex">
-            <input type="text" class="signin__input signin__input_age" formControlName="edad" placeholder="Edad">
-            <input type="text" class="signin__input" formControlName="telefono" placeholder="Teléfono">
-          </div>
-          <div class="signin__details justify-content-between">
-            <div class="signin__reg">
-              <p class="signin__terms">
-                By signing up, you agree to our
-                <a target="_blank" href="/terms">
+                        </div>
+                    </div>
+                </form>
+                <form *ngIf="advanceRegister" class="signin signin-second" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <h2>Completa tu perfil</h2>
+                    <input type="text" class="signin__input" formControlName="nombre" placeholder="Nombre">
+                    <input type="text" class="signin__input" formControlName="nombreusuario" placeholder="Nombre de usuario">
+                    <input type="text" class="signin__input" placeholder="Localidad" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" />
+                    <div class="signin__inputs d-flex">
+                        <input type="text" class="signin__input signin__input_age" formControlName="edad" placeholder="Edad">
+                        <input type="text" class="signin__input" formControlName="telefono" placeholder="Teléfono">
+                    </div>
+                    <div class="signin__details justify-content-between">
+                        <div class="signin__reg">
+                            <p class="signin__terms">
+                                By signing up, you agree to our
+                                <a target="_blank" href="/terms">
                   Terms of Use and Privacy Policy.
                 </a>
-              </p>
-            </div>
-          </div>
-          <div class="signin__details d-flex justify-content-between">
-            <div class="sign__google">
-              <button type="button" class="google-button" (click)="signInWithGoogle()">
+                            </p>
+                        </div>
+                    </div>
+                    <div class="signin__details d-flex justify-content-between">
+                        <div class="sign__google">
+                            <button type="button" class="google-button" (click)="signInWithGoogle()">
                   <span class="google-button__icon">
                   <svg viewBox="0 0 366 372" xmlns="http://www.w3.org/2000/svg"><path
                     d="M125.9 10.2c40.2-13.9 85.3-13.6 125.3 1.1 22.2 8.2 42.5 21 59.9 37.1-5.8 6.3-12.1 12.2-18.1 18.3l-34.2 34.2c-11.3-10.8-25.1-19-40.1-23.6-17.6-5.3-36.6-6.1-54.6-2.2-21 4.5-40.5 15.5-55.6 30.9-12.2 12.3-21.4 27.5-27 43.9-20.3-15.8-40.6-31.5-61-47.3 21.5-43 60.1-76.9 105.4-92.4z"
@@ -107,16 +104,16 @@
                   </span>
                 <span class="google-button__text">Sign in with Google</span>
               </button>
-            </div>
-            <div class="signin__reg">
-              <button type="submit" class="signin__button button">
+                        </div>
+                        <div class="signin__reg">
+                            <button type="submit" class="signin__button button">
                 {{actionLink}}
               </button>
-            </div>
-          </div>
-        </form>
+                        </div>
+                    </div>
+                </form>
 
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

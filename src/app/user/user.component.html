@@ -1,101 +1,107 @@
 <div class='coverpage'>
-  <div class='user'>
-    <div class="background">
-    </div>
-    <div class='container'>
-      <div class='row'>
-        <div class='col-lg-1'>
-          <div class='profile'>
-            <div class="profilePicture" [style.backgroundImage]="'url(../../assets/uploads/usuarios/'+ currentUser.nombreusuario +'.jpg)'">
-              <form class="blurPicture" enctype="multipart/form-data">
-                  <label id="imagetext" for="imagesel">Select Image</label>
-                <input *ngIf="_loginService.isAuthenticated()" id="imagesel" class="btn-photo" #file type="file" accept='image/*' (change)="addPhoto($event)"/>
-              </form>
+    <div class='user' [style.backgroundImage]="'url(../../assets/uploads/background/'+ currentUser.nombreusuario +'.jpg)'">
+        <div class="background">
+        </div>
+        <div class='container'>
+            <div class='row'>
+                <div class='col-lg-1'>
+                    <div class='profile'>
+                        <div class="profilePicture" [style.backgroundImage]="'url(../../assets/uploads/usuarios/'+ currentUser.nombreusuario +'.jpg)'">
+                            <form *ngIf="isMe()" class="blurPicture" enctype="multipart/form-data">
+                                <label id="imagetext" for="imagesel">Select Image</label>
+                                <input *ngIf="_loginService.isAuthenticated()" id="imagesel" class="btn-photo" #file type="file" accept='image/*' (change)="addPhoto($event)" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="profileDescription">
+                        <ul>
+                            <li class="name">{{currentUser.nombre}}, {{currentUser.edad}}
+                                <button *ngIf="!id" class="points-button">90 puntos</button>
+                            </li>
+                            <li>@{{currentUser.nombreusuario}}</li>
+                            <li><img class="location" src="../../assets/icons/locationWhite.png">{{currentLocation.poblacion}}</li>
+                            <li id="stars" class="stars d-flex">
+                                <img src="../../assets/icons/fullStarWhite.png">
+                                <img src="../../assets/icons/fullStarWhite.png">
+                                <img src="../../assets/icons/fullStarWhite.png">
+                                <img src="../../assets/icons/blankStarWhite.png ">
+                                <img src="../../assets/icons/blankStarWhite.png">
+                            </li>
+                        </ul>
+                        <div class="profileDescription">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1">
+                    <form enctype="multipart/form-data">
+                        <label id="imagetext" for="imagesel2">Select Image</label>
+                        <input *ngIf="_loginService.isAuthenticated()" id="imagesel2" class="btn-photo" #file type="file" accept='image/*' (change)="addBackground($event)" />
+                    </form>
+                </div>
             </div>
-          </div>
         </div>
-        <div class="col-lg-10">
-          <div class="profileDescription">
-            <ul>
-              <li class="name">{{currentUser.nombre}}, {{currentUser.edad}}
-                <button *ngIf="!id" class="points-button">90 puntos</button>
-              </li>
-              <li>@{{currentUser.nombreusuario}}</li>
-              <li><img class="location" src="../../assets/icons/locationWhite.png">{{currentLocation.poblacion}}</li>
-              <li id="stars" class="stars d-flex">
-                <img src="../../assets/icons/fullStarWhite.png">
-                <img src="../../assets/icons/fullStarWhite.png">
-                <img src="../../assets/icons/fullStarWhite.png">
-                <img src="../../assets/icons/blankStarWhite.png ">
-                <img src="../../assets/icons/blankStarWhite.png">
-              </li>
-            </ul>
-            <div class="profileDescription">
+    </div>
+    <div class="navmenu">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="menu d-flex nav nav-pills">
+                        <li class="menu-item nav-item">
+                            <a data-toggle="pill" href="#pills-home">Rutas creadas</a>
+                        </li>
+                        <li class="menu-item nav-item">
+                            <a data-toggle="pill" href="#pills-favourites">Favoritos</a>
+                        </li>
+                        <li class="menu-item">
+                            <a data-toggle="pill" href="#pills-gallery">Galeria</a>
+                        </li>
+                        <li class="menu-item">
+                            <a data-toggle="pill" href="#pills-followers" (click)="followed = false">Seguidores</a>
+                        </li>
+                        <li class="menu-item">
+                            <a data-toggle="pill" href="#pills-followed" (click)="followed = true">Seguidos</a>
+                        </li>
+                        <li class="menu-item">
+                            <a *ngIf="isMe()" data-toggle="pill" href="#pills-edit">Editar perfil</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
-  <div class="navmenu">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-12">
-          <ul class="menu d-flex nav nav-pills">
-            <li class="menu-item nav-item">
-              <a data-toggle="pill" href="#pills-home">Tus rutas</a>
-            </li>
-            <li class="menu-item nav-item">
-              <a data-toggle="pill" href="#pills-favourites">Favoritos</a>
-            </li>
-            <li class="menu-item">
-              <a data-toggle="pill" href="#pills-gallery">Galeria</a>
-            </li>
-            <li class="menu-item">
-              <a data-toggle="pill" href="#pills-followers" (click)="followed = false">Seguidores</a>
-            </li>
-            <li class="menu-item">
-              <a data-toggle="pill" href="#pills-followed" (click)="followed = true">Seguidos</a>
-            </li>
-            <li class="menu-item">
-              <a data-toggle="pill" href="#pills-edit">Editar perfil</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="tab-content" id="pills-tabContent">
-    <div class="tab-pane fade show active" id="pills-home" role="tabpanel">
-      <div class="row">
-        <div class="col-lg-12">
-          <div>
-            <div class="add">
-              <a class="addPhoto m-auto d-block" href="/new-route">+</a>
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div>
+                        <div class="add">
+                            <a class="addPhoto m-auto d-block" href="/new-route">+</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+            <app-routes></app-routes>
         </div>
-      </div>
-      <app-routes></app-routes>
+        <div class="tab-pane fade" id="pills-favourites" role="tabpanel">
+            <app-routes></app-routes>
+        </div>
+        <div class="tab-pane fade" id="pills-gallery" role="tabpanel">
+            <app-gallery></app-gallery>
+        </div>
+        <div class="tab-pane fade" id="pills-followers" role="tabpanel">
+            <div *ngIf=!followed>
+                <app-followers [followed]=followed></app-followers>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="pills-followed" role="tabpanel">
+            <div *ngIf=followed>
+                <app-followers [followed]=followed></app-followers>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="pills-edit" role="tabpanel">
+            <app-edit-profile></app-edit-profile>
+        </div>
     </div>
-    <div class="tab-pane fade" id="pills-favourites" role="tabpanel">
-      <app-routes></app-routes>
-    </div>
-    <div class="tab-pane fade" id="pills-gallery" role="tabpanel">
-      <app-gallery></app-gallery>
-    </div>
-    <div class="tab-pane fade" id="pills-followers" role="tabpanel">
-      <div *ngIf=!followed>
-        <app-followers [followed]=followed></app-followers>
-      </div>
-    </div>
-    <div class="tab-pane fade" id="pills-followed" role="tabpanel">
-      <div *ngIf=followed>
-        <app-followers [followed]=followed></app-followers>
-      </div>
-    </div>
-    <div class="tab-pane fade" id="pills-edit" role="tabpanel">
-      <app-edit-profile></app-edit-profile>
-    </div>
-  </div>
 </div>
