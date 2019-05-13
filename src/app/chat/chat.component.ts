@@ -25,8 +25,9 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   newMsg: string;
   userselected: User;
   chats: any[] = [];
-  mychats: any[];
-  recchats: any[];
+  mychats: any[] = [];
+  msgSub;
+  msgSub1;
 
   @ViewChild('scrollMe') private myScrollContainer: ElementRef;
 
@@ -79,25 +80,38 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   getMessages() {
     this.chats = [];
-    this.cs.getMyMsgs(String(this.me.idusuario), String(this.userselected.idusuario)).subscribe(chats => {
+    this.mychats = [];
+    this.unsub();
+    this.msgSub = this.cs.getMyMsgs(String(this.me.idusuario), String(this.userselected.idusuario)).subscribe(chats => {
+      if (chats !== undefined) {
+        chats['info'].forEach(chat => {
+          this.mychats.push(chat);
+          this.chats.push(chat);
+        });
+      }
+    });
+
+    this.msgSub1 = this.cs.getReceiverMsg(String(this.me.idusuario), String(this.userselected.idusuario)).subscribe(chats => {
       if (chats !== undefined) {
         chats['info'].forEach(chat => {
           this.chats.push(chat);
         });
       }
     });
-    this.cs.getReceiverMsg(String(this.me.idusuario), String(this.userselected.idusuario)).subscribe(chats => {
-      if (chats !== undefined) {
-        chats['info'].forEach(chat => {
-          console.log(chat);
-          this.chats.push(chat);
-        });
-      }
+  }
+  unsub() {
+    if (this.msgSub1) {
+      this.msgSub1.unsubscribe();
+    }
+    if (this.msgSub) {
+      this.msgSub.unsubscribe();
+    }
+  }
+
+  get sortData() {
+    return this.chats.sort((a, b) => {
+      return <any>new Date(a.createdAt) - <any>new Date(b.createdAt);
     });
-    this.chats = this.chats.sort(function (x, y) {
-      return x['createdAt'] - y['createdAt'];
-    });
-    console.log(this.chats);
   }
 
   openChat() {
@@ -110,7 +124,8 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
 
   submit() {
-    if (this.chats == null || this.chats == undefined) {
+    this.unsub();
+    if (this.mychats.length == 0) {
       this.cs.create(this.me.idusuario, this.userselected.idusuario, this.newMsg);
       this.newMsg = '';
     } else {

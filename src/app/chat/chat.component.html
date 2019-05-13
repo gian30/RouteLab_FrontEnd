@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="chat__body" #scrollMe id="chat__body">
-            <div *ngFor="let chat of chats" class="loop">
+            <div *ngFor="let chat of sortData" class="loop">
                 <div *ngIf="chat.userId == me.idusuario" class="message message-sent">
                     <div class="message__body">
                         {{chat.content}}

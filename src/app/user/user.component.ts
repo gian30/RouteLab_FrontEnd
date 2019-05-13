@@ -69,6 +69,9 @@ export class UserComponent implements OnInit {
   }
   isMe() {
     let me = <User>JSON.parse(localStorage.getItem("currentUser"));
+    if (this.id == null) {
+      return true;
+    }
     if (this.id == String(me.idusuario)) {
       return true;
     } else {

@@ -32,7 +32,8 @@
 
 .chat__contact-list {
     max-height: 400px;
-    overflow-y: inherit;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .chat__contact-img {
