@@ -41,7 +41,7 @@ export class RoutesComponent implements OnInit {
 
 
   private serchROUTE() {
-    console.log("vbjklñ");
+    console.log('vbjklñ');
   /*  const currencies = 'USD,GBP,CHF,JPY';
     const url = `${this.urlapi}?symbols=${currencies}`;
     this.httpClient
