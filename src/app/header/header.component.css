@@ -90,6 +90,7 @@
   height: 35px;
   font-size: 13px;
   padding-top: 4px;
+  width: 80px;
 }
 
 
@@ -137,5 +138,14 @@
 }
 
 
-
+.profilePictureHeader[_ngcontent-c1] {
+  width: 40px;
+  height: 40px;
+  background-image:  url("../../assets/img/0.jpg");
+  background-size: cover;
+  border-radius: 50%;
+  position: relative;
+  display: block;
+  margin-left: auto;
+}
 

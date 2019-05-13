@@ -33,6 +33,7 @@ import {
 } from 'ng4-social-login';
 import { UploadPhotoComponent } from './upload-photo/upload-photo.component';
 import { NewRouteFormComponent } from './new-route-form/new-route-form.component';
+import {FilterPipe} from "./header/filter.pipe";
 
 const CONFIG = new AuthServiceConfig([
 
@@ -105,7 +106,8 @@ RouterModule.forRoot(routes,
     EditProfileComponent,
     TermsComponent,
     UploadPhotoComponent,
-    NewRouteFormComponent
+    NewRouteFormComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

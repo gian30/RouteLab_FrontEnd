@@ -8,13 +8,13 @@
           </a>
         </div>
       </div>
-      <div class="col-lg-5 order-sm-3 order-2">
+      <div class="col-lg-4 order-sm-3 order-2">
         <ul class="menu d-flex m-auto">
           <li class="menu-item">
             <a href="/" class="menu-link">Página principal</a>
           </li>
           <li class="menu-item">
-            <a href="/routes"  titleRoutes="Mejores rutas" class="menu-link">Descubre</a>
+            <a href="/routes" titleRoutes="Mejores rutas" class="menu-link">Descubre</a>
           </li>
           <li class="menu-item">
             <a href="/contact" class="menu-link">Contacto</a>
@@ -41,23 +41,43 @@
                   <img [src]="'../../assets/icons/users.png'" alt="users" class="categories-icon">
                   <p class="d-block dropdown-item-desc">Usuarios</p>
                 </button>
-                <button (click)="BARS = 'bars-solid.png'" class="dropdown-item d-flex">
-                  <img [src]="'../../assets/icons/bars-solid.png'" alt="all" class="categories-icon">
+                <button (click)="BARS = 'distance.png'" class="dropdown-item d-flex">
+                  <img [src]="'../../assets/icons/distance.png'" alt="all" class="categories-icon">
                   <p class="d-block dropdown-item-desc">Todo</p>
                 </button>
               </div>
             </div>
           </div>
-          <input type="text" class="search-input">
-          <button class="search-button button">
-            <img [src]="SEARCH" alt="Search" class="search-icon">
-          </button>
+
+
+          <!--BUSCAR-->
+
+            <input [(ngModel)]="searchText" type="text" class="search-input">
+            <button class="search-button button">
+              <img [src]="SEARCH" alt="Search" class="search-icon" (click)="serchROUTE()">
+
+            </button>
+            <ul>
+              <li *ngFor="let c of characters | filter : searchText">
+                {{c}}
+              </li>
+            </ul>
+
+
         </div>
       </div>
-      <div class="col-lg-1 col-md-2 order-sm-2 order-lg-4">
+      <div *ngIf="!_loginService.isAuthenticated()" class="col-lg-2 col-md-2 order-sm-2 order-lg-4">
         <a href="/login" class="sign-button button justify-content-end">
           Iniciar<br>sesión
         </a>
+      </div>
+      <div *ngIf="_loginService.isAuthenticated()" class="col-lg-2 col-md-2 order-sm-2 order-lg-4">
+        <div class="d-flex align-items-center">
+          <a (click)="_loginService.logout()" class="sign-button button justify-content-end">
+            Cerrar<br>sesión
+          </a>
+          <img routerLink="/user/" class="justify-content-end profilePictureHeader">
+        </div>
       </div>
     </div>
   </div>

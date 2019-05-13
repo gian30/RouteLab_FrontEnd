@@ -10,10 +10,10 @@ import {LoginService} from '../services/login.service';
   providers: [PostService]
 })
 export class RoutesComponent implements OnInit {
-  public posts: Post[] = [];
 
   constructor(private _postService: PostService) {
   }
+  public posts: Post[] = [];
 
   private ROUTE_SAMPLE = ('../../assets/img/sample_route.png');
   private LOCATION = ('../../assets/icons/location.png');
@@ -27,28 +27,27 @@ export class RoutesComponent implements OnInit {
 
   category = 'Categoría';
   categories = ['Sol y playa', 'Deportivo', 'Naturaleza', 'De montaña', 'Histórico', 'Aventura', 'Rural', 'Científico'];
-
+  private urlapi
+    = 'https://api.exchangeratesapi.io/latest';
+  public currentEuroRates: any = null;
   loadRoute() {
     this.loadRoutes = !this.loadRoutes;
   }
-
   ngOnInit() {
-    this.loadPosts();
+    this.loadRoute();
+
   }
 
-  loadPosts() {
-    this._postService.getPosts().subscribe(
-      resul => {
-        if (resul.body !== null) {
-          this.posts = <Post[]>resul.body['data'];
-          console.log(this.posts);
-        }
-      }, error => {
-        console.log(error);
-      }
-    );
-  }
 
+
+  private serchROUTE() {
+    console.log("vbjklñ");
+  /*  const currencies = 'USD,GBP,CHF,JPY';
+    const url = `${this.urlapi}?symbols=${currencies}`;
+    this.httpClient
+      .get(url)
+      .subscribe(apiData => (this.currentEuroRates = apiData));*/
+  }
   assignBlack() {
     const element = document.getElementById('addBlack');
     element.classList.add('black');
