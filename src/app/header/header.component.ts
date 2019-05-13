@@ -14,11 +14,6 @@ export class HeaderComponent implements OnInit {
 
   BARS = 'bars-solid.png';
   SEARCH = ('../../assets/icons/search.png');
-// -----------------------------------//
-  characters = [
-    'Beemo2'
-  ];
-  searchInput;
   // ---------------------------------------//
 
   constructor(public _loginService: LoginService) {
