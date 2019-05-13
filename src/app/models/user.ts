@@ -11,6 +11,7 @@ class User {
   private _telefono: string;
   private _empresa: string;
   private _nombre_empresa: string;
+  private _followed: boolean;
   private _token: string;
 
   constructor(idusuario: number, nombreusuario: string, email: string, pass: string, nombre: string, edad: string, localidad: Localidad, foto: string, telefono: string, empresa: string, nombre_empresa: string, token: string) {
@@ -34,6 +35,13 @@ class User {
 
   set idusuario(value: number) {
     this._idusuario = value;
+  }
+  set followed(value: boolean) {
+    this._followed = value;
+  }
+
+  get followed() {
+    return this._followed;
   }
 
   get nombreusuario(): string {

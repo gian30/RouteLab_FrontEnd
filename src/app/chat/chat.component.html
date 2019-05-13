@@ -1,132 +1,66 @@
 <div class="chat d-flex">
-  <div *ngIf="opened && openedUser" class="chat__main">
-    <div class="chat__head d-flex align-items-center">
-      <button class="chat__btn">
+    <div *ngIf="opened && openedUser" class="chat__main">
+        <div class="chat__head d-flex align-items-center">
+            <button class="chat__btn">
         <img src="../../assets/icons/chat/more.png" alt="More" class="chat__more-img">
       </button>
-      <img src="../../assets/img/users/1.jpg" alt="UserOld image" class="chat__contact-img-head">
-      <div class="chat__contact-names">
-        <p class="chat__name-full">Marc Fernandez</p>
-        <p class="chat__name-user">@lilmarcus</p>
-      </div>
-      <div class="chat__controls ml-auto">
-        <button (click)="openUser()" class="chat__btn">
+            <img src="../../assets/img/users/1.jpg" alt="UserOld image" class="chat__contact-img-head">
+            <div class="chat__contact-names">
+                <p class="chat__name-full">{{userselected.nombre}}</p>
+                <p class="chat__name-user">{{userselected.nombreusuario}}</p>
+            </div>
+            <div class="chat__controls ml-auto">
+                <button (click)="openUser()" class="chat__btn">
           <img src="../../assets/icons/chat/line.png" alt="Line" class="chat__line-img">
         </button>
-        <button (click)="openChat()" class="chat__btn">
+                <button (click)="openChat()" class="chat__btn">
           <img src="../../assets/icons/chat/close.png" alt="Close" class="chat__close-img">
         </button>
-      </div>
-    </div>
-    <div class="chat__body" #scrollMe id="chat__body">
-      <div class="message message-sent">
-        <div class="message__body">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu magna tincidunt, gravida neque vitae...
+            </div>
         </div>
-        <div class="message__time">
-          19:23
+        <div class="chat__body" #scrollMe id="chat__body">
+            <div *ngFor="let chat of sortData" class="loop">
+                <div *ngIf="chat.userId == me.idusuario" class="message message-sent">
+                    <div class="message__body">
+                        {{chat.content}}
+                    </div>
+                    <div class="message__time">
+                        {{toDate(chat.createdAt)}}
+                    </div>
+                </div>
+                <div *ngIf="chat.userId != me.idusuario" class="message message-recived">
+                    <div class="message__body">
+                        {{chat.content}}
+                    </div>
+                    <div class="message__time">
+                        {{toDate(chat.createdAt)}}
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="message message-recived">
-        <div class="message__body">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
-        </div>
-        <div class="message__time">
-          19:45
-        </div>
-      </div>
-      <div class="message message-sent">
-        <div class="message__body">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu magna tincidunt, gravida neque vitae...
-        </div>
-        <div class="message__time">
-          19:23
-        </div>
-      </div>
-      <div class="message message-recived">
-        <div class="message__body">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
-        </div>
-        <div class="message__time">
-          19:45
-        </div>
-      </div>
-      <div class="message message-sent">
-        <div class="message__body">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu magna tincidunt, gravida neque vitae...
-        </div>
-        <div class="message__time">
-          19:23
-        </div>
-      </div>
-      <div class="message message-recived">
-        <div class="message__body">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
-        </div>
-        <div class="message__time">
-          19:45
-        </div>
-      </div>
-    </div>
-    <div class="chat__textbox d-flex">
-      <input type="text" class="chat__input">
-      <button class="btn sent-btn">
-        <img src="../../assets/icons/chat/sent.png" alt="Send">
+        <div class="chat__textbox d-flex">
+            <input type="text" class="chat__input" [(ngModel)]="newMsg" (keydown.enter)="submit()">
+            <button class="btn sent-btn">
+        <img src="../../assets/icons/chat/sent.png" alt="Send" (click)="submit()">
       </button>
+        </div>
     </div>
-  </div>
-  <div class="chat__content">
-    <div *ngIf="opened" class="chat__contacts">
-      <div class="chat__search d-flex align-items-center justify-content-center">
-        <i class="fas fa-search"></i>
-      </div>
-      <div class="chat__contact-list">
-        <div (click)="openUser()" class="chat__contact">
-          <img src="../../assets/img/users/1.jpg" alt="UserOld image" class="chat__contact-img">
-          <p class="chat__username">
-            @itsisma97
-          </p>
+    <div class="chat__content">
+        <div *ngIf="opened" class="chat__contacts">
+            <div class="chat__search d-flex align-items-center justify-content-center">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="chat__contact-list">
+                <div class="chat__contact" *ngFor="let user of users" (click)="openUser(user)">
+                    <img src="../../assets/img/users/1.jpg" alt="UserOld image" class="chat__contact-img">
+                    <p class="chat__username">
+                        {{user.nombreusuario}}
+                    </p>
+                </div>
+            </div>
         </div>
-        <div (click)="openUser()" class="chat__contact">
-          <img src="../../assets/img/users/2.jpg" alt="UserOld image" class="chat__contact-img">
-          <p class="chat__username">
-            @itsisma97
-          </p>
-        </div>
-        <div (click)="openUser()" class="chat__contact">
-          <img src="../../assets/img/users/3.jpg" alt="UserOld image" class="chat__contact-img">
-          <p class="chat__username">
-            @itsisma97
-          </p>
-        </div>
-        <div (click)="openUser()" class="chat__contact">
-          <img src="../../assets/img/users/4.jpg" alt="UserOld image" class="chat__contact-img">
-          <p class="chat__username">
-            @itsisma97
-          </p>
-        </div>
-        <div (click)="openUser()" class="chat__contact">
-          <img src="../../assets/img/users/5.jpg" alt="UserOld image" class="chat__contact-img">
-          <p class="chat__username">
-            @itsisma97
-          </p>
-        </div>
-        <div (click)="openUser()" class="chat__contact">
-          <img src="../../assets/img/users/5.jpg" alt="UserOld image" class="chat__contact-img">
-          <p class="chat__username">
-            @itsisma97
-          </p>
-        </div>
-        <div (click)="openUser()" class="chat__contact">
-          <img src="../../assets/img/users/5.jpg" alt="UserOld image" class="chat__contact-img">
-          <p class="chat__username">
-            @itsisma97
-          </p>
-        </div>
-      </div>
-    </div>
-    <button (click)="openChat()" class="button chat__button">
+        <button (click)="openChat()" class="button chat__button">
       <i class="fas fa-comments"></i>
     </button>
-  </div>
+    </div>
 </div>

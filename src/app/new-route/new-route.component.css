@@ -1,22 +1,9 @@
 .newR {
-  background-color: #E9F0EF;
-  padding-bottom: 35px;
-  padding-top: 55px;
+    background-color: #E9F0EF;
+    padding-bottom: 35px;
+    padding-top: 20px;
 }
 
-
-
-.mapRoute {
-  padding-bottom: 30px;
-  align-items: center;
-  display: block;
-  margin-right: auto;
-
-}
-
-.
-.thumb {
-  height: 75px;
-  border: 1px solid #000;
-  margin: 10px 5px 0 0;
+.mapa {
+    height: 400px;
 }

@@ -77,7 +77,6 @@ export class RouteComponent implements OnInit {
         }
       }, error => {
         console.log(error);
-
       }
     );
   }

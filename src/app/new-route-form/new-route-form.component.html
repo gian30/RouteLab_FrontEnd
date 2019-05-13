@@ -1,77 +1,43 @@
-<div class="container">
-  <form [formGroup]="productForm" (submit)="onSubmit()">
-    <div class="col-lg-3 offset-1 ">
-      <div class="nameRoute"> Nombre de la ruta
-        <div>
-          <input class="text">
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="locationA ">Destino
-          <div class="d-flex ">
-            <input formControlName="origen" class="text" type="text" class="search__input" placeholder="Ciudad"
-                   ngx-google-places-autocomplete  #placesRef="ngx-places"
-                   (onAddressChange)="handleAddressChange($event)">
-          </div>
-          <div>
-            <input style="display: none"
-                   type="file" name="image"
-                   (change)="onFileSelected($event)"
-                   #fileInput>
-            <button class="addRoute m-auto "
-                    type="button"
-                    (click)="fileInput.click()">Elige una foto
-            </button>
-          </div>
-        </div>
-      </div>
+<form class="add-route" [formGroup]="routeForm" (submit)="onSubmit()">
+    <div class="add-route__name">
+        <span>Nombre de la ruta</span>
+        <input formControlName="name" class="form-input" placeholder="Nombre" />
     </div>
-
-      <div class="row ">
-        <div class="col-lg-10 offset-1">
-          <div class="">
-          <textarea formControlName="description" class="nr1-input">
-          </textarea>
-          </div>
+    <div class="add-route__location">
+        <span>Origen</span>
+        <input class="form-input" type="text" placeholder="Ciudad" ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event, 0)" />
+        <div *ngFor="let point of routePoints; let i = index" class="route-point">
+            <span *ngIf="i+1 === routePoints.length">Destino</span>
+            <span *ngIf="i+1 !== routePoints.length">punto de ruta {{i+1}}</span>
+            <input class="form-input inp-additional" type="text" placeholder="Ciudad" ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event, i+1)" /><i (click)="removePoint(point)" class="trash fas fa-trash-alt"></i>
         </div>
-      </div>
-
-      <div class="row d-flex">
-        <div class="col-lg-10 offset-1">
-          <div class="text">
-            Recomendaciones:
-          </div>
-          <div class="recommendation d-flex align-items-center">
-            <div *ngFor="let rec of recomendations">
-              <input type="checkbox" value="{{rec}}">{{rec}}
-            </div>
-          </div>
-        </div>
-      </div>
-
-  </form>
-
-
-
-  <!-- <select formControlName="select">
-     <option>Ropa de abrigo
-     </option>
-     <option>Calzado cómodo</option>
-     <option> Agua</option>
-     <option>Comida</option>
-     <option>Ropa de baño</option>
-   </select>-->
-
-
-  <div class="col-lg-12 ">
-    <div class="addButton ">
-      <button class="addRoute m-auto " (click)="onUpload()">
-        <a class="iconAdd"> + </a>
-      </button>
+        <button class="add-route__button btn-small ml-auto" type="button" (click)="addRoutePoint()">
+            Añadir punto de ruta
+        </button>
     </div>
-  </div>
-</div>
-
-
-
+    <span> Descripción:</span>
+    <textarea formControlName="description"></textarea>
+    <div class="add-route__add-photo d-flex">
+        <div *ngFor="let url of urls">
+            <img style="display: inline-block" class="add-route__photo" [src]="url">
+        </div>
+    </div>
+    <span> Añadir fotos:</span>
+    <input style="display: none" type="file" name="image" (change)="onFileSelected($event)" #fileInput />
+    <button class="add-route__button ml-auto" type="button" (click)="fileInput.click()">
+        Elige una foto
+    </button>
+    <span> Recomendaciones:</span>
+    <div formArrayName="recs" class="form-check" *ngFor="let rec of recs; let i = index">
+        <input type="checkbox" [formControlName]="i" class="form-check-input" id="materialUnchecked" value="{{ rec.name }}">
+        <label class="form-check-label" for="materialUnchecked">{{ rec.name }}</label>
+    </div>
+    <div class="categories_cont">
+        <span> Categorias:</span>
+        <select class="categories" formControlName="categories">
+            <option *ngFor="let cat of categories" value="{{cat}}">{{cat}}</option>
+    
+        </select>
+    </div>
+    <button class="add-route__button ml-auto" (click)="onUpload()">Añadir ruta</button>
+</form>
