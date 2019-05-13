@@ -22,9 +22,7 @@
                 <div class="photo__current">
                     <img class="photo__img" [src]=CURRENTIMG>
                     <div class="photo__preview">
-
                         <img *ngFor="let photo of ROUTEIMGS; let i=index" (click)="loadPhoto(ROUTEIMGS[i])" class="photo__imgs" [src]=ROUTEIMGS[i]>
-
                     </div>
                 </div>
                 <div class="description">
@@ -46,8 +44,8 @@
                         <form class="post-comment" *ngIf="_loginService.isAuthenticated()" [formGroup]="commentForm" (ngSubmit)="addComment()">
                             <textarea class="post-comment__text" formControlName="comment"></textarea>
                             <button class="ml-auto route-button route-button_comment">
-                Comentar
-              </button>
+                              Comentar
+                            </button>
                         </form>
                         <div *ngFor="let comment of comments" class="comment d-flex align-items-center">
                             <img src="../../assets/img/users/6.jpg" alt="user profile" class="comment__user">

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
-
 @Injectable()
 
 export class PostService {
@@ -49,14 +48,6 @@ export class PostService {
         observe: 'response'
       });
   }
-  /*
-  * {
- "idusuario":15,
- "comentario":"dfdsfdf",
- "idpost":1
-}
-http://localhost/ProyectoRouteLab/RouteLab_BackEnd/Final/Clases/WebService/api.php?controller=comentariopost&funcion=comentario*/
-
 
   postComment(info: string) {
     const ruta = '/backend/clases/webservice/api.php?controller=comentariopost&funcion=comentario&token=' + localStorage.getItem('access_token');
@@ -131,11 +122,4 @@ http://localhost/ProyectoRouteLab/RouteLab_BackEnd/Final/Clases/WebService/api.p
         observe: 'response'
       });
   }
-
-
-  // http://localhost/ProyectoRouteLab/RouteLab_BackEnd/Final/Clases/WebService/api.php?controller=post&funcion=buscadorpost
-  // http://localhost/ProyectoRouteLab/RouteLab_BackEnd/Final/Clases/WebService/api.php?controller=post&funcion=buscadorpost
-  // http://localhost/ProyectoRouteLab/RouteLab_BackEnd/Final/Clases/WebService/api.php?controller=post&funcion=buscadorpost
-
-
 }
