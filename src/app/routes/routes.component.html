@@ -1,44 +1,44 @@
 <div *ngIf="loadRoutes;else showroute" class="routes">
-  <div class="container">
-    <h2>{{titleRoutes}}</h2>
-    <div class="row">
-      <div *ngFor="let ruta of posts; let i=index" class="col-lg-4 col-md-6">
-        <a [routerLink]="'/route/'+ruta.idpost" class="route">
-          <div class="route-title">
-            {{ruta.titulo}}
-          </div>
-          <div class="route__img">
-            <div [style.background]="'url('+ruta.postImg+')'" class="route__img-image"></div>
-          </div>
-          <div class="route__main">
-            <p class="route__desc">
-              {{ruta.descripcion | slice:0:100 }}{{'...'}}
-            </p>
-            <div class="route__info d-flex justify-content-between">
-              <div class="route__info-box">
-                <img [src]=LOCATION alt="location image">
-                <span> 180km</span>
-              </div>
-              <div class="route__info-box">
-                <img [src]=STAR alt="location image">
-                <img [src]=STAR alt="location image">
-                <img [src]=STAR alt="location image">
-                <img [src]=STAR alt="location image">
-                <img [src]=STAR alt="location image">
-              </div>
-              <div class="route__info-box">
-                <img [src]=TIMER alt="location image">
-                <span> 4h</span>
-              </div>
+    <div class="container">
+        <h2>{{titleRoutes}}</h2>
+        <div class="row">
+            <div *ngFor="let ruta of posts; let i=index" class="col-lg-4 col-md-6">
+                <a [routerLink]="'/route/'+ruta.idpost" class="route">
+                    <div class="route-title">
+                        {{ruta.titulo}}
+                    </div>
+                    <div class="route__img">
+                        <div [style.background]="'url(assets/uploads/posts/'+ruta.idpost+'/1.png)'" class="route__img-image"></div>
+                    </div>
+                    <div class="route__main">
+                        <p class="route__desc">
+                            {{ruta.descripcion | slice:0:100 }}{{'...'}}
+                        </p>
+                        <div class="route__info d-flex justify-content-between">
+                            <div class="route__info-box">
+                                <img [src]=LOCATION alt="location image">
+                                <span> 180km</span>
+                            </div>
+                            <div class="route__info-box">
+                                <img [src]=STAR alt="location image">
+                                <img [src]=STAR alt="location image">
+                                <img [src]=STAR alt="location image">
+                                <img [src]=STAR alt="location image">
+                                <img [src]=STAR alt="location image">
+                            </div>
+                            <div class="route__info-box">
+                                <img [src]=TIMER alt="location image">
+                                <span> 4h</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
-          </div>
-        </a>
-      </div>
+        </div>
     </div>
-  </div>
 
 </div>
 
 <ng-template #showroute>
-  <app-route></app-route>
+    <app-route></app-route>
 </ng-template>

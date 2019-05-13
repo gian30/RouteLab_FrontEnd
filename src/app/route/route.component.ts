@@ -3,7 +3,7 @@ import * as jQuery from 'jquery';
 import { AgmCoreModule } from '@agm/core';
 import { PostService } from '../services/post.service';
 import { Post } from '../models/post';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route } from '@angular/router';
 import { LoginService } from '../services/login.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { post } from 'selenium-webdriver/http';
@@ -46,7 +46,7 @@ export class RouteComponent implements OnInit {
   };
 
   routeMarkers: any = null;
-
+  searchResults: [] = null;
 
   constructor(public _loginService: LoginService, private _postService: PostService, private route: ActivatedRoute,
     private formBuilder: FormBuilder) {
@@ -74,12 +74,28 @@ export class RouteComponent implements OnInit {
           console.log(this.post);
           console.log(this.post.markers[0].latitud);
           this.loadMarkers();
+          this.similarRoutes();
         }
       }, error => {
         console.log(error);
       }
     );
   }
+
+  similarRoutes() {
+    this._postService.getSearchResults(this.post.titulo).subscribe(
+      resul => {
+        if (resul.body !== null) {
+          this.searchResults = resul.body['data'];
+          console.log(this.searchResults);
+        }
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+
+
   loadComments() {
     this._postService.getComment(this.id).subscribe(
       resul => {

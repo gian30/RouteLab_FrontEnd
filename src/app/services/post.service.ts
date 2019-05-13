@@ -121,6 +121,17 @@ http://localhost/ProyectoRouteLab/RouteLab_BackEnd/Final/Clases/WebService/api.p
       });
   }
 
+  getSearchResults(searchText: string) {
+    const ruta = '/backend/clases/webservice/api.php?controller=post&funcion=buscadorpost';
+    let search = '{"valor":"' + searchText + '"}';
+    return this._conexHttp.post(ruta, search,
+      {
+        headers:
+          { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+        observe: 'response'
+      });
+  }
+
 
   // http://localhost/ProyectoRouteLab/RouteLab_BackEnd/Final/Clases/WebService/api.php?controller=post&funcion=buscadorpost
   // http://localhost/ProyectoRouteLab/RouteLab_BackEnd/Final/Clases/WebService/api.php?controller=post&funcion=buscadorpost

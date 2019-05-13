@@ -29,19 +29,19 @@
                         </button>
                         <div class="dropdown__content" ngbDropdownMenu>
                             <div class="d-flex flex-column">
-                                <button (click)="BARS = 'road.png'" class="dropdown-item d-flex align-items-center">
+                                <button (click)="BARS = 'road.png'; searchType = 'routes'" class="dropdown-item d-flex align-items-center">
                                     <img [src]="'../../assets/icons/road.png'" alt="road" class="categories-icon">
                                     <p class="d-block dropdown-item-desc">Rutas</p>
                                 </button>
-                                <button (click)="BARS = 'photos.png'" class="dropdown-item d-flex">
+                                <button (click)="BARS = 'photos.png'; searchType = 'photos'" class="dropdown-item d-flex">
                                     <img [src]="'../../assets/icons/photos.png'" alt="photos" class="categories-icon">
                                     <p class="d-block dropdown-item-desc">Fotos</p>
                                 </button>
-                                <button (click)="BARS = 'users.png'" class="dropdown-item d-flex">
+                                <button (click)="BARS = 'users.png'; searchType = 'users'" class="dropdown-item d-flex">
                                     <img [src]="'../../assets/icons/users.png'" alt="users" class="categories-icon">
                                     <p class="d-block dropdown-item-desc">Usuarios</p>
                                 </button>
-                                <button (click)="BARS = 'distance.png'" class="dropdown-item d-flex">
+                                <button (click)="BARS = 'distance.png'; searchType = 'all'" class="dropdown-item d-flex">
                                     <img [src]="'../../assets/icons/search.png'" alt="all" class="categories-icon">
                                     <p class="d-block dropdown-item-desc">Todo</p>
                                 </button>
@@ -49,8 +49,14 @@
                         </div>
                     </div>
                     <!--BUSCAR-->
-                    <input [(ngModel)]="searchText" type="text" class="search-input">
-                    <button class="search-button button">
+                    <input [(ngModel)]="search" type="text" class="search-input">
+                    <div class="search_dropdown" *ngIf="closed == false">
+                        <i class="fas fa-times d-flex justify-content-end close" (click)="close()"></i>
+                        <ul class="results">
+                            <li *ngFor="let res of searchResults"><a href="route/{{res.idpost}}">{{res.titulo}}</a></li>
+                        </ul>
+                    </div>
+                    <button class="search-button button" (click)="searchAction()">
                         <img [src]="SEARCH" alt="Search" class="search-icon">
                     </button>
                 </div>
