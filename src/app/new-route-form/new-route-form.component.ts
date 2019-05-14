@@ -64,7 +64,7 @@ export class NewRouteFormComponent implements OnInit {
   }
 
   addRoutePoint() {
-    let name = "point" + this.routePoints.length;
+    const name = 'point' + this.routePoints.length;
     this.routePoints.push(name);
   }
 
@@ -89,10 +89,10 @@ export class NewRouteFormComponent implements OnInit {
 
   onFileSelected(event) {
     this.selectedFile = <File>event.target.files[0];
-    var reader = new FileReader();
+    const reader = new FileReader();
     reader.onload = (event: any) => {
       this.urls.push(event.target.result);
-    }
+    };
     this.files.push(event.target.files[0]);
     reader.readAsDataURL(event.target.files[0]);
   }
@@ -102,7 +102,7 @@ export class NewRouteFormComponent implements OnInit {
         if (resul.body !== null) {
           this.recomendations = resul.body['data'];
           console.log(this.recomendations);
-          for (let rec of this.recomendations) {
+          for (const rec of this.recomendations) {
             console.log(rec);
             this.recomendation = {
               name: rec.descripcion,
