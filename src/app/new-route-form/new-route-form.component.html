@@ -11,7 +11,7 @@
             <span *ngIf="i+1 !== routePoints.length">punto de ruta {{i+1}}</span>
             <input class="form-input inp-additional" type="text" placeholder="Ciudad" ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event, i+1)" /><i (click)="removePoint(point)" class="trash fas fa-trash-alt"></i>
         </div>
-        <button class="add-route__button btn-small ml-auto" type="button" (click)="addRoutePoint()">
+        <button class="add-route__button ml-auto" type="button" (click)="addRoutePoint()">
             Añadir punto de ruta
         </button>
     </div>

@@ -8,6 +8,7 @@ import { LoginService } from '../services/login.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { post } from 'selenium-webdriver/http';
 
+
 declare var $: any;
 declare var jquery: any;
 
@@ -24,21 +25,11 @@ export class RouteComponent implements OnInit {
   private id = this.route.snapshot.paramMap.get('id');
   public post: Post = new Post();
   public comments: any = [];
+  public photos: any = [];
   public recomendations: any = [];
   STAR = ('../../assets/icons/star.png');
-  CURRENTIMG = ('../../assets/img/route_image.png');
-  ROUTEIMGS = [
-    '../../assets/img/sample_images/1.jpg',
-    '../../assets/img/sample_images/2.jpg',
-    '../../assets/img/sample_images/3.jpg',
-    '../../assets/img/sample_images/4.jpg',
-    '../../assets/img/sample_images/5.jpg',
-    '../../assets/img/sample_images/6.jpg',
-    '../../assets/img/sample_images/7.jpg',
-    '../../assets/img/sample_images/8.jpg',
-    '../../assets/img/sample_images/9.jpg',
-    '../../assets/img/sample_images/10.jpg'
-  ];
+  CURRENTIMG = ('../../assets/uploads/posts/1/0.png');
+
 
   public recomendaciones = {
     Tiempo: 'fas fa-cloud',
@@ -55,7 +46,7 @@ export class RouteComponent implements OnInit {
   ngAfterViewInit(): void {
     $('.photo__preview').slick({
       arrows: false,
-      centerMode: true,
+      centerMode: false,
       centerPadding: '0',
       slidesToShow: 5,
       focusOnSelect: true,
@@ -172,8 +163,18 @@ export class RouteComponent implements OnInit {
     this.CURRENTIMG = photo;
   }
 
+  getPhotos() {
+    let fileList = [];
+    for (let i = 0; i < 5; i++) {
+      const url = '../../assets/uploads/posts/' + this.id + '/' + (i) + '.png';
+      fileList[i] = url;
+    }
+    return fileList;
+  }
+
   ngOnInit() {
     window.scrollTo(0, 0);
+    this.photos = this.getPhotos();
     this.loadPost();
     this.loadRecomendaciones();
     this.loadComments();
@@ -181,6 +182,8 @@ export class RouteComponent implements OnInit {
       comment: ['', [Validators.required]]
     });
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    let photos = this.getPhotos();
+    console.log(photos);
 
   }
 

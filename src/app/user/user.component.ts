@@ -4,6 +4,7 @@ import { ActivatedRoute } from "@angular/router";
 import { UserService } from "../services/user.service";
 import { LoginService } from "../services/login.service";
 import { strict } from "assert";
+import { FollowersService } from "../services/followers.service";
 
 declare var $: any;
 declare var jquery: any;
@@ -12,7 +13,7 @@ declare var jquery: any;
   selector: "app-user",
   templateUrl: "./user.component.html",
   styleUrls: ["./user.component.css"],
-  providers: [UserService]
+  providers: [UserService, FollowersService]
 })
 export class UserComponent implements OnInit {
   public currentUser: User;
@@ -27,7 +28,8 @@ export class UserComponent implements OnInit {
   constructor(
     public route: ActivatedRoute,
     public _userService: UserService,
-    public _loginService: LoginService
+    public _loginService: LoginService,
+    public _followersService: FollowersService,
   ) { }
 
   ngOnInit() {
@@ -36,6 +38,7 @@ export class UserComponent implements OnInit {
       this.currentLocation = JSON.parse(String(this.currentUser.localidad));
     } else {
       this.loadUser();
+      
     }
 
     $(document).ready(function () {
@@ -90,6 +93,42 @@ export class UserComponent implements OnInit {
     );
   }
 
+  ifFollowed(follower: User) {
+    let info = {};
+    info = {
+      "idseguido": JSON.parse(localStorage.getItem("currentUser")).idusuario, //our id
+      "idseguidor": follower.idusuario // id to check
+    };
+    this._followersService.checkFollowed(JSON.stringify(info)).subscribe(
+      resul => {
+        if (resul.body['data'] == "true") {
+          follower.followed = true;
+        } else {
+          follower.followed = false;
+        }
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+  // follow or unfollow
+  followAction(follower: User, func: string) {
+    let info = {};
+    info = {
+      "idseguido": JSON.parse(localStorage.getItem("currentUser")).idusuario, //our id
+      "idseguidor": follower.idusuario // id to unfollow/follow
+    };
+    console.log(info);
+    this._followersService.followAction(JSON.stringify(info), func).subscribe(
+      resul => {
+        follower.followed = !follower.followed;
+        console.log(resul);
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+
   addPhoto(event) {
     this.currentFileUpload = event.target.files[0];
     this.sendPhoto("fotoperfil");
@@ -108,6 +147,7 @@ export class UserComponent implements OnInit {
           console.log(this.currentUser.localidad);
           this.currentLocation = <Localidad>this.currentUser.localidad;
           console.log(this.currentUser);
+          this.ifFollowed(this.currentUser);
           console.log(this.currentLocation);
         }
       },

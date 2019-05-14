@@ -20,11 +20,7 @@
                                 <span> 180km</span>
                             </div>
                             <div class="route__info-box">
-                                <img [src]=STAR alt="location image">
-                                <img [src]=STAR alt="location image">
-                                <img [src]=STAR alt="location image">
-                                <img [src]=STAR alt="location image">
-                                <img [src]=STAR alt="location image">
+                                <img *ngFor="let dummy of ' '.repeat(ruta.media).split('')" [src]=STAR alt="location image"> 
                             </div>
                             <div class="route__info-box">
                                 <img [src]=TIMER alt="location image">

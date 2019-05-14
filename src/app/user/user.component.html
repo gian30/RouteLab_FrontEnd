@@ -35,10 +35,15 @@
                     </div>
                 </div>
                 <div class="col-lg-1">
-                    <form enctype="multipart/form-data">
+                    <form enctype="multipart/form-data" *ngIf="isMe()">
                         <label id="imagetext" for="imagesel2">Select Image</label>
                         <input *ngIf="_loginService.isAuthenticated()" id="imagesel2" class="btn-photo" #file type="file" accept='image/*' (change)="addBackground($event)" />
                     </form>
+                    <button class="follow_btn" *ngIf="!isMe()">
+                        <span *ngIf="currentUser.followed" (click)="followAction(currentUser, 'unfollow')">Dejar de
+                            seguir</span>
+                        <span *ngIf="!currentUser.followed" (click)="followAction(currentUser, 'follow')">Seguir</span>
+                    </button>
                 </div>
             </div>
         </div>

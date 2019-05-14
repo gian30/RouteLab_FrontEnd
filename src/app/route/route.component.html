@@ -19,10 +19,10 @@
         </div>
         <div class="row">
             <div class="col-lg-7">
-                <div class="photo__current">
+                <div class="photo__current" *ngIf="photos.length > 0">
                     <img class="photo__img" [src]=CURRENTIMG>
                     <div class="photo__preview">
-                        <img *ngFor="let photo of ROUTEIMGS; let i=index" (click)="loadPhoto(ROUTEIMGS[i])" class="photo__imgs" [src]=ROUTEIMGS[i]>
+                        <img *ngFor="let photo of photos; let i=index" (click)="loadPhoto(photos[i])" class="photo__imgs" [src]=photos[i]>
                     </div>
                 </div>
                 <div class="description">
@@ -92,11 +92,7 @@
                             <div class="similar-route__info">
                                 <p>{{ser.titulo}}</p>
                                 <div class="stars d-flex justify-content-between">
-                                    <img [src]=STAR alt="location image">
-                                    <img [src]=STAR alt="location image">
-                                    <img [src]=STAR alt="location image">
-                                    <img [src]=STAR alt="location image">
-                                    <img [src]=STAR alt="location image">
+                                    <img *ngFor="let dummy of ' '.repeat(ser.media).split('')" [src]=STAR alt="star image">
                                 </div>
                             </div>
                         </a>
