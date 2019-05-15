@@ -38,7 +38,7 @@ export class RoutesComponent implements OnInit {
 
   ngOnInit() {
     this.loadPosts();
- 
+
 
   }
   loadPosts() {
@@ -53,7 +53,7 @@ export class RoutesComponent implements OnInit {
       }
     );
   }
- 
+
   private serchROUTE() {
     console.log('vbjklñ');
     /*  const currencies = 'USD,GBP,CHF,JPY';

@@ -61,7 +61,6 @@ export class RouteComponent implements OnInit {
       resul => {
         if (resul.body !== null) {
           this.post = <Post>resul.body['data'];
-
           console.log(this.post);
           console.log(this.post.markers[0].latitud);
           this.loadMarkers();

@@ -26,7 +26,16 @@ export class PostService {
         observe: 'response'
       });
   }
+  getPhoto(id) {
 
+    const ruta = '/backend/clases/webservice/api.php?controller=post&funcion=postbyid&id=' + id;
+    return this._conexHttp.get(ruta,
+      {
+        headers:
+          { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+        observe: 'response'
+      });
+  }
   getPost(id) {
 
     const ruta = '/backend/clases/webservice/api.php?controller=post&funcion=postbyid&id=' + id;

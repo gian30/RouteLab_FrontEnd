@@ -1,37 +1,38 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {Post} from "../models/post";
+import {Post} from '../models/post';
+import {PostService} from '../services/post.service';
+import {HttpClient} from '@angular/common/http';
 
 
 
 @Component({
   selector: 'app-gallery',
   templateUrl: './gallery2.component.html',
-  styleUrls: ['./gallery2.component.css']
+  styleUrls: ['./gallery2.component.css'],
+  providers: [PostService]
 })
 
 export class GalleryComponent implements OnInit {
   photoIndividual = '../../assets/img/test.jpg';
-
-  constructor() {
+  photos = [];
+  constructor(private _postService: PostService, private httpClient: HttpClient) {
   }
 
   ngOnInit() {
+    this.loadPhoto(id, this.photos);
   }
 
- /* loadPhoto() {
-    this._postService.getPost(this.id).subscribe(
+loadPhoto() {
+      this._postService.getPhoto(this.id).subscribe(
       resul => {
         if (resul.body !== null) {
-          this.post = <Post>resul.body['data'];
-
-          console.log(this.post);
-          console.log(this.post.markers[0].latitud);
-          this.loadMarkers();
-          this.similarRoutes();
-        }
+          console.log('entro');
+          this.photos = resul.body['data'];
+          console.log('FOTO' + this.photos);
+          }
       }, error => {
         console.log(error);
       }
     );
-  }*/
+  }
 }
