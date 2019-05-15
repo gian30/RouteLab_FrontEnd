@@ -12,28 +12,34 @@
         </div>
         <div class="row">
             <div class="col">
-                <div class="stars d-flex justify-content-between">
-                    <img *ngFor="let dummy of ' '.repeat(post.media).split('')" [src]=STAR alt="star image">
+                <div class="stars ">
+                    <div *ngIf="post.media > 0" class="stars_valoration d-flex justify-content-between">
+                        <div *ngFor="let dummy of ' '.repeat(post.media).split('')" alt="star image"><i class="fas fa-star"></i></div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-7">
-                <div class="photo__current">
+                <div class="photo__current" *ngIf="ROUTEIMGS.length > 1">
                     <img class="photo__img" [src]=CURRENTIMG>
-                    <div class="photo__preview">
-                        <img *ngFor="let photo of photos; let i=index" (click)="loadPhoto(photos[i])" class="photo__imgs" [src]=photos[i]>
+                    <div class="photo__preview d-flex">
+                        <img *ngFor=" let photo of ROUTEIMGS; let i=index " (click)="loadPhoto(ROUTEIMGS[i]) " class="photo__imgs " [src]=ROUTEIMGS[i] style="width: 17%; height: 17%; display: block;">
                     </div>
                 </div>
-                <div class="description">
-                    <div class="description__text">
+                <div class="description ">
+                    <div class="description__text ">
                         {{post.descripcion}}
                     </div>
-                    <div class="description__map">
-                        <agm-map *ngIf="routeMarkers !== null" [latitude]="routeMarkers.lat" [longitude]="routeMarkers.lng">
-                            <agm-direction [origin]="routeMarkers.origin" [waypoints]="routeMarkers.waypoints" [destination]="routeMarkers.destination">
+                    <div class="description__map ">
+                        <agm-map *ngIf="routeMarkers !== null" [latitude]="routeMarkers.lat " [longitude]="routeMarkers.lng ">
+                            <agm-direction [origin]="routeMarkers.origin " [waypoints]="routeMarkers.waypoints " [destination]="routeMarkers.destination ">
                             </agm-direction>
                         </agm-map>
+                    </div>
+                    <div *ngIf="post.media == 0" class="stars_valoration d-flex">
+                        <span>Valorar ruta: </span>
+                        <div *ngFor="let dummy of ' '.repeat(5).split(''); let i = index"><i class="valorate fas fa-star" (click)="valorar(i+1)"></i></div>
                     </div>
                 </div>
                 <div class="comments">
@@ -41,16 +47,16 @@
                         {{comments.length}} comentarios
                     </p>
                     <div class="comments-content">
-                        <form class="post-comment" *ngIf="_loginService.isAuthenticated()" [formGroup]="commentForm" (ngSubmit)="addComment()">
-                            <textarea class="post-comment__text" formControlName="comment"></textarea>
+                        <form class="post-comment" *ngIf="_loginService.isAuthenticated()" [formGroup]="commentForm" (ngSubmit)="addComment() ">
+                            <textarea class="post-comment__text " formControlName="comment"></textarea>
                             <button class="ml-auto route-button route-button_comment">
-                              Comentar
+                                Comentar
                             </button>
                         </form>
-                        <div *ngFor="let comment of comments" class="comment d-flex align-items-center">
-                            <img src="../../assets/img/users/6.jpg" alt="user profile" class="comment__user">
+                        <div *ngFor="let comment of comments" class="comment d-flex align-items-center ">
+                            <img src="../../assets/img/users/6.jpg " alt="user profile" class="comment__user ">
                             <div class="comment__info">
-                                <a class="comment__username" href="/user/{{comment.idusuario}}">
+                                <a class="comment__username" href="/user/{{comment.idusuario}} ">
                                     <p>{{comment.nombreusuario}}</p>
                                 </a>
                                 <div class="comment__text">
@@ -68,14 +74,16 @@
                     </p>
                     <div class="recommendation d-flex align-items-center">
                         <img src="../../assets/icons/location.png" class="recommendation__icon">
-                        <span class="recommendation__name">Barcelona - Montjuïc {{post.distancia}}</span>
+                        <span class="recommendation__name ">{{post.markers[0].poblacion}} -
+                            {{post.markers[post.markers.length - 1].poblacion}} ({{float2int(post.distancia)}}
+                            km)</span>
                     </div>
-                    <div class="recommendation d-flex align-items-center">
+                    <div class="recommendation d-flex align-items-center ">
                         <img src="../../assets/icons/timer.png" class="recommendation__icon">
-                        <span class="recommendation__name">{{post.duracion}} horas de tiempo libre</span>
+                        <span class="recommendation__name">{{float2int(post.duracion)}}h horas de tiempo libre</span>
                     </div>
-                    <div *ngFor="let rec of recomendations" class="recommendation d-flex align-items-center">
-                        <i class="{{recomendaciones[rec.descripcion.pclave]}}"></i>
+                    <div *ngFor="let rec of recomendations" class="recommendation d-flex align-items-center ">
+                        <i class="{{recomendaciones[rec.descripcion.pclave]}} "></i>
                         <span class="recommendation__name">{{rec.recomendacion}}</span>
                     </div>
                 </div>
@@ -86,13 +94,17 @@
                         </p>
                         <button class="button route-button">Ver todo</button>
                     </div>
-                    <div class="similar-routes-list  d-flex justify-content-between flex-wrap">
+                    <div class="similar-routes-list d-flex justify-content-between flex-wrap">
                         <a *ngFor="let ser of searchResults" class="similar-route" href="route/{{ser.idpost}}">
                             <img src="../../assets/img/sample_images/1.jpg" alt="route__img" class="similar-route__img">
                             <div class="similar-route__info">
                                 <p>{{ser.titulo}}</p>
-                                <div class="stars d-flex justify-content-between">
-                                    <img *ngFor="let dummy of ' '.repeat(ser.media).split('')" [src]=STAR alt="star image">
+                                <div class="stars d-flex justify-content-between ">
+                                    <img [src]=STAR alt="location image ">
+                                    <img [src]=STAR alt="location image ">
+                                    <img [src]=STAR alt="location image ">
+                                    <img [src]=STAR alt="location image ">
+                                    <img [src]=STAR alt="location image ">
                                 </div>
                             </div>
                         </a>

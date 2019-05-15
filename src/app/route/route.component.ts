@@ -28,12 +28,17 @@ export class RouteComponent implements OnInit {
   public photos: any = [];
   public recomendations: any = [];
   STAR = ('../../assets/icons/star.png');
-  CURRENTIMG = ('../../assets/uploads/posts/'+this.id+'/0.jpg');
-
+  CURRENTIMG = ('../../assets/uploads/posts/' + this.id + '/0.jpg');
+  ROUTEIMGS = [
+    '../../assets/uploads/posts/' + this.id + '/0.jpg'
+  ];
 
   public recomendaciones = {
     Tiempo: 'fas fa-cloud',
     Ropa: 'fas fa-tshirt',
+    Deporte: 'fas fa-running',
+    Calor: 'fas fa-sun',
+    Frio: 'fas fa-snowflake',
   };
 
   routeMarkers: any = null;
@@ -44,7 +49,11 @@ export class RouteComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    
+
+  }
+
+  public float2int(value) {
+    return value | 0;
   }
 
   loadPost() {
@@ -52,13 +61,9 @@ export class RouteComponent implements OnInit {
       resul => {
         if (resul.body !== null) {
           this.post = <Post>resul.body['data'];
-
-          console.log(this.post);
-          console.log(this.post.markers[0].latitud);
-          this.loadMarkers();
-          this.similarRoutes();
-          this.photos = this.getPhotos();
+          this.getPhotos();
           $('.photo__preview').slick({
+            lazyLoad: 'ondemand',
             arrows: false,
             centerMode: false,
             centerPadding: '0',
@@ -66,13 +71,22 @@ export class RouteComponent implements OnInit {
             focusOnSelect: true,
             dots: false,
             infinite: true,
-
           });
+          console.log(this.post);
+          console.log(this.post.markers[0].latitud);
+          this.loadMarkers();
+          this.similarRoutes();
         }
       }, error => {
         console.log(error);
       }
     );
+  }
+  getPhotos() {
+    for (let ph = 1; ph < this.post.num_fotos; ph++) {
+      const url = '../../assets/uploads/posts/' + this.id + '/' + (ph) + '.jpg';
+      this.ROUTEIMGS.push(url);
+    }
   }
 
   similarRoutes() {
@@ -165,18 +179,12 @@ export class RouteComponent implements OnInit {
     this.CURRENTIMG = photo;
   }
 
-  getPhotos() {
-    let fileList = [];
-    for (let i = 0; i <= this.post.num_fotos; i++) {
-      const url = '../../assets/uploads/posts/' + this.id + '/' + (i) + '.jpg';
-      fileList[i] = url;
-    }
-    return fileList;
+  valorar(val) {
+    console.log(val);
   }
 
   ngOnInit() {
     window.scrollTo(0, 0);
-    this.photos = this.getPhotos();
     this.loadPost();
     this.loadRecomendaciones();
     this.loadComments();

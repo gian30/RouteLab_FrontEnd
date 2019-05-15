@@ -27,6 +27,16 @@ export class PostService {
       });
   }
 
+  getPostsById(id: number) {
+    const ruta = '/backend/clases/webservice/api.php?controller=post&funcion=verusu&id=' + id;
+    return this._conexHttp.get(ruta,
+      {
+        headers:
+          { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+        observe: 'response'
+      });
+  }
+
   getPost(id) {
 
     const ruta = '/backend/clases/webservice/api.php?controller=post&funcion=postbyid&id=' + id;
@@ -71,7 +81,7 @@ export class PostService {
   }
 
   postPostImages(photos: File[], idpost: string) {
-    const ruta = '/backend/clases/webservice/api.php?controller=post&funcion=foto&token=' + localStorage.getItem('access_token')+'&id='+idpost;
+    const ruta = '/backend/clases/webservice/api.php?controller=post&funcion=foto&token=' + localStorage.getItem('access_token') + '&id=' + idpost;
     let httpHeaders = new HttpHeaders();
     httpHeaders.append('enctype', "multipart/form-data");
     httpHeaders.append('Content - Type', 'application/x-www-form-urlencoded');
@@ -123,12 +133,14 @@ export class PostService {
 
   getSearchResults(searchText: string, searchType: string) {
     let funcion = "buscadorpost";
+    let controller = "post";
     let search = '{"valor":"' + searchText + '"}';
     if (searchType == "users") {
       funcion = 'buscadorusu';
       search = '{"nombreusuario":"' + searchText + '"}';
+      controller = "usuario";
     }
-    const ruta = '/backend/clases/webservice/api.php?controller=post&funcion=' + funcion;
+    const ruta = '/backend/clases/webservice/api.php?controller=' + controller + '&funcion=' + funcion;
     return this._conexHttp.post(ruta, search,
       {
         headers:

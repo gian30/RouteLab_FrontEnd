@@ -45,7 +45,10 @@
                     <div class="search_dropdown" *ngIf="closed == false">
                         <i class="fas fa-times d-flex justify-content-end close" (click)="close()"></i>
                         <ul class="results">
-                            <li *ngFor="let res of searchResults"><a href="route/{{res.idpost}}">{{res.titulo}}</a></li>
+                            <li *ngFor="let res of searchResults">
+                                <a *ngIf="searchType == 'routes'" href="route/{{res.idpost}}">{{res.titulo}}</a>
+                                <a *ngIf="searchType == 'users'" href="user/{{res.idusuario}}">{{res.nombre}}</a>
+                            </li>
                         </ul>
                     </div>
                     <button class="search-button button" (click)="searchAction()">

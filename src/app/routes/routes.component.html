@@ -8,7 +8,7 @@
                         {{ruta.titulo}}
                     </div>
                     <div class="route__img">
-                        <div [style.background]="'url(assets/uploads/posts/'+ruta.idpost+'/1.png)'" class="route__img-image"></div>
+                        <div [style.background]="'url(assets/uploads/posts/'+ruta.idpost+'/0.jpg)'" class="route__img-image"></div>
                     </div>
                     <div class="route__main">
                         <p class="route__desc">
@@ -17,14 +17,14 @@
                         <div class="route__info d-flex justify-content-between">
                             <div class="route__info-box">
                                 <img [src]=LOCATION alt="location image">
-                                <span> 180km</span>
+                                <span> {{float2int(ruta.distancia)}}km</span>
                             </div>
                             <div class="route__info-box">
-                                <img *ngFor="let dummy of ' '.repeat(ruta.media).split('')" [src]=STAR alt="location image"> 
+                                <img *ngFor="let dummy of ' '.repeat(ruta.media).split('')" [src]=STAR alt="location image"> <span *ngIf="ruta.media == 0"> no valorada </span>
                             </div>
                             <div class="route__info-box">
                                 <img [src]=TIMER alt="location image">
-                                <span> 4h</span>
+                                <span> {{float2int(ruta.duracion)}}h</span>
                             </div>
                         </div>
                     </div>
