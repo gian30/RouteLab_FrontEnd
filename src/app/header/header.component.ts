@@ -24,8 +24,9 @@ export class HeaderComponent implements OnInit {
 
   }
   loadSearch() {
-    this._postService.getSearchResults(this.search).subscribe(
+    this._postService.getSearchResults(this.search, this.searchType).subscribe(
       resul => {
+        console.log(resul.body);
         if (resul.body !== null) {
           this.searchResults = resul.body['data'];
           console.log(this.searchResults);

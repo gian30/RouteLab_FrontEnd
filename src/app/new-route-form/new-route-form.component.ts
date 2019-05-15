@@ -18,18 +18,19 @@ export class NewRouteFormComponent implements OnInit {
   constructor(public fb: FormBuilder, public _postService: PostService) {
     this.getRecs();
     this.routeForm = this.fb.group({
-      name: [],
-      description: [],
-      categories: [],
+      titulo: [],
+      descripcion: [],
+      categoria: [],
+      duracion: [],
+      distancia: [],
       markers: [],
-      photos: [],
-      distance: [],
-      recs: new FormArray([
+      recs: [],
+      recsVal: new FormArray([
       ])
     });
     this.addCheckboxes();
   }
-
+  public post: any;
   public routeForm: FormGroup;
   public fullAddress: {};
   public recomendations = [];
@@ -122,14 +123,28 @@ export class NewRouteFormComponent implements OnInit {
   private addCheckboxes() {
     this.recs.map((o, i) => {
       const control = new FormControl(i === 0);
-      (this.routeForm.controls.recs as FormArray).push(control);
+      (this.routeForm.controls.recsVal as FormArray).push(control);
     });
+  }
+  sendPhoto(idpost: string) {
+    this._postService.postPostImages(this.files, idpost).subscribe(
+      resul => {
+        console.log(resul.body);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   addPost() {
-    this._postService.postPost(this.files, this.routeForm.value).subscribe(
+    this._postService.postPost(JSON.stringify(this.post)).subscribe(
       resul => {
         console.log(resul.body);
+        if (resul.body['data'] !== null) {
+          let post = resul.body['data'];
+          this.sendPhoto(post.idpost);
+        }
       }, error => {
         console.log(error);
       }
@@ -143,10 +158,33 @@ export class NewRouteFormComponent implements OnInit {
     return distance;
   }
 
+  calculateDuration() {
+    let velocity = 5;
+    let distance = this.calculateDistance(this.markers[0], this.markers[this.markers.length - 1]);
+    let duration = distance / velocity;
+    return duration;
+  }
+
   onUpload() {
     this.routeForm.controls['markers'].setValue(this.markers);
-    this.routeForm.controls['distance'].setValue(this.calculateDistance(this.markers[0], this.markers[this.markers.length]));
-    console.log(this.routeForm);
+    this.routeForm.controls['distancia'].setValue(this.calculateDistance(this.markers[0], this.markers[this.markers.length - 1]));
+    this.routeForm.controls['duracion'].setValue(this.calculateDuration());
+    let recomendaciones = [];
+    for (let cont in this.routeForm.value['recsVal']) {
+      if (this.routeForm.value['recsVal'][cont] == true) {
+        recomendaciones.push(this.recs[cont].id);
+      }
+    }
+    console.log(recomendaciones);
+    delete this.routeForm.controls['recsVal'];
+    this.routeForm.controls['recs'].setValue(recomendaciones);
+
+
+    this.post = {
+      'post': this.routeForm.value
+    };
+
+    console.log(JSON.stringify(this.post));
     this.addPost();
   }
 

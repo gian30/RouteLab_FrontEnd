@@ -28,7 +28,7 @@ export class RouteComponent implements OnInit {
   public photos: any = [];
   public recomendations: any = [];
   STAR = ('../../assets/icons/star.png');
-  CURRENTIMG = ('../../assets/uploads/posts/1/0.png');
+  CURRENTIMG = ('../../assets/uploads/posts/'+this.id+'/0.jpg');
 
 
   public recomendaciones = {
@@ -44,16 +44,7 @@ export class RouteComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    $('.photo__preview').slick({
-      arrows: false,
-      centerMode: false,
-      centerPadding: '0',
-      slidesToShow: 5,
-      focusOnSelect: true,
-      dots: false,
-      infinite: true,
-
-    });
+    
   }
 
   loadPost() {
@@ -66,6 +57,17 @@ export class RouteComponent implements OnInit {
           console.log(this.post.markers[0].latitud);
           this.loadMarkers();
           this.similarRoutes();
+          this.photos = this.getPhotos();
+          $('.photo__preview').slick({
+            arrows: false,
+            centerMode: false,
+            centerPadding: '0',
+            slidesToShow: 5,
+            focusOnSelect: true,
+            dots: false,
+            infinite: true,
+
+          });
         }
       }, error => {
         console.log(error);
@@ -74,7 +76,7 @@ export class RouteComponent implements OnInit {
   }
 
   similarRoutes() {
-    this._postService.getSearchResults(this.post.titulo).subscribe(
+    this._postService.getSearchResults(this.post.titulo, "route").subscribe(
       resul => {
         if (resul.body !== null) {
           this.searchResults = resul.body['data'];
@@ -165,8 +167,8 @@ export class RouteComponent implements OnInit {
 
   getPhotos() {
     let fileList = [];
-    for (let i = 0; i < 5; i++) {
-      const url = '../../assets/uploads/posts/' + this.id + '/' + (i) + '.png';
+    for (let i = 0; i <= this.post.num_fotos; i++) {
+      const url = '../../assets/uploads/posts/' + this.id + '/' + (i) + '.jpg';
       fileList[i] = url;
     }
     return fileList;
@@ -182,8 +184,6 @@ export class RouteComponent implements OnInit {
       comment: ['', [Validators.required]]
     });
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    let photos = this.getPhotos();
-    console.log(photos);
 
   }
 

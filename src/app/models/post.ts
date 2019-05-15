@@ -6,6 +6,9 @@ export class Post {
   private _idusuario: number;
   private _markers: any = [];
   private _media: number;
+  private _distancia: number;
+  private _duracion: number;
+  private _num_fotos: number;
 
   get idpost(): number {
     return this._idpost;
@@ -13,6 +16,29 @@ export class Post {
 
   set idpost(value: number) {
     this._idpost = value;
+  }
+  get distancia(): number {
+    return this._distancia;
+  }
+
+  set distancia(value: number) {
+    this._distancia = value;
+  }
+  
+  get duracion(): number {
+    return this._duracion;
+  }
+
+  set duracion(value: number) {
+    this._duracion = value;
+  }
+
+  get num_fotos(): number {
+    return this._num_fotos;
+  }
+
+  set num_fotos(value: number) {
+    this._num_fotos = value;
   }
 
   get titulo(): string {

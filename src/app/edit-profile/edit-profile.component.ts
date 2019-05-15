@@ -10,6 +10,7 @@ export class EditProfileComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }
