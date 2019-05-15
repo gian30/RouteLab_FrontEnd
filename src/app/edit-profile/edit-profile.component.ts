@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup, FormControl} from '@angular/forms';
-import {UserService} from '../services/user.service';
-import {Address} from 'ngx-google-places-autocomplete/objects/address';
+import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { UserService } from '../services/user.service';
+import { Address } from 'ngx-google-places-autocomplete/objects/address';
 
 @Component({
   selector: 'app-edit-profile',
@@ -28,7 +28,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
   }
 
   sendInfo() {
@@ -39,6 +39,22 @@ export class EditProfileComponent implements OnInit {
       resul => {
         console.log(resul.body);
       }, error => {
+        console.log(error);
+      }
+    );
+    this.loadUser();
+  }
+
+  loadUser() {
+    this._userService.getUser(Number(this.me.idusuario)).subscribe(
+      resul => {
+        if (resul.body !== null) {
+          let tempuser = <User>resul.body["data"];
+          console.log(tempuser);
+          localStorage.setItem('currentUser', JSON.stringify(tempuser));
+        }
+      },
+      error => {
         console.log(error);
       }
     );

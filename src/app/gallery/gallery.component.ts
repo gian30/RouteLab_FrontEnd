@@ -1,37 +1,47 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {Post} from "../models/post";
+import { Component, OnInit, Input } from '@angular/core';
+import { Post } from "../models/post";
+import { PostService } from '../services/post.service';
 
 
 
 @Component({
   selector: 'app-gallery',
   templateUrl: './gallery2.component.html',
-  styleUrls: ['./gallery2.component.css']
+  styleUrls: ['./gallery2.component.css'],
+  providers: [PostService]
 })
 
 export class GalleryComponent implements OnInit {
   photoIndividual = '../../assets/img/test.jpg';
-
-  constructor() {
+  protected posts: Post[];
+  public me: User = <User>JSON.parse(localStorage.getItem("currentUser"));
+  public urls: any[] = [];
+  public rutas: any[] = [];
+  constructor(private _postService: PostService) {
   }
 
   ngOnInit() {
+    this.loadPhoto();
+
   }
 
- /* loadPhoto() {
-    this._postService.getPost(this.id).subscribe(
+  loadPhoto() {
+    this._postService.getPostsById(this.me.idusuario).subscribe(
       resul => {
         if (resul.body !== null) {
-          this.post = <Post>resul.body['data'];
-
-          console.log(this.post);
-          console.log(this.post.markers[0].latitud);
-          this.loadMarkers();
-          this.similarRoutes();
+          this.posts = <Post[]>resul.body['data'];
+          this.posts.forEach(post => {
+            for (let i = 0; i < post.num_fotos; i++) {
+              let photo = "../../assets/uploads/posts/" + post.idpost + "/" + i + ".jpg";
+              this.urls.push(photo);
+              this.rutas.push(post.idpost);
+            }
+          });
+          console.log(this.urls);
         }
       }, error => {
         console.log(error);
       }
     );
-  }*/
+  }
 }

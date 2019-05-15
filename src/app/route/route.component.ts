@@ -27,6 +27,7 @@ export class RouteComponent implements OnInit {
   public comments: any = [];
   public photos: any = [];
   public recomendations: any = [];
+  public canValuate = false;
   STAR = ('../../assets/icons/star.png');
   CURRENTIMG = ('../../assets/uploads/posts/' + this.id + '/0.jpg');
   ROUTEIMGS = [
@@ -72,6 +73,7 @@ export class RouteComponent implements OnInit {
             dots: false,
             infinite: true,
           });
+          this.ifCanValuate();
           console.log(this.post);
           console.log(this.post.markers[0].latitud);
           this.loadMarkers();
@@ -95,6 +97,22 @@ export class RouteComponent implements OnInit {
         if (resul.body !== null) {
           this.searchResults = resul.body['data'];
           console.log(this.searchResults);
+        }
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+
+  ifCanValuate() {
+    this._postService.ifValued(this.post.idpost).subscribe(
+      resul => {
+        if (resul.body !== null) {
+          if (resul.body['data'] == 0) {
+            this.canValuate = true;
+          } else if (resul.body['data'] == 1) {
+            this.canValuate = false;
+          }
         }
       }, error => {
         console.log(error);
@@ -175,12 +193,23 @@ export class RouteComponent implements OnInit {
     this.commentForm.controls.comment.setValue('');
   }
 
+
+  addVal(val: number) {
+    this._postService.postValoration(val, this.currentUser.idusuario, Number(this.id)).subscribe(
+      resul => {
+        this.loadPost();
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+
   loadPhoto(photo) {
     this.CURRENTIMG = photo;
   }
 
   valorar(val) {
-    console.log(val);
+    this.addVal(val);
   }
 
   ngOnInit() {

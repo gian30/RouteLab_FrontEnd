@@ -26,6 +26,15 @@ export class PostService {
         observe: 'response'
       });
   }
+  ifValued(idpost: number) {
+    const ruta = '/backend/clases/webservice/api.php?controller=valoracion&funcion=comprobar&id=' + idpost + "&token=" + localStorage.getItem('access_token');
+    return this._conexHttp.get(ruta,
+      {
+        headers:
+          { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+        observe: 'response'
+      });
+  }
 
   getPostsById(id: number) {
     const ruta = '/backend/clases/webservice/api.php?controller=post&funcion=verusu&id=' + id;
@@ -73,6 +82,18 @@ export class PostService {
     const ruta = '/backend/clases/webservice/api.php?controller=post&funcion=post&token=' + localStorage.getItem('access_token');
     let httpHeaders = new HttpHeaders();
     return this._conexHttp.post(ruta, JSON.stringify(info),
+      {
+        headers:
+          { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+        observe: 'response'
+      });
+  }
+
+  postValoration(val: number, idusu: number, idpost: number) {
+    const ruta = '/backend/clases/webservice/api.php?controller=valoracion&funcion=valorapost&token=' + localStorage.getItem('access_token');
+    let info = '{"idusuario":"' + idusu + '", "idpost": "' + idpost + '", "valoracion": "' + val + '"}'
+    let httpHeaders = new HttpHeaders();
+    return this._conexHttp.post(ruta, info,
       {
         headers:
           { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },

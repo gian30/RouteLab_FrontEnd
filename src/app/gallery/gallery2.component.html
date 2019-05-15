@@ -1,101 +1,10 @@
 <div id="wrapper">
-  <div id="list">
-    <div class="individual-photo ">
-      <div class="button-photo ">
-        <button class="go-to">
-          Ruta
-        </button>
-      </div>
-      <img class="uploadPhoto" src="../../assets/img/test3.jpg">
+    <div id="list">
+        <div *ngFor="let url of urls; let i = index" class="individual-photo">
+            <div class="button-photo">
+                <a href="/route/{{rutas[i]}}" class="go-to text-center">Ruta</a>
+            </div>
+            <img class="uploadPhoto" src="{{url}}">
+        </div>
     </div>
-    <div class="individual-photo ">
-      <div class="button-photo ">
-        <button class="go-to">
-          Ruta
-        </button>
-      </div>
-      <img class="uploadPhoto" src="../../assets/img/test2.jpg">
-    </div>
-    <div class="individual-photo ">
-      <div class="button-photo ">
-        <button class="go-to">
-          Ruta
-        </button>
-      </div>
-      <img class="uploadPhoto" src="../../assets/img/test.jpg">
-    </div>
-    <div class="individual-photo ">
-      <div class="button-photo ">
-        <button class="go-to">
-          Ruta
-        </button>
-      </div>
-      <img class="uploadPhoto" src="../../assets/img/test1.jpg">
-    </div>
-    <div class="individual-photo ">
-      <div class="button-photo ">
-        <button class="go-to">
-          Ruta
-        </button>
-      </div>
-      <img class="uploadPhoto" src="../../assets/img/sample_images/1.jpg">
-    </div>
-    <div class="individual-photo ">
-      <div class="button-photo ">
-        <button class="go-to">
-          Ruta
-        </button>
-      </div>
-      <img class="uploadPhoto" src="../../assets/img/test.jpg">
-    </div>
-    <div class="individual-photo ">
-      <div class="button-photo ">
-        <button class="go-to">
-          Ruta
-        </button>
-      </div>
-      <img class="uploadPhoto" src="../../assets/img/home-bg.png">
-    </div>
-    <div class="individual-photo ">
-      <div class="button-photo ">
-        <button class="go-to">
-          Ruta
-        </button>
-      </div>
-      <img class="uploadPhoto" src="../../assets/img/route_image.png">
-    </div>
-    <div class="individual-photo ">
-      <div class="button-photo ">
-        <button class="go-to">
-          Ruta
-        </button>
-      </div>
-      <img class="uploadPhoto" src="../../assets/img/sample_route.png">
-    </div>
-    <div class="individual-photo ">
-      <div class="button-photo ">
-        <button class="go-to">
-          Ruta
-        </button>
-      </div>
-      <img class="uploadPhoto" src="../../assets/img/test.jpg">
-    </div>
-    <div class="individual-photo ">
-      <div class="button-photo ">
-        <button class="go-to">
-          Ruta
-        </button>
-      </div>
-      <img class="uploadPhoto" src="../../assets/img/sample_images/1.jpg">
-    </div>
-    <div class="individual-photo ">
-      <div class="button-photo ">
-        <button class="go-to">
-          Ruta
-        </button>
-      </div>
-      <img class="uploadPhoto" src="../../assets/img/test.jpg">
-    </div>
-  </div>
 </div>
-

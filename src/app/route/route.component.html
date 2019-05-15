@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col">
                 <div class="stars ">
-                    <div *ngIf="post.media > 0" class="stars_valoration d-flex justify-content-between">
+                    <div *ngIf="post.media > 0" class="stars_valoration d-flex">
                         <div *ngFor="let dummy of ' '.repeat(post.media).split('')" alt="star image"><i class="fas fa-star"></i></div>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                             </agm-direction>
                         </agm-map>
                     </div>
-                    <div *ngIf="post.media == 0" class="stars_valoration d-flex">
+                    <div *ngIf="canValuate" class="stars_valoration d-flex">
                         <span>Valorar ruta: </span>
                         <div *ngFor="let dummy of ' '.repeat(5).split(''); let i = index"><i class="valorate fas fa-star" (click)="valorar(i+1)"></i></div>
                     </div>
