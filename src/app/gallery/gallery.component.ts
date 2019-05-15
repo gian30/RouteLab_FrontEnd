@@ -1,4 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
+import {Post} from "../models/post";
+
+
 
 @Component({
   selector: 'app-gallery',
@@ -15,4 +18,20 @@ export class GalleryComponent implements OnInit {
   ngOnInit() {
   }
 
+ /* loadPhoto() {
+    this._postService.getPost(this.id).subscribe(
+      resul => {
+        if (resul.body !== null) {
+          this.post = <Post>resul.body['data'];
+
+          console.log(this.post);
+          console.log(this.post.markers[0].latitud);
+          this.loadMarkers();
+          this.similarRoutes();
+        }
+      }, error => {
+        console.log(error);
+      }
+    );
+  }*/
 }

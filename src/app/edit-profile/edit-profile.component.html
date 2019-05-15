@@ -6,10 +6,9 @@
         <div  class="edit-form">
           <p class="edit-form__title">Nombre</p>
           <input formControlName="nombre" type="text" class="edit-form__input" placeholder="Nombre">
-          <p class="edit-form__title">País</p>
-          <input type="text" class="edit-form__input" placeholder="Pais">
+
           <p class="edit-form__title">Población</p>
-          <input type="text" class="edit-form__input" placeholder="Poblacion">
+          <input type="text" class="edit-form__input" placeholder="Poblacion" ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event, 0)">
           <div class="edit-form__inputs d-flex">
             <div class="edit-forb__block">
               <p class="edit-form__title">Edad</p>

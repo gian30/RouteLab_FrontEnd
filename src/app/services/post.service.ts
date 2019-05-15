@@ -61,15 +61,15 @@ export class PostService {
 
   postPost(files: File[], info: string) {
     const ruta = '/backend/clases/webservice/api.php?controller=post&funcion=post&token=' + localStorage.getItem('access_token');
-    let httpHeaders = new HttpHeaders();
+    const httpHeaders = new HttpHeaders();
     console.log(info);
-    httpHeaders.append('enctype', "multipart/form-data");
+    httpHeaders.append('enctype', 'multipart/form-data');
     httpHeaders.append('Content - Type', 'application/x-www-form-urlencoded');
     const fd = new FormData();
-    for (let file of files) {
+    for (const file of files) {
       fd.append('images[]', file);
     }
-    //fd.append('images[]', JSON.stringify(info));
+    // fd.append('images[]', JSON.stringify(info));
     console.log(JSON.stringify(info));
     return this._conexHttp.post(ruta, fd,
       {
@@ -79,12 +79,12 @@ export class PostService {
   }
 
   postImage(currentFileUpload: File, funcion: string) {
-    let httpHeaders = new HttpHeaders();
-    httpHeaders.append('enctype', "multipart/form-data");
+    const httpHeaders = new HttpHeaders();
+    httpHeaders.append('enctype', 'multipart/form-data');
     httpHeaders.append('Content - Type', 'application/x-www-form-urlencoded');
     const formData = new FormData();
     formData.append('photo', currentFileUpload);
-    let ruta = '/backend/clases/webservice/api.php?controller=usuario&funcion=' + funcion + '&token=' + localStorage.getItem('access_token');
+    const ruta = '/backend/clases/webservice/api.php?controller=usuario&funcion=' + funcion + '&token=' + localStorage.getItem('access_token');
     return this._conexHttp.post(ruta, formData,
       {
         headers: httpHeaders,
@@ -114,7 +114,7 @@ export class PostService {
 
   getSearchResults(searchText: string) {
     const ruta = '/backend/clases/webservice/api.php?controller=post&funcion=buscadorpost';
-    let search = '{"valor":"' + searchText + '"}';
+    const search = '{"valor":"' + searchText + '"}';
     return this._conexHttp.post(ruta, search,
       {
         headers:

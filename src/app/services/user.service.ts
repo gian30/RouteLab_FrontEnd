@@ -46,7 +46,7 @@ export class UserService {
   sendForm(info: String, funcion: String) {
     const ruta = '/backend/clases/webservice/api.php?controller=usuario&funcion=' + funcion +
       '&token=' + localStorage.getItem('access_token');
-    return this._conexHttp.put(ruta, info,
+    return this._conexHttp.post(ruta, info,
       {
         headers:
           {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
