@@ -1,7 +1,7 @@
 <form class="add-route" [formGroup]="routeForm" (submit)="onSubmit()">
     <div class="add-route__name">
         <span>Nombre de la ruta</span>
-        <input formControlName="name" class="form-input" placeholder="Nombre" />
+        <input formControlName="titulo" class="form-input" placeholder="Nombre" />
     </div>
     <div class="add-route__location">
         <span>Origen</span>
@@ -16,7 +16,7 @@
         </button>
     </div>
     <span> Descripción:</span>
-    <textarea formControlName="description"></textarea>
+    <textarea formControlName="descripcion"></textarea>
     <div class="add-route__add-photo d-flex">
         <div *ngFor="let url of urls">
             <img style="display: inline-block" class="add-route__photo" [src]="url">
@@ -28,13 +28,13 @@
         Elige una foto
     </button>
     <span> Recomendaciones:</span>
-    <div formArrayName="recs" class="form-check" *ngFor="let rec of recs; let i = index">
+    <div formArrayName="recsVal" class="form-check" *ngFor="let rec of recs; let i = index">
         <input type="checkbox" [formControlName]="i" class="form-check-input" id="materialUnchecked" value="{{ rec.name }}">
         <label class="form-check-label" for="materialUnchecked">{{ rec.name }}</label>
     </div>
     <div class="categories_cont">
         <span> Categorias:</span>
-        <select class="categories" formControlName="categories">
+        <select class="categories" formControlName="categoria">
             <option *ngFor="let cat of categories" value="{{cat}}">{{cat}}</option>
     
         </select>

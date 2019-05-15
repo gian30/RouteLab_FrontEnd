@@ -19,7 +19,7 @@
         </div>
         <div class="row">
             <div class="col-lg-7">
-                <div class="photo__current" *ngIf="photos.length > 0">
+                <div class="photo__current">
                     <img class="photo__img" [src]=CURRENTIMG>
                     <div class="photo__preview">
                         <img *ngFor="let photo of photos; let i=index" (click)="loadPhoto(photos[i])" class="photo__imgs" [src]=photos[i]>
@@ -68,11 +68,11 @@
                     </p>
                     <div class="recommendation d-flex align-items-center">
                         <img src="../../assets/icons/location.png" class="recommendation__icon">
-                        <span class="recommendation__name">Barcelona - Montjuïc (10 km)</span>
+                        <span class="recommendation__name">Barcelona - Montjuïc {{post.distancia}}</span>
                     </div>
                     <div class="recommendation d-flex align-items-center">
                         <img src="../../assets/icons/timer.png" class="recommendation__icon">
-                        <span class="recommendation__name">4 horas de tiempo libre</span>
+                        <span class="recommendation__name">{{post.duracion}} horas de tiempo libre</span>
                     </div>
                     <div *ngFor="let rec of recomendations" class="recommendation d-flex align-items-center">
                         <i class="{{recomendaciones[rec.descripcion.pclave]}}"></i>

@@ -28,6 +28,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
   sendInfo() {

@@ -175,12 +175,12 @@ export class LoginComponent implements OnInit {
     this.copy['email'] = this.registerFormFirst.controls['email'].value;
     this.copy['pass'] = this.registerFormFirst.controls['pass'].value;
     this.copy['localidad'] = this.fullAddress;
-
+    console.log(JSON.stringify(this.copy));
     this._loginService.sendRegister(JSON.stringify(this.copy), 'registro').subscribe(
       resul => {
         if (resul.body !== null) {
           alert('Usuario registrado! Ya puedes iniciar sesíon usando tu correo electronico.');
-          this.router.navigate(['']);
+          //this.router.navigate(['']);
         }
       }, error => {
         console.log(error);
