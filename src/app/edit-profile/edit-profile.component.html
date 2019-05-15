@@ -1,24 +1,23 @@
 <div class="edit-profile">
   <div class="container">
-    <div class="row">
+    <div [formGroup]="profileForm"class="row">
       <div class="col-lg-4 offset-2">
         <h2>Personal information</h2>
-        <div class="edit-form">
+        <div  class="edit-form">
           <p class="edit-form__title">Nombre</p>
-          <input type="text" class="edit-form__input" placeholder="Ismael el papel">
-          <p class="edit-form__title">País</p>
-          <input type="text" class="edit-form__input" placeholder="España">
-          <p class="edit-form__title">Población</p>
-          <input type="text" class="edit-form__input" placeholder="Barcelona">
+          <input formControlName="nombre" type="text" class="edit-form__input" placeholder="Nombre">
 
+          <p class="edit-form__title">Población</p>
+          <input type="text" class="edit-form__input" placeholder="Poblacion" ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event, 0)">
           <div class="edit-form__inputs d-flex">
             <div class="edit-forb__block">
               <p class="edit-form__title">Edad</p>
-              <input type="date" class="edit-form__input edit-form__input_short" placeholder="21">
+              <input formControlName="edad" type="date" class="edit-form__input edit-form__input_short"
+                     placeholder="Edad">
             </div>
             <div class="edit-form__block">
               <p class="edit-form__title">Teléfono</p>
-              <input type="tel" class="edit-form__input" placeholder="+34651176893">
+              <input formControlName="telefono" type="tel" class="edit-form__input" placeholder="Numero de telefono">
             </div>
           </div>
         </div>
@@ -27,20 +26,19 @@
         <h2>Account details</h2>
         <div class="edit-form">
           <p class="edit-form__title">Nombre de usuario</p>
-          <input type="text" class="edit-form__input" placeholder="ismaelelpapel">
+          <input formControlName="nombreusuario" type="text" class="edit-form__input" placeholder="nombreDeUsuario">
           <p class="edit-form__title">Email</p>
-          <input type="email" class="edit-form__input" placeholder="ismaelelpapel@routelab.com">
+          <input formControlName="email" type="email" class="edit-form__input" placeholder="Email">
           <p class="edit-form__title">Contraseña</p>
-          <input type="password" class="edit-form__input" placeholder="">
+          <input formControlName="pass" type="password" class="edit-form__input" placeholder="········">
           <p class="edit-form__title">Confirmar contraseña</p>
-          <input type="password" class="edit-form__input"  placeholder="">
-
+          <input formControlName="pass2" type="password" class="edit-form__input" placeholder="········">
         </div>
       </div>
     </div>
     <div class="row">
       <div class="container">
-        <button class="button d-block m-auto">
+        <button class="button d-block m-auto" (click)="sendInfo()">
           Save changes
         </button>
       </div>

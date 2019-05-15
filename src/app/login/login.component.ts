@@ -153,7 +153,6 @@ export class LoginComponent implements OnInit {
       this._loginService.sendRegister(JSON.stringify(this.login), 'login').subscribe(
         resul => {
           if (resul.body !== null) {
-            
             const obj: User = JSON.parse(resul.body['data']);
             console.log(resul.body['data']);
             console.log(resul.body['data']['locality']);
