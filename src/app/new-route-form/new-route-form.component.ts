@@ -1,10 +1,10 @@
-import {Component, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormGroup, FormArray, FormControl, ValidatorFn} from '@angular/forms';
-import {stringify} from 'querystring';
-import {Address} from 'ngx-google-places-autocomplete/objects/address';
-import {ActivatedRoute} from '@angular/router';
-import {PostService} from '../services/post.service';
-import {EventEmitter} from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, FormArray, FormControl, ValidatorFn } from '@angular/forms';
+import { stringify } from 'querystring';
+import { Address } from 'ngx-google-places-autocomplete/objects/address';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PostService } from '../services/post.service';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-new-route-form',
@@ -12,11 +12,12 @@ import {EventEmitter} from '@angular/core';
   styleUrls: ['./new-route-form.component.css'],
   providers: [PostService]
 })
+
 export class NewRouteFormComponent implements OnInit {
   public category = 'Categoría';
   public categories = ['Sol y playa', 'Deportivo', 'Naturaleza', 'De montaña', 'Histórico', 'Aventura', 'Rural', 'Científico'];
 
-  constructor(public fb: FormBuilder, public _postService: PostService) {
+  constructor(public fb: FormBuilder, public _postService: PostService, private router: Router) {
     this.getRecs();
     this.routeForm = this.fb.group({
       titulo: [],
@@ -44,7 +45,7 @@ export class NewRouteFormComponent implements OnInit {
   @Output() messageEvent = new EventEmitter<Array<any>>();
   options = {
     types: ['(cities)'],
-    componentRestrictions: {country: 'es'}
+    componentRestrictions: { country: 'es' }
   };
   recs: any[] = [];
   recomendation: { name: string, selected: boolean; id: number };
@@ -131,14 +132,18 @@ export class NewRouteFormComponent implements OnInit {
   }
 
   sendPhoto(idpost: string) {
-    this._postService.postPostImages(this.files, idpost).subscribe(
-      resul => {
-        console.log(resul.body);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    if (this.files.length > 0) {
+      this._postService.postPostImages(this.files, idpost).subscribe(
+        resul => {
+          this.router.navigate(['user']);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    } else {
+      this.router.navigate(['user']);
+    }
   }
 
   addPost() {
@@ -187,7 +192,7 @@ export class NewRouteFormComponent implements OnInit {
     };
 
     console.log(JSON.stringify(this.post));
-      this.addPost();
+    this.addPost();
 
 
   }

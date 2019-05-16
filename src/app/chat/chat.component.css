@@ -40,6 +40,7 @@
     margin: auto;
     display: block;
     width: 70%;
+    height: 70%;
     border-radius: 50%;
     border: 3px solid transparent;
 }
@@ -78,6 +79,7 @@
 
 .chat__contact-img-head {
     width: 30px;
+    height: 30px;
     border-radius: 50%;
 }
 
@@ -85,8 +87,6 @@
     margin-left: 20px;
     color: #fff;
 }
-
-.chat__name-full {}
 
 .chat__name-user {
     margin-top: 4px;

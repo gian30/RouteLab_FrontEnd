@@ -16,8 +16,8 @@
                             <span *ngIf="!follower.followed" (click)="followAction(follower, 'follow')">Seguir</span>
                         </button>
                     </div>
-                    <div class="follower__banner">
-                        <img src="../../assets/img/users/1.jpg" alt="userpic" class="follower__profile">
+                    <div class="follower__banner" [style.backgroundImage]="'url(../../assets/uploads/background/'+ follower.nombreusuario +'.jpg)'">
+                        <img src="../../assets/uploads/usuarios/{{follower.nombreusuario}}.jpg" alt="userpic" class="follower__profile">
                     </div>
                     <div class="follower__info">
                         <p class="follower__name">

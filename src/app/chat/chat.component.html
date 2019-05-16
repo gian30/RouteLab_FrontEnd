@@ -2,20 +2,20 @@
     <div *ngIf="opened && openedUser" class="chat__main">
         <div class="chat__head d-flex align-items-center">
             <button class="chat__btn">
-        <img src="../../assets/icons/chat/more.png" alt="More" class="chat__more-img">
-      </button>
-            <img src="../../assets/uploads/usuarios/{{userselected.nombreusuario}}" alt="UserOld image" class="chat__contact-img-head">
+                <img src="../../assets/icons/chat/more.png" alt="More" class="chat__more-img">
+            </button>
+            <img src="../../assets/uploads/usuarios/{{userselected.nombreusuario}}.jpg" alt="UserOld image" class="chat__contact-img-head">
             <div class="chat__contact-names">
                 <p class="chat__name-full">{{userselected.nombre}}</p>
                 <p class="chat__name-user">{{userselected.nombreusuario}}</p>
             </div>
             <div class="chat__controls ml-auto">
                 <button (click)="openUser()" class="chat__btn">
-          <img src="../../assets/icons/chat/line.png" alt="Line" class="chat__line-img">
-        </button>
+                    <img src="../../assets/icons/chat/line.png" alt="Line" class="chat__line-img">
+                </button>
                 <button (click)="openChat()" class="chat__btn">
-          <img src="../../assets/icons/chat/close.png" alt="Close" class="chat__close-img">
-        </button>
+                    <img src="../../assets/icons/chat/close.png" alt="Close" class="chat__close-img">
+                </button>
             </div>
         </div>
         <div class="chat__body" #scrollMe id="chat__body">
@@ -41,8 +41,8 @@
         <div class="chat__textbox d-flex">
             <input type="text" class="chat__input" [(ngModel)]="newMsg" (keydown.enter)="submit()">
             <button class="btn sent-btn">
-        <img src="../../assets/icons/chat/sent.png" alt="Send" (click)="submit()">
-      </button>
+                <img src="../../assets/icons/chat/sent.png" alt="Send" (click)="submit()">
+            </button>
         </div>
     </div>
     <div class="chat__content">
@@ -52,7 +52,7 @@
             </div>
             <div class="chat__contact-list">
                 <div class="chat__contact" *ngFor="let user of users" (click)="openUser(user)">
-                  <img src="../../assets/uploads/usuarios/{{user.nombreusuario}}" alt="UserOld image" class="chat__contact-img">
+                    <img src="../../assets/uploads/usuarios/{{user.nombreusuario}}" alt="UserOld image" class="chat__contact-img">
                     <p class="chat__username">
                         {{user.nombreusuario}}
                     </p>
@@ -60,7 +60,7 @@
             </div>
         </div>
         <button (click)="openChat()" class="button chat__button">
-      <i class="fas fa-comments"></i>
-    </button>
+            <i class="fas fa-comments"></i>
+        </button>
     </div>
 </div>
