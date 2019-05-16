@@ -20,13 +20,15 @@ export class GalleryComponent implements OnInit {
   constructor(private _postService: PostService) {
   }
 
+  @Input() user?: number;
+
   ngOnInit() {
     this.loadPhoto();
 
   }
 
   loadPhoto() {
-    this._postService.getPostsById(this.me.idusuario).subscribe(
+    this._postService.getPostsById(this.user).subscribe(
       resul => {
         if (resul.body !== null) {
           this.posts = <Post[]>resul.body['data'];

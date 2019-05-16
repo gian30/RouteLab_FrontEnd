@@ -93,7 +93,7 @@
             <app-routes></app-routes>
         </div>
         <div class="tab-pane fade" id="pills-gallery" role="tabpanel">
-            <app-gallery></app-gallery>
+            <app-gallery [user]=currentUser.idusuario></app-gallery>
         </div>
         <div class="tab-pane fade" id="pills-followers" role="tabpanel">
             <div *ngIf=!followed>
