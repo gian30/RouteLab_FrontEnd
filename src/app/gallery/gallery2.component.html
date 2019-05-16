@@ -1,15 +1,10 @@
 <div id="wrapper">
-  <div id="list">
-    <button (click)="loadPhoto()">load</button>
-    <div *ngFor="let photo of photos; let i=index" class="individual-photo "  class="individual-photo ">
-      <div class="button-photo ">
-        <button class="go-to">
-          Ruta
-        </button>
-      </div>
-     {{photo}}
+    <div id="list">
+        <div *ngFor="let url of urls; let i = index" class="individual-photo">
+            <div class="button-photo">
+                <a href="/route/{{rutas[i]}}" class="go-to text-center">Ruta</a>
+            </div>
+            <img class="uploadPhoto" src="{{url}}">
+        </div>
     </div>
-
-  </div>
 </div>
-

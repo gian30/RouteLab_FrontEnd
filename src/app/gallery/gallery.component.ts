@@ -1,7 +1,6 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {Post} from '../models/post';
-import {PostService} from '../services/post.service';
-import {HttpClient} from '@angular/common/http';
+import { Component, OnInit, Input } from '@angular/core';
+import { Post } from "../models/post";
+import { PostService } from '../services/post.service';
 
 
 
@@ -14,22 +13,32 @@ import {HttpClient} from '@angular/common/http';
 
 export class GalleryComponent implements OnInit {
   photoIndividual = '../../assets/img/test.jpg';
-  photos = [];
-  constructor(private _postService: PostService, private httpClient: HttpClient) {
+  protected posts: Post[];
+  public me: User = <User>JSON.parse(localStorage.getItem("currentUser"));
+  public urls: any[] = [];
+  public rutas: any[] = [];
+  constructor(private _postService: PostService) {
   }
 
   ngOnInit() {
-    this.loadPhoto(id, this.photos);
+    this.loadPhoto();
+
   }
 
-loadPhoto() {
-      this._postService.getPhoto(this.id).subscribe(
+  loadPhoto() {
+    this._postService.getPostsById(this.me.idusuario).subscribe(
       resul => {
         if (resul.body !== null) {
-          console.log('entro');
-          this.photos = resul.body['data'];
-          console.log('FOTO' + this.photos);
-          }
+          this.posts = <Post[]>resul.body['data'];
+          this.posts.forEach(post => {
+            for (let i = 0; i < post.num_fotos; i++) {
+              let photo = "../../assets/uploads/posts/" + post.idpost + "/" + i + ".jpg";
+              this.urls.push(photo);
+              this.rutas.push(post.idpost);
+            }
+          });
+          console.log(this.urls);
+        }
       }, error => {
         console.log(error);
       }

@@ -1,222 +1,240 @@
 .route {
-  padding: 40px 0;
-  background-color: #E9F0EF;
+    padding: 40px 0;
+    background-color: #E9F0EF;
 }
 
 .route__title {
-  margin-bottom: 15px;
-  font-weight: 600;
+    margin-bottom: 15px;
+    font-weight: 600;
 }
 
 .route-button {
-  text-transform: uppercase;
-  padding: 4px 10px;
-  background-color: #22626E;
-  color: #fff;
-  display: block;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    background-color: #22626E;
+    color: #fff;
+    display: block;
 }
 
 .route-button:hover {
-  background-color: #16454E;
+    background-color: #16454E;
 }
 
 .stars {
-  width: 105px;
-  margin-bottom: 15px;
+    width: 105px;
+    margin-bottom: 15px;
 }
 
 .stars img {
-  width: 20px;
-  height: 20px;
+    width: 20px;
+    height: 20px;
 }
 
 .photo__current {
-  display: block;
-  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.192);
-  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.192);
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.192);
+    display: block;
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.192);
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.192);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.192);
 }
 
 .photo__img {
-  width: 100%;
+    width: 100%;
 }
 
 .photo__imgs {
-  width: 100%;
-  cursor: pointer;
+    width: 100%;
+    cursor: pointer;
 }
 
 .slick-center img {
-  transform: scale(3.1) !important;
+    transform: scale(3.1) !important;
 }
 
 .description {
-  margin-top: 40px;
-  padding: 40px 35px;
-  background-color: #fff;
-  font-size: 16px;
-  line-height: 1.8em;
-  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
+    margin-top: 40px;
+    padding: 40px 35px;
+    background-color: #fff;
+    font-size: 16px;
+    line-height: 1.8em;
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
 }
 
 .description__text {
-  margin-bottom: 25px;
-  font-weight: 400;
+    margin-bottom: 25px;
+    font-weight: 400;
 }
 
-.recommendations, .similar-routes, .ad-banner, .weather {
-  margin-left: auto;
-  width: 90%;
+.recommendations,
+.similar-routes,
+.ad-banner,
+.weather {
+    margin-left: auto;
+    width: 90%;
 }
 
 .recommendation {
-  background-color: #fff;
-  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
-  padding: 13px 15px;
-  margin-bottom: 7px;
+    background-color: #fff;
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
+    padding: 13px 15px;
+    margin-bottom: 7px;
 }
 
 .recommendation__name {
-  margin-left: 12px;
-  font-size: 16px;
+    margin-left: 12px;
+    font-size: 16px;
 }
 
-.recommendation__icon, .fas {
-  color: #52858F;
-  width: 22px;
+.recommendation__icon,
+.fas {
+    color: #52858F;
+    width: 22px;
 }
 
 .similar-routes {
-  margin-top: 40px;
+    margin-top: 40px;
 }
 
 .similar-route {
-  width: 48%;
-  background-color: #fff;
-  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
-  margin-bottom: 15px;
-  transition: all 0.5s ease;
+    width: 48%;
+    background-color: #fff;
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
+    margin-bottom: 15px;
+    transition: all 0.5s ease;
 }
 
 .similar-route:hover {
-  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.45);
-  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.45);
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.45);
-  cursor: pointer;
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.45);
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.45);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.45);
+    cursor: pointer;
 }
 
 .similar-route__img {
-  width: 100%;
+    width: 100%;
 }
 
 .similar-route__info {
-  text-transform: uppercase;
-  color: #000;
-  padding: 15px 10px;
-  font-weight: 400;
-  font-size: 14px;
+    text-transform: uppercase;
+    color: #000;
+    padding: 15px 10px;
+    font-weight: 400;
+    font-size: 14px;
 }
 
 .similar-route__info .stars {
-  margin-top: 15px;
-  margin-bottom: 0px;
+    margin-top: 15px;
+    margin-bottom: 0px;
 }
 
-.similar-routes-title, .recommendations-title, .comments-title {
-  font-size: 22px;
+.similar-routes-title,
+.recommendations-title,
+.comments-title {
+    font-size: 22px;
 }
 
-.similar-routes-head, .recommendations-title, .comments-title {
-  margin-bottom: 20px;
+.similar-routes-head,
+.recommendations-title,
+.comments-title {
+    margin-bottom: 20px;
 }
 
 .ad-banner {
-  margin-top: 60px;
+    margin-top: 60px;
 }
 
 .ad-banner iframe {
-  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
 }
 
 .comments {
-  margin-top: 40px;
+    margin-top: 40px;
 }
 
 .comments-content {
-  background-color: #f8f8f8;
-  padding: 40px 35px;
-  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
+    background-color: #f8f8f8;
+    padding: 40px 35px;
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
 }
 
 .post-comment__text {
-  width: 100%;
-  height: 100px;
-  resize: none;
-  border: none;
-  border-bottom: 0.2em solid rgba(0, 0, 0, 0.192);
-  transition: all 0.5s ease;
+    width: 100%;
+    height: 100px;
+    resize: none;
+    border: none;
+    border-bottom: 0.2em solid rgba(0, 0, 0, 0.192);
+    transition: all 0.5s ease;
 }
 
 .post-comment__text:focus {
-  border-color: #22626E;
+    border-color: #22626E;
 }
 
 .route-button_comment {
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 30px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 30px;
 }
 
 .comment {
-  padding: 20px 10px;
+    padding: 20px 10px;
 }
 
 .comment:not(:last-child) {
-  margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 .comment__user {
-  display: block;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  margin-right: 20px;
+    display: block;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    margin-right: 20px;
 }
 
 .comment__username i {
-  color: #dfa801;
+    color: #dfa801;
 }
 
 .comment__username {
-  display: block;
-  color: #000;
-  font-weight: 600;
-  margin-bottom: 10px;
+    display: block;
+    color: #000;
+    font-weight: 600;
+    margin-bottom: 10px;
 }
 
 .comment__text {
-  font-size: 14px;
-  line-height: 1.4em;
+    font-size: 14px;
+    line-height: 1.4em;
 }
 
 .weather {
-  padding: 0;
-  background-color: #fff;
-  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
+    padding: 0;
+    background-color: #fff;
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.192);
 }
 
 agm-map {
-  height: 300px;
+    height: 300px;
+}
+
+.valorate:hover {
+    color: #000;
+    cursor: pointer;
+}
+
+.desc_valorar {
+    margin-top: 10px;
+    width: 100px;
 }

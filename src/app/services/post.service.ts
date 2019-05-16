@@ -26,9 +26,8 @@ export class PostService {
         observe: 'response'
       });
   }
-  getPhoto(id) {
-
-    const ruta = '/backend/clases/webservice/api.php?controller=post&funcion=postbyid&id=' + id;
+  ifValued(idpost: number) {
+    const ruta = '/backend/clases/webservice/api.php?controller=valoracion&funcion=comprobar&id=' + idpost + "&token=" + localStorage.getItem('access_token');
     return this._conexHttp.get(ruta,
       {
         headers:
@@ -36,6 +35,17 @@ export class PostService {
         observe: 'response'
       });
   }
+
+  getPostsById(id: number) {
+    const ruta = '/backend/clases/webservice/api.php?controller=post&funcion=verusu&id=' + id;
+    return this._conexHttp.get(ruta,
+      {
+        headers:
+          { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+        observe: 'response'
+      });
+  }
+
   getPost(id) {
 
     const ruta = '/backend/clases/webservice/api.php?controller=post&funcion=postbyid&id=' + id;
@@ -79,8 +89,20 @@ export class PostService {
       });
   }
 
+  postValoration(val: number, idusu: number, idpost: number) {
+    const ruta = '/backend/clases/webservice/api.php?controller=valoracion&funcion=valorapost&token=' + localStorage.getItem('access_token');
+    let info = '{"idusuario":"' + idusu + '", "idpost": "' + idpost + '", "valoracion": "' + val + '"}'
+    let httpHeaders = new HttpHeaders();
+    return this._conexHttp.post(ruta, info,
+      {
+        headers:
+          { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+        observe: 'response'
+      });
+  }
+
   postPostImages(photos: File[], idpost: string) {
-    const ruta = '/backend/clases/webservice/api.php?controller=post&funcion=foto&token=' + localStorage.getItem('access_token')+'&id='+idpost;
+    const ruta = '/backend/clases/webservice/api.php?controller=post&funcion=foto&token=' + localStorage.getItem('access_token') + '&id=' + idpost;
     let httpHeaders = new HttpHeaders();
     httpHeaders.append('enctype', "multipart/form-data");
     httpHeaders.append('Content - Type', 'application/x-www-form-urlencoded');
@@ -132,12 +154,14 @@ export class PostService {
 
   getSearchResults(searchText: string, searchType: string) {
     let funcion = "buscadorpost";
+    let controller = "post";
     let search = '{"valor":"' + searchText + '"}';
     if (searchType == "users") {
       funcion = 'buscadorusu';
       search = '{"nombreusuario":"' + searchText + '"}';
+      controller = "usuario";
     }
-    const ruta = '/backend/clases/webservice/api.php?controller=post&funcion=' + funcion;
+    const ruta = '/backend/clases/webservice/api.php?controller=' + controller + '&funcion=' + funcion;
     return this._conexHttp.post(ruta, search,
       {
         headers:

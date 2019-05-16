@@ -16,13 +16,14 @@ export class RoutesComponent implements OnInit {
 
   public posts: Post[] = [];
 
-  private ROUTE_SAMPLE = ('../../assets/img/sample_route.png');
-  private LOCATION = ('../../assets/icons/location.png');
-  private STAR = ('../../assets/icons/star.png');
-  private TIMER = ('../../assets/icons/timer.png');
+  protected ROUTE_SAMPLE = ('../../assets/img/sample_route.png');
+  protected LOCATION = ('../../assets/icons/location.png');
+  protected STAR = ('../../assets/icons/star.png');
+  protected TIMER = ('../../assets/icons/timer.png');
   loadRoutes = true;
   @Input() titleRoutes: string;
 
+  @Input() user?: number;
 
   routes = [];
 
@@ -42,16 +43,33 @@ export class RoutesComponent implements OnInit {
 
   }
   loadPosts() {
-    this._postService.getPosts().subscribe(
-      resul => {
-        if (resul.body !== null) {
-          this.posts = <Post[]>resul.body['data'];
-          console.log(this.posts);
+    if (this.user !== undefined) {
+      this._postService.getPostsById(this.user).subscribe(
+        resul => {
+          if (resul.body !== null) {
+            this.posts = <Post[]>resul.body['data'];
+            console.log(this.posts);
+          }
+        }, error => {
+          console.log(error);
         }
-      }, error => {
-        console.log(error);
-      }
-    );
+      );
+    } else {
+      this._postService.getPosts().subscribe(
+        resul => {
+          if (resul.body !== null) {
+            this.posts = <Post[]>resul.body['data'];
+            console.log(this.posts);
+          }
+        }, error => {
+          console.log(error);
+        }
+      );
+    }
+  }
+
+  public float2int(value) {
+    return value | 0;
   }
 
   private serchROUTE() {
@@ -73,3 +91,4 @@ function addNewRoute() {
   console.log('adding');
 
 }
+

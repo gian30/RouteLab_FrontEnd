@@ -1,10 +1,10 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, FormControl, ValidatorFn } from '@angular/forms';
-import { stringify } from 'querystring';
-import { Address } from 'ngx-google-places-autocomplete/objects/address';
-import { ActivatedRoute } from '@angular/router';
-import { PostService } from '../services/post.service';
-import { EventEmitter } from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
+import {FormBuilder, FormGroup, FormArray, FormControl, ValidatorFn} from '@angular/forms';
+import {stringify} from 'querystring';
+import {Address} from 'ngx-google-places-autocomplete/objects/address';
+import {ActivatedRoute} from '@angular/router';
+import {PostService} from '../services/post.service';
+import {EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-new-route-form',
@@ -15,6 +15,7 @@ import { EventEmitter } from '@angular/core';
 export class NewRouteFormComponent implements OnInit {
   public category = 'Categoría';
   public categories = ['Sol y playa', 'Deportivo', 'Naturaleza', 'De montaña', 'Histórico', 'Aventura', 'Rural', 'Científico'];
+
   constructor(public fb: FormBuilder, public _postService: PostService) {
     this.getRecs();
     this.routeForm = this.fb.group({
@@ -25,11 +26,11 @@ export class NewRouteFormComponent implements OnInit {
       distancia: [],
       markers: [],
       recs: [],
-      recsVal: new FormArray([
-      ])
+      recsVal: new FormArray([])
     });
     this.addCheckboxes();
   }
+
   public post: any;
   public routeForm: FormGroup;
   public fullAddress: {};
@@ -43,7 +44,7 @@ export class NewRouteFormComponent implements OnInit {
   @Output() messageEvent = new EventEmitter<Array<any>>();
   options = {
     types: ['(cities)'],
-    componentRestrictions: { country: 'es' }
+    componentRestrictions: {country: 'es'}
   };
   recs: any[] = [];
   recomendation: { name: string, selected: boolean; id: number };
@@ -97,6 +98,7 @@ export class NewRouteFormComponent implements OnInit {
     this.files.push(event.target.files[0]);
     reader.readAsDataURL(event.target.files[0]);
   }
+
   getRecs() {
     this._postService.getRecomendaciones().subscribe(
       resul => {
@@ -120,12 +122,14 @@ export class NewRouteFormComponent implements OnInit {
       }
     );
   }
+
   private addCheckboxes() {
     this.recs.map((o, i) => {
       const control = new FormControl(i === 0);
       (this.routeForm.controls.recsVal as FormArray).push(control);
     });
   }
+
   sendPhoto(idpost: string) {
     this._postService.postPostImages(this.files, idpost).subscribe(
       resul => {
@@ -142,7 +146,7 @@ export class NewRouteFormComponent implements OnInit {
       resul => {
         console.log(resul.body);
         if (resul.body['data'] !== null) {
-          let post = resul.body['data'];
+          const post = resul.body['data'];
           this.sendPhoto(post.idpost);
         }
       }, error => {
@@ -159,9 +163,9 @@ export class NewRouteFormComponent implements OnInit {
   }
 
   calculateDuration() {
-    let velocity = 5;
-    let distance = this.calculateDistance(this.markers[0], this.markers[this.markers.length - 1]);
-    let duration = distance / velocity;
+    const velocity = 5;
+    const distance = this.calculateDistance(this.markers[0], this.markers[this.markers.length - 1]);
+    const duration = distance / velocity;
     return duration;
   }
 
@@ -169,8 +173,8 @@ export class NewRouteFormComponent implements OnInit {
     this.routeForm.controls['markers'].setValue(this.markers);
     this.routeForm.controls['distancia'].setValue(this.calculateDistance(this.markers[0], this.markers[this.markers.length - 1]));
     this.routeForm.controls['duracion'].setValue(this.calculateDuration());
-    let recomendaciones = [];
-    for (let cont in this.routeForm.value['recsVal']) {
+    const recomendaciones = [];
+    for (const cont in this.routeForm.value['recsVal']) {
       if (this.routeForm.value['recsVal'][cont] == true) {
         recomendaciones.push(this.recs[cont].id);
       }
@@ -178,20 +182,17 @@ export class NewRouteFormComponent implements OnInit {
     console.log(recomendaciones);
     delete this.routeForm.controls['recsVal'];
     this.routeForm.controls['recs'].setValue(recomendaciones);
-
-
     this.post = {
       'post': this.routeForm.value
     };
 
     console.log(JSON.stringify(this.post));
-    this.addPost();
+      this.addPost();
+
+
   }
 
   onSubmit() {
 
   }
-
-
-
 }

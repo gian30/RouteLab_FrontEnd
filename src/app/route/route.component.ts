@@ -27,13 +27,19 @@ export class RouteComponent implements OnInit {
   public comments: any = [];
   public photos: any = [];
   public recomendations: any = [];
+  public canValuate = false;
   STAR = ('../../assets/icons/star.png');
-  CURRENTIMG = ('../../assets/uploads/posts/'+this.id+'/0.jpg');
-
+  CURRENTIMG = ('../../assets/uploads/posts/' + this.id + '/0.jpg');
+  ROUTEIMGS = [
+    '../../assets/uploads/posts/' + this.id + '/0.jpg'
+  ];
 
   public recomendaciones = {
     Tiempo: 'fas fa-cloud',
     Ropa: 'fas fa-tshirt',
+    Deporte: 'fas fa-running',
+    Calor: 'fas fa-sun',
+    Frio: 'fas fa-snowflake',
   };
 
   routeMarkers: any = null;
@@ -44,7 +50,11 @@ export class RouteComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    
+
+  }
+
+  public float2int(value) {
+    return value | 0;
   }
 
   loadPost() {
@@ -52,12 +62,9 @@ export class RouteComponent implements OnInit {
       resul => {
         if (resul.body !== null) {
           this.post = <Post>resul.body['data'];
-          console.log(this.post);
-          console.log(this.post.markers[0].latitud);
-          this.loadMarkers();
-          this.similarRoutes();
-          this.photos = this.getPhotos();
+          this.getPhotos();
           $('.photo__preview').slick({
+            lazyLoad: 'ondemand',
             arrows: false,
             centerMode: false,
             centerPadding: '0',
@@ -65,8 +72,31 @@ export class RouteComponent implements OnInit {
             focusOnSelect: true,
             dots: false,
             infinite: true,
-
           });
+          this.ifCanValuate();
+          console.log(this.post);
+          console.log(this.post.markers[0].latitud);
+          this.loadMarkers();
+          this.similarRoutes();
+        }
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+  getPhotos() {
+    for (let ph = 1; ph < this.post.num_fotos; ph++) {
+      const url = '../../assets/uploads/posts/' + this.id + '/' + (ph) + '.jpg';
+      this.ROUTEIMGS.push(url);
+    }
+  }
+
+  similarRoutes() {
+    this._postService.getSearchResults(this.post.titulo, 'route').subscribe(
+      resul => {
+        if (resul.body !== null) {
+          this.searchResults = resul.body['data'];
+          console.log(this.searchResults);
         }
       }, error => {
         console.log(error);
@@ -74,12 +104,15 @@ export class RouteComponent implements OnInit {
     );
   }
 
-  similarRoutes() {
-    this._postService.getSearchResults(this.post.titulo, "route").subscribe(
+  ifCanValuate() {
+    this._postService.ifValued(this.post.idpost).subscribe(
       resul => {
         if (resul.body !== null) {
-          this.searchResults = resul.body['data'];
-          console.log(this.searchResults);
+          if (resul.body['data'] == 0) {
+            this.canValuate = true;
+          } else if (resul.body['data'] == 1) {
+            this.canValuate = false;
+          }
         }
       }, error => {
         console.log(error);
@@ -160,22 +193,27 @@ export class RouteComponent implements OnInit {
     this.commentForm.controls.comment.setValue('');
   }
 
+
+  addVal(val: number) {
+    this._postService.postValoration(val, this.currentUser.idusuario, Number(this.id)).subscribe(
+      resul => {
+        this.loadPost();
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+
   loadPhoto(photo) {
     this.CURRENTIMG = photo;
   }
 
-  getPhotos() {
-    let fileList = [];
-    for (let i = 0; i <= this.post.num_fotos; i++) {
-      const url = '../../assets/uploads/posts/' + this.id + '/' + (i) + '.jpg';
-      fileList[i] = url;
-    }
-    return fileList;
+  valorar(val) {
+    this.addVal(val);
   }
 
   ngOnInit() {
     window.scrollTo(0, 0);
-    this.photos = this.getPhotos();
     this.loadPost();
     this.loadRecomendaciones();
     this.loadComments();
