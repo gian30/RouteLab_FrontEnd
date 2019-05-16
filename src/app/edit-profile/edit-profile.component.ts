@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-profile',
@@ -14,7 +15,7 @@ export class EditProfileComponent implements OnInit {
   public me: User = <User>JSON.parse(localStorage.getItem('currentUser'));
   public fullAddress = {};
 
-  constructor(public fb: FormBuilder, public _userService: UserService) {
+  constructor(public fb: FormBuilder, public _userService: UserService, public router: Router) {
     this.profileForm = this.fb.group({
       nombre: [this.me.nombre],
       localidad: [this.me.localidad.poblacion],
@@ -46,13 +47,12 @@ export class EditProfileComponent implements OnInit {
   }
 
   loadUser() {
-    this._userService.getUser(Number(this.me.idusuario)).subscribe(
+    this._userService.loadUser().subscribe(
       resul => {
-        if (resul.body !== null) {
-          let tempuser = <User>resul.body["data"];
-          console.log(tempuser);
-          localStorage.setItem('currentUser', JSON.stringify(tempuser));
-        }
+        const obj: User = JSON.parse(resul.body['data']);
+        localStorage.setItem('currentUser', JSON.stringify(obj));
+        localStorage.setItem('access_token', obj.token);
+        this.router.navigate(['/user']);
       },
       error => {
         console.log(error);
