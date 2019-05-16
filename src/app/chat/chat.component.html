@@ -4,7 +4,7 @@
             <button class="chat__btn">
         <img src="../../assets/icons/chat/more.png" alt="More" class="chat__more-img">
       </button>
-            <img src="../../assets/img/users/1.jpg" alt="UserOld image" class="chat__contact-img-head">
+            <img src="../../assets/uploads/usuarios/{{userselected.nombreusuario}}" alt="UserOld image" class="chat__contact-img-head">
             <div class="chat__contact-names">
                 <p class="chat__name-full">{{userselected.nombre}}</p>
                 <p class="chat__name-user">{{userselected.nombreusuario}}</p>
@@ -52,7 +52,7 @@
             </div>
             <div class="chat__contact-list">
                 <div class="chat__contact" *ngFor="let user of users" (click)="openUser(user)">
-                    <img src="../../assets/img/users/1.jpg" alt="UserOld image" class="chat__contact-img">
+                  <img src="../../assets/uploads/usuarios/{{user.nombreusuario}}" alt="UserOld image" class="chat__contact-img">
                     <p class="chat__username">
                         {{user.nombreusuario}}
                     </p>
