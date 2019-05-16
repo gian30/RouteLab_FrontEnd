@@ -20,6 +20,8 @@ export class HeaderComponent implements OnInit {
   search = '';
   searchResults = null;
   closed = true;
+  public currentUser: User = <User>JSON.parse(localStorage.getItem('currentUser'));
+
   constructor(public _loginService: LoginService, public _postService: PostService) {
 
   }

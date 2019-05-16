@@ -63,7 +63,7 @@
             </div>
             <div *ngIf="_loginService.isAuthenticated()" class="col-lg-2 col-4">
                 <div class="d-flex align-items-center">
-                    <img routerLink="/user/" class="profilePictureHeader">
+                    <img routerLink="/user/" class="profilePictureHeader" [style.backgroundImage]="'url(../../assets/uploads/usuarios/'+ currentUser.nombreusuario +'.jpg)'" >
                     <a (click)="_loginService.logout()" class="sign-button button justify-content-end">
                         Cerrar<br>sesión
                     </a>
