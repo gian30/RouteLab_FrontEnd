@@ -96,15 +96,13 @@
                     </div>
                     <div class="similar-routes-list d-flex justify-content-between flex-wrap">
                         <a *ngFor="let ser of searchResults" class="similar-route" href="route/{{ser.idpost}}">
-                            <img src="../../assets/img/sample_images/1.jpg" alt="route__img" class="similar-route__img">
+                            <img *ngIf="ser.num_fotos > 0" src="../../assets/uploads/posts/{{ser.idpost}}/0.jpg"
+                                alt="route__img" class="similar-route__img">
                             <div class="similar-route__info">
                                 <p>{{ser.titulo}}</p>
-                                <div class="stars d-flex justify-content-between ">
-                                    <img [src]=STAR alt="location image ">
-                                    <img [src]=STAR alt="location image ">
-                                    <img [src]=STAR alt="location image ">
-                                    <img [src]=STAR alt="location image ">
-                                    <img [src]=STAR alt="location image ">
+                                <div *ngIf="post.media > 0" class="stars_valoration d-flex">
+                                    <div *ngFor="let dummy of ' '.repeat(post.media).split('')" alt="star image"><i
+                                            class="fas fa-star"></i></div>
                                 </div>
                             </div>
                         </a>

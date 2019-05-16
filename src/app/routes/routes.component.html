@@ -20,6 +20,7 @@
                                 <span> {{float2int(ruta.distancia)}}km</span>
                             </div>
                             <div class="route__info-box">
+
                                 <img *ngFor="let dummy of ' '.repeat(ruta.media).split('')" [src]=STAR alt="location image"> <span *ngIf="ruta.media == 0"> no valorada </span>
                             </div>
                             <div class="route__info-box">

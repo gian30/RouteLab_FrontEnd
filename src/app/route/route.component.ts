@@ -92,7 +92,7 @@ export class RouteComponent implements OnInit {
   }
 
   similarRoutes() {
-    this._postService.getSearchResults(this.post.titulo, 'route').subscribe(
+    this._postService.getSearchResults(this.post.markers[0].poblacion, "route").subscribe(
       resul => {
         if (resul.body !== null) {
           this.searchResults = resul.body['data'];

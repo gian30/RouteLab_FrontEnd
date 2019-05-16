@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {map} from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 
 @Injectable()
@@ -23,7 +23,17 @@ export class UserService {
     return this._conexHttp.get(ruta,
       {
         headers:
-          {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+          { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+        observe: 'response'
+      });
+  }
+
+  loadUser() {
+    const ruta = '/backend/clases/webservice/api.php?controller=usuario&funcion=loadusu&token=&token=' + localStorage.getItem('access_token');
+    return this._conexHttp.get(ruta,
+      {
+        headers:
+          { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
         observe: 'response'
       });
   }
@@ -49,7 +59,7 @@ export class UserService {
     return this._conexHttp.post(ruta, info,
       {
         headers:
-          {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+          { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
         observe: 'response'
       });
   }
