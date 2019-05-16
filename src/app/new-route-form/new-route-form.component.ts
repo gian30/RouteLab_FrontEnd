@@ -164,13 +164,13 @@ export class NewRouteFormComponent implements OnInit {
     const org = new google.maps.LatLng(origin.latitud, origin.longitud);
     const dest = new google.maps.LatLng(destination.latitud, destination.longitud);
     const distance = google.maps.geometry.spherical.computeDistanceBetween(org, dest);
-    return distance;
+    return distance / 1000;
   }
 
   calculateDuration() {
     const velocity = 5;
     const distance = this.calculateDistance(this.markers[0], this.markers[this.markers.length - 1]);
-    const duration = distance / velocity;
+    const duration = (distance / 1000) / velocity;
     return duration;
   }
 
