@@ -1,14 +1,14 @@
 /// <reference types="@types/googlemaps" />
-import {Component, OnInit} from '@angular/core';
-import {ViewChild, ElementRef, NgZone, } from '@angular/core';
-import {LoginService} from '../services/login.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {MustMatch} from './_helpers/must-match.validator';
-import {MapsAPILoader} from '@agm/core';
-import {FormControl} from '@angular/forms';
-import {GooglePlaceDirective} from 'ngx-google-places-autocomplete/ngx-google-places-autocomplete.directive';
-import {Address} from 'ngx-google-places-autocomplete/objects/address';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ViewChild, ElementRef, NgZone, } from '@angular/core';
+import { LoginService } from '../services/login.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MustMatch } from './_helpers/must-match.validator';
+import { MapsAPILoader } from '@agm/core';
+import { FormControl } from '@angular/forms';
+import { GooglePlaceDirective } from 'ngx-google-places-autocomplete/ngx-google-places-autocomplete.directive';
+import { Address } from 'ngx-google-places-autocomplete/objects/address';
+import { Router } from '@angular/router';
 
 import {
   SocialUser,
@@ -44,8 +44,9 @@ export class LoginComponent implements OnInit {
   copy = [];
   options = {
     types: ['(cities)'],
-    componentRestrictions: {country: 'es'}
+    componentRestrictions: { country: 'es' }
   };
+  errormsg = "";
 
   get f() {
     return this.registerForm.controls;
@@ -116,8 +117,8 @@ export class LoginComponent implements OnInit {
         pass: ['', [Validators.required, Validators.minLength(6)]],
         confpass: ['', [Validators.required, Validators.minLength(6)]]
       }, {
-        validator: MustMatch('pass', 'confpass')
-      });
+          validator: MustMatch('pass', 'confpass')
+        });
     }
   }
 
@@ -159,6 +160,8 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('currentUser', JSON.stringify(obj));
             localStorage.setItem('access_token', obj.token);
             this.router.navigate(['/user']);
+          } else {
+            this.errormsg = 'Usuario incorrecto!';
           }
         }, error => {
           alert('Usuario incorrecto!');
@@ -202,8 +205,8 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       pass: ['', [Validators.required, Validators.minLength(6)]],
     });
-
-
+  
+  
     "SQLSTATE[23000]: Integrity constraint violation:
     1048 Column 'token' cannot be null{"message":"Lista
      usuario","data":"
@@ -212,8 +215,8 @@ export class LoginComponent implements OnInit {
     \"edad\":\"31\",\"localidad\":{},\"foto\":\"\\\/img.jpg\",\"telefono\
     ":\"5656565655\",\"empresa\":\"1\",\"nombre_empresa\":\"Routelab\",\"
     token\":null}"}"
-
-
+  
+  
     */
     // this.registerForm = this.loginFormTemp;
   }
