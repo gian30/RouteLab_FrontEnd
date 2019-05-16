@@ -183,7 +183,7 @@ export class LoginComponent implements OnInit {
       resul => {
         if (resul.body !== null) {
           alert('Usuario registrado! Ya puedes iniciar sesíon usando tu correo electronico.');
-          //this.router.navigate(['']);
+          this.router.navigate(['']);
         }
       }, error => {
         console.log(error);
