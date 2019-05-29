@@ -76,7 +76,7 @@ export class UserComponent implements OnInit {
     if (this.id == null) {
       return true;
     }
-    if (this.id == String(me.idusuario)) {
+    if (this.id === String(me.idusuario)) {
       return true;
     } else {
       return false;
@@ -102,7 +102,7 @@ export class UserComponent implements OnInit {
     };
     this._followersService.checkFollowed(JSON.stringify(info)).subscribe(
       resul => {
-        if (resul.body['data'] == 'true') {
+        if (resul.body['data'] === 'true') {
           follower.followed = true;
         } else {
           follower.followed = false;

@@ -13,11 +13,11 @@ import { FollowersService } from '../services/followers.service';
 export class ChatComponent implements OnInit, AfterViewChecked {
 
   constructor(public cs: ChatService, public _followersService: FollowersService, ) {
-    //foll.loadFollowers("follows");
-    //console.log(foll.followers)
+    // foll.loadFollowers("follows");
+    // console.log(foll.followers)
 
   }
-  public me: User = <User>JSON.parse(localStorage.getItem("currentUser"));
+  public me: User = <User>JSON.parse(localStorage.getItem('currentUser'));
   users: User[] = [];
   opened = false;
   openedUser = false;
@@ -72,9 +72,9 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
 
   toDate(time) {
-    var date = new Date(time);
-    var hours = date.getHours();
-    var minutes = date.getMinutes();
+    const date = new Date(time);
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
     return (hours + ':' + minutes);
   }
 
@@ -125,7 +125,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   submit() {
     this.unsub();
-    if (this.mychats.length == 0) {
+    if (this.mychats.length === 0) {
       this.cs.create(this.me.idusuario, this.userselected.idusuario, this.newMsg);
       this.newMsg = '';
     } else {
@@ -141,7 +141,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   ngOnInit() {
     this.scrollToBottom();
-    this.loadFollowers("follows");
+    this.loadFollowers('follows');
   }
 
 }

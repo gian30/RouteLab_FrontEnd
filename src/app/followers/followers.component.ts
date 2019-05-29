@@ -36,7 +36,7 @@ export class FollowersComponent implements OnInit {
 
   loadFollowersArray(followersData: any[]) {
     for (const usr of followersData) {
-      let follower = <User>usr.usuario;
+      const follower = <User>usr.usuario;
       this.ifFollowed(follower);
       this.followers.push(<User>usr.usuario);
     }
@@ -53,12 +53,12 @@ export class FollowersComponent implements OnInit {
   ifFollowed(follower: User) {
     let info = {};
     info = {
-      "idseguido": JSON.parse(localStorage.getItem("currentUser")).idusuario, //our id
-      "idseguidor": follower.idusuario // id to check
+      'idseguido': JSON.parse(localStorage.getItem('currentUser')).idusuario, // our id
+      'idseguidor': follower.idusuario // id to check
     };
     this._followersService.checkFollowed(JSON.stringify(info)).subscribe(
       resul => {
-        if (resul.body['data'] == "true") {
+        if (resul.body['data'] === 'true') {
           follower.followed = true;
         } else {
           follower.followed = false;
@@ -72,8 +72,8 @@ export class FollowersComponent implements OnInit {
   followAction(follower: User, func: string) {
     let info = {};
     info = {
-      "idseguido": JSON.parse(localStorage.getItem("currentUser")).idusuario, //our id
-      "idseguidor": follower.idusuario // id to unfollow/follow
+      'idseguido': JSON.parse(localStorage.getItem('currentUser')).idusuario, // our id
+      'idseguidor': follower.idusuario // id to unfollow/follow
     };
     console.log(info);
     this._followersService.followAction(JSON.stringify(info), func).subscribe(

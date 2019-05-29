@@ -16,12 +16,12 @@ export class ChatService {
 
 
     getMyMsgs(userId: string, receiverId: string) {
-        var ref = this.afs.collection('chats').doc(userId + '-' + receiverId);
+        const ref = this.afs.collection('chats').doc(userId + '-' + receiverId);
         return ref.valueChanges();
     }
 
     getReceiverMsg(userId: string, receiverId: string) {
-        var ref = this.afs.collection('chats').doc(receiverId + '-' + userId);
+        const ref = this.afs.collection('chats').doc(receiverId + '-' + userId);
         return ref.valueChanges();
     }
 

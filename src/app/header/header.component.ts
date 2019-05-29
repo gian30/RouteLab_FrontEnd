@@ -6,7 +6,7 @@ import { PostService } from '../services/post.service';
 
 
 @Component({
-  selector: 'header',
+  selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
   providers: [PostService]

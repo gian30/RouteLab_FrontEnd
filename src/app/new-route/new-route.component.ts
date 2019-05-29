@@ -15,8 +15,8 @@ export class NewRouteComponent implements OnInit {
   public markers = [];
   routeMarkers: any = null;
   fullAddress = {};
-  lat: number = 51.678418;
-  lng: number = 7.809007;
+  lat = 51.678418;
+  lng = 7.809007;
   public options = {
     types: ['(cities)']
   };
@@ -41,9 +41,9 @@ export class NewRouteComponent implements OnInit {
     };
     this.routeMarkers.waypoints = [];
     if (this.markers.length > 2) {
-      for (let cont in this.markers) {
+      for (const cont in this.markers) {
         if (Number(cont) !== 0 && Number(cont) !== this.markers.length - 1) {
-          let location = {
+          const location = {
             lat: parseFloat(this.markers[cont].latitud),
             lng: parseFloat(this.markers[cont].longitud)
           };

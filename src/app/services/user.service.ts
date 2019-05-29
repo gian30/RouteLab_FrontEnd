@@ -29,7 +29,8 @@ export class UserService {
   }
 
   loadUser() {
-    const ruta = '/backend/clases/webservice/api.php?controller=usuario&funcion=loadusu&token=&token=' + localStorage.getItem('access_token');
+    const ruta = '/backend/clases/webservice/api.php?controller=usuario&funcion=loadusu&token=&token=' +
+      localStorage.getItem('access_token');
     return this._conexHttp.get(ruta,
       {
         headers:

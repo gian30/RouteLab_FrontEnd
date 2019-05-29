@@ -49,10 +49,6 @@ export class RouteComponent implements OnInit {
     private formBuilder: FormBuilder) {
   }
 
-  ngAfterViewInit(): void {
-
-  }
-
   public float2int(value) {
     return value | 0;
   }
@@ -92,7 +88,7 @@ export class RouteComponent implements OnInit {
   }
 
   similarRoutes() {
-    this._postService.getSearchResults(this.post.markers[0].poblacion, "route").subscribe(
+    this._postService.getSearchResults(this.post.markers[0].poblacion, 'route').subscribe(
       resul => {
         if (resul.body !== null) {
           this.searchResults = resul.body['data'];
@@ -108,9 +104,9 @@ export class RouteComponent implements OnInit {
     this._postService.ifValued(this.post.idpost).subscribe(
       resul => {
         if (resul.body !== null) {
-          if (resul.body['data'] == 0) {
+          if (resul.body['data'] === 0) {
             this.canValuate = true;
-          } else if (resul.body['data'] == 1) {
+          } else if (resul.body['data'] === 1) {
             this.canValuate = false;
           }
         }

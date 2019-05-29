@@ -14,7 +14,19 @@ class User {
   private _followed: boolean;
   private _token: string;
 
-  constructor(idusuario: number, nombreusuario: string, email: string, pass: string, nombre: string, edad: string, localidad: Localidad, foto: string, telefono: string, empresa: string, nombre_empresa: string, token: string) {
+  constructor(
+    idusuario: number,
+    nombreusuario: string,
+    email: string,
+    pass: string,
+    nombre: string,
+    edad: string,
+    localidad: Localidad,
+    foto: string,
+    telefono: string,
+    empresa: string,
+    nombre_empresa: string,
+    token: string) {
     this._idusuario = idusuario;
     this._nombreusuario = nombreusuario;
     this._email = email;

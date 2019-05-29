@@ -93,8 +93,8 @@ export class NewRouteFormComponent implements OnInit {
   onFileSelected(event) {
     this.selectedFile = <File>event.target.files[0];
     const reader = new FileReader();
-    reader.onload = (event: any) => {
-      this.urls.push(event.target.result);
+    reader.onload = (ev: any) => {
+      this.urls.push(ev.target.result);
     };
     this.files.push(event.target.files[0]);
     reader.readAsDataURL(event.target.files[0]);
@@ -180,7 +180,7 @@ export class NewRouteFormComponent implements OnInit {
     this.routeForm.controls['duracion'].setValue(this.calculateDuration());
     const recomendaciones = [];
     for (const cont in this.routeForm.value['recsVal']) {
-      if (this.routeForm.value['recsVal'][cont] == true) {
+      if (this.routeForm.value['recsVal'][cont] === true) {
         recomendaciones.push(this.recs[cont].id);
       }
     }

@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
     types: ['(cities)'],
     componentRestrictions: { country: 'es' }
   };
-  errormsg = "";
+  errormsg = '';
 
   get f() {
     return this.registerForm.controls;
@@ -200,29 +200,5 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       pass: ['', [Validators.required, Validators.minLength(6)]]
     });
-
-    /*this.loginFormTemp = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      pass: ['', [Validators.required, Validators.minLength(6)]],
-    });
-  
-  
-    "SQLSTATE[23000]: Integrity constraint violation:
-    1048 Column 'token' cannot be null{"message":"Lista
-     usuario","data":"
-    {\"idusuario\":\"0\",\"nombreusuario\":\"bhbhbh\",\"email\":\"
-    ssssnsnsn@gmail.com\",\"pass\":\"123456789\",\"nombre\":\"bhbvhvh\",
-    \"edad\":\"31\",\"localidad\":{},\"foto\":\"\\\/img.jpg\",\"telefono\
-    ":\"5656565655\",\"empresa\":\"1\",\"nombre_empresa\":\"Routelab\",\"
-    token\":null}"}"
-  
-  
-    */
-    // this.registerForm = this.loginFormTemp;
   }
-
-
 }
-
-
-

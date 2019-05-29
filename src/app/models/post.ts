@@ -24,7 +24,7 @@ export class Post {
   set distancia(value: number) {
     this._distancia = value;
   }
-  
+
   get duracion(): number {
     return this._duracion;
   }

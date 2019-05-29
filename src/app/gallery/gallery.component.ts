@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Post } from "../models/post";
+import { Post } from '../models/post';
 import { PostService } from '../services/post.service';
 
 
@@ -14,7 +14,7 @@ import { PostService } from '../services/post.service';
 export class GalleryComponent implements OnInit {
   photoIndividual = '../../assets/img/test.jpg';
   protected posts: Post[];
-  public me: User = <User>JSON.parse(localStorage.getItem("currentUser"));
+  public me: User = <User>JSON.parse(localStorage.getItem('currentUser'));
   public urls: any[] = [];
   public rutas: any[] = [];
   constructor(private _postService: PostService) {
@@ -34,7 +34,7 @@ export class GalleryComponent implements OnInit {
           this.posts = <Post[]>resul.body['data'];
           this.posts.forEach(post => {
             for (let i = 0; i < post.num_fotos; i++) {
-              let photo = "../../assets/uploads/posts/" + post.idpost + "/" + i + ".jpg";
+              const photo = '../../assets/uploads/posts/' + post.idpost + '/' + i + '.jpg';
               this.urls.push(photo);
               this.rutas.push(post.idpost);
             }

@@ -27,7 +27,8 @@ export class PostService {
       });
   }
   ifValued(idpost: number) {
-    const ruta = '/backend/clases/webservice/api.php?controller=valoracion&funcion=comprobar&id=' + idpost + "&token=" + localStorage.getItem('access_token');
+    const ruta = '/backend/clases/webservice/api.php?controller=valoracion&funcion=comprobar&id='
+      + idpost + '&token=' + localStorage.getItem('access_token');
     return this._conexHttp.get(ruta,
       {
         headers:
@@ -69,7 +70,8 @@ export class PostService {
   }
 
   postComment(info: string) {
-    const ruta = '/backend/clases/webservice/api.php?controller=comentariopost&funcion=comentario&token=' + localStorage.getItem('access_token');
+    const ruta = '/backend/clases/webservice/api.php?controller=comentariopost&funcion=comentario&token='
+      + localStorage.getItem('access_token');
     return this._conexHttp.post(ruta, info,
       {
         headers:
@@ -80,7 +82,6 @@ export class PostService {
 
   postPost(info: string) {
     const ruta = '/backend/clases/webservice/api.php?controller=post&funcion=post&token=' + localStorage.getItem('access_token');
-    let httpHeaders = new HttpHeaders();
     return this._conexHttp.post(ruta, JSON.stringify(info),
       {
         headers:
@@ -90,9 +91,10 @@ export class PostService {
   }
 
   postValoration(val: number, idusu: number, idpost: number) {
-    const ruta = '/backend/clases/webservice/api.php?controller=valoracion&funcion=valorapost&token=' + localStorage.getItem('access_token');
-    let info = '{"idusuario":"' + idusu + '", "idpost": "' + idpost + '", "valoracion": "' + val + '"}'
-    let httpHeaders = new HttpHeaders();
+    const ruta = '/backend/clases/webservice/api.php?controller=valoracion&funcion=valorapost&token='
+      + localStorage.getItem('access_token');
+    const info = '{"idusuario":"' + idusu + '", "idpost": "' + idpost + '", "valoracion": "' + val + '"}';
+    const httpHeaders = new HttpHeaders();
     return this._conexHttp.post(ruta, info,
       {
         headers:
@@ -102,12 +104,13 @@ export class PostService {
   }
 
   postPostImages(photos: File[], idpost: string) {
-    const ruta = '/backend/clases/webservice/api.php?controller=post&funcion=foto&token=' + localStorage.getItem('access_token') + '&id=' + idpost;
-    let httpHeaders = new HttpHeaders();
-    httpHeaders.append('enctype', "multipart/form-data");
+    const ruta = '/backend/clases/webservice/api.php?controller=post&funcion=foto&token='
+      + localStorage.getItem('access_token') + '&id=' + idpost;
+    const httpHeaders = new HttpHeaders();
+    httpHeaders.append('enctype', 'multipart/form-data');
     httpHeaders.append('Content - Type', 'application/x-www-form-urlencoded');
     const fd = new FormData();
-    for (let file of photos) {
+    for (const file of photos) {
       fd.append('images[]', file);
     }
     console.log(JSON.stringify(fd));
@@ -124,7 +127,8 @@ export class PostService {
     httpHeaders.append('Content - Type', 'application/x-www-form-urlencoded');
     const formData = new FormData();
     formData.append('photo', currentFileUpload);
-    const ruta = '/backend/clases/webservice/api.php?controller=usuario&funcion=' + funcion + '&token=' + localStorage.getItem('access_token');
+    const ruta = '/backend/clases/webservice/api.php?controller=usuario&funcion=' +
+      funcion + '&token=' + localStorage.getItem('access_token');
     return this._conexHttp.post(ruta, formData,
       {
         headers: httpHeaders,
@@ -143,7 +147,8 @@ export class PostService {
   }
 
   getRecomendaciones() {
-    const ruta = '/backend/clases/webservice/api.php?controller=recomendaciones&funcion=recomendaciones&token=' + localStorage.getItem('access_token');
+    const ruta = '/backend/clases/webservice/api.php?controller=recomendaciones&funcion=recomendaciones&token='
+      + localStorage.getItem('access_token');
     return this._conexHttp.get(ruta,
       {
         headers:
@@ -153,13 +158,13 @@ export class PostService {
   }
 
   getSearchResults(searchText: string, searchType: string) {
-    let funcion = "buscadorpost";
-    let controller = "post";
+    let funcion = 'buscadorpost';
+    let controller = 'post';
     let search = '{"valor":"' + searchText + '"}';
-    if (searchType == "users") {
+    if (searchType === 'users') {
       funcion = 'buscadorusu';
       search = '{"nombreusuario":"' + searchText + '"}';
-      controller = "usuario";
+      controller = 'usuario';
     }
     const ruta = '/backend/clases/webservice/api.php?controller=' + controller + '&funcion=' + funcion;
     return this._conexHttp.post(ruta, search,

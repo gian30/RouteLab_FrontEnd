@@ -20,7 +20,7 @@ export class FollowersService {
 
     getFollowers(id: number, func: string) {
         console.log(localStorage);
-        let ruta = '/backend/clases/webservice/api.php?controller=social&funcion=' + func + '&id=' + id;
+        const ruta = '/backend/clases/webservice/api.php?controller=social&funcion=' + func + '&id=' + id;
         return this._conexHttp.get(ruta,
             {
                 headers:
@@ -30,7 +30,7 @@ export class FollowersService {
     }
 
     checkFollowed(info: string) {
-        let ruta = '/backend/clases/webservice/api.php?controller=social&funcion=ff&token=' + localStorage.getItem('access_token');
+        const ruta = '/backend/clases/webservice/api.php?controller=social&funcion=ff&token=' + localStorage.getItem('access_token');
         return this._conexHttp.post(ruta, info, {
             headers:
                 { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
@@ -38,7 +38,7 @@ export class FollowersService {
         });
     }
     followAction(info: string, func: string) {
-        let ruta = '/backend/clases/webservice/api.php?controller=social&funcion=' + func;
+        const ruta = '/backend/clases/webservice/api.php?controller=social&funcion=' + func;
         return this._conexHttp.post(ruta, info, {
             headers:
                 { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },

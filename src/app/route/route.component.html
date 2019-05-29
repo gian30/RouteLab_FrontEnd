@@ -6,7 +6,7 @@
                     {{post.titulo}}
                 </h2>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3" *ngIf="false">
                 <button class="button route-button ml-auto">Promociona tu ruta</button>
             </div>
         </div>
@@ -24,7 +24,7 @@
                 <div class="photo__current" *ngIf="ROUTEIMGS.length > 1">
                     <img class="photo__img" [src]=CURRENTIMG>
                     <div class="photo__preview d-flex">
-                        <img *ngFor=" let photo of ROUTEIMGS; let i=index " (click)="loadPhoto(ROUTEIMGS[i]) " class="photo__imgs " [src]=ROUTEIMGS[i] style="width: 17%; height: 17%; display: block;">
+                        <img *ngFor=" let photo of ROUTEIMGS; let i=index " (click)="loadPhoto(ROUTEIMGS[i]) " class="photo__imgs " [src]=ROUTEIMGS[i] style="width: 17%; height: 70px; display: block;">
                     </div>
                 </div>
                 <div class="description ">
@@ -67,7 +67,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5 ml-auto">
+            <div class="col-lg-5 col-12 ml-auto">
                 <div class="recommendations">
                     <p class="recommendations-title">
                         Recomendaciones

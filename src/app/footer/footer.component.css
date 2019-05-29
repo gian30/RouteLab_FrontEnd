@@ -1,4 +1,3 @@
-
 .footer {
     background-color: #22626E;
     padding: 20px 0;
@@ -6,11 +5,10 @@
     color: #fff;
 }
 
-.logo a{
+.logo a {
     font-weight: 300;
     font-size: 20px;
     color: #fff;
-
 }
 
 .logo span {
@@ -22,11 +20,50 @@
     width: 100px;
 }
 
-.social li a{
+.social li a {
     font-size: 20px;
     color: #6096A0;
 }
 
 .social li a:hover {
     color: #65A5B1;
+}
+
+
+/* ------ Media Queries ------ */
+
+
+/* 992-1200px */
+
+@media screen and (max-width: 1199px) {}
+
+
+/* 768-992px */
+
+@media screen and (max-width: 991px) {}
+
+
+/* 576-768px */
+
+@media screen and (max-width: 767px) {
+    .logo {
+        text-align: center;
+    }
+}
+
+
+/* 320-576px */
+
+@media screen and (max-width: 575px) {
+    .social {
+        margin: 0 !important;
+        width: 100%;
+        justify-content: start !important;
+    }
+    .social li {
+        margin-right: 5px;
+    }
+    .copyright {
+        text-align: center;
+    }
 }

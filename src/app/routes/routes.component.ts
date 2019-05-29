@@ -29,8 +29,7 @@ export class RoutesComponent implements OnInit {
 
   category = 'Categoría';
   categories = ['Sol y playa', 'Deportivo', 'Naturaleza', 'De montaña', 'Histórico', 'Aventura', 'Rural', 'Científico'];
-  // private urlapi
-  //   = 'https://api.exchangeratesapi.io/latest';
+
   public currentEuroRates: any = null;
 
   loadRoute() {
@@ -72,14 +71,6 @@ export class RoutesComponent implements OnInit {
     return value | 0;
   }
 
-  private serchROUTE() {
-    console.log('vbjklñ');
-    /*  const currencies = 'USD,GBP,CHF,JPY';
-      const url = `${this.urlapi}?symbols=${currencies}`;
-      this.httpClient
-        .get(url)
-        .subscribe(apiData => (this.currentEuroRates = apiData));*/
-  }
 
   assignBlack() {
     const element = document.getElementById('addBlack');
@@ -87,8 +78,4 @@ export class RoutesComponent implements OnInit {
   }
 }
 
-function addNewRoute() {
-  console.log('adding');
-
-}
 
